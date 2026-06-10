@@ -19,6 +19,7 @@ animation = &"attack"
 [node name="HitBoxComponent" type="Area2D" parent="." unique_id=1075786225]
 collision_mask = 0
 script = ExtResource("3_m7uc0")
+damage = 1
 hitbox_name = "Bat"
 metadata/_custom_type_script = "uid://clpibth8iopnl"
 

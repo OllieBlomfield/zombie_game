@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://c2praj13ccaec"]
 
+[ext_resource type="PackedScene" uid="uid://bskwqmmwtsupu" path="res://scenes/objects/wave_spawner.tscn" id="1_8q587"]
 [ext_resource type="Texture2D" uid="uid://jrasxf24v7bo" path="res://graphics/tilesets/temp_tile_set.png" id="1_e7gdu"]
 [ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="2_v2aq7"]
 [ext_resource type="PackedScene" uid="uid://dmkq5jw7w02uv" path="res://scenes/objects/player.tscn" id="3_8q587"]
 [ext_resource type="PackedScene" uid="uid://dk7ovbqn0vufj" path="res://scenes/objects/jump_node.tscn" id="4_v2aq7"]
+[ext_resource type="PackedScene" uid="uid://doqdmasuxdcvj" path="res://scenes/objects/spawn_point.tscn" id="6_s5e7t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5e7t"]
 texture = ExtResource("1_e7gdu")
@@ -196,3 +198,14 @@ position = Vector2(339, 48)
 
 [node name="JumpNode4" parent="." unique_id=1937372720 instance=ExtResource("4_v2aq7")]
 position = Vector2(50, 42)
+
+[node name="SpawnPoint" parent="." unique_id=254295430 groups=["spawnpoint"] instance=ExtResource("6_s5e7t")]
+position = Vector2(20, 50)
+
+[node name="SpawnPoint2" parent="." unique_id=376205412 groups=["spawnpoint"] instance=ExtResource("6_s5e7t")]
+position = Vector2(203, 60)
+
+[node name="SpawnPoint3" parent="." unique_id=1314351911 groups=["spawnpoint"] instance=ExtResource("6_s5e7t")]
+position = Vector2(552, 14)
+
+[node name="WaveSpawner" parent="." unique_id=1270486080 instance=ExtResource("1_8q587")]

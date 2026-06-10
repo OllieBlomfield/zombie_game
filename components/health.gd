@@ -3,8 +3,8 @@ extends Node
 
 signal health_depleted
 
-@export var max_health: int
-@export var health: int 
+@export var max_health: int = 3
+@export var health: int = 3
 @export var immortality: bool
 @export var immortality_time: float 
 

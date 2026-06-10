@@ -22,6 +22,7 @@ var state: States = States.CHASING
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	hurtbox.received_damage.connect(damaged_received)
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -82,6 +83,10 @@ func attack() -> void:
 		0,
 		friction * get_physics_process_delta_time()
 	)
+	
+func damaged_received(damage: int):
+	if health.health <= 0:
+		die()
 
 func die() -> void:
 	queue_free()
