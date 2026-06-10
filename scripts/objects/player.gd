@@ -1,5 +1,5 @@
-extends CharacterBody2D
 class_name Player
+extends CharacterBody2D
 
 const DEFAULT_CAM_POSITION: Vector2 = Vector2(0,0)
 const UP_CAM_POSITION: Vector2 = Vector2(0,-34)
