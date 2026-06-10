@@ -1,6 +1,12 @@
 class_name Player
 extends CharacterBody2D
 
+@export var camera: Camera2D
+@export var weapon: MeleWeapon
+
+@export var health: Health
+@export var hurtbox: HurtBox
+
 const DEFAULT_CAM_POSITION: Vector2 = Vector2(0,0)
 const UP_CAM_POSITION: Vector2 = Vector2(0,-34)
 const DOWN_CAM_POSITION: Vector2 = Vector2(0,34)
@@ -39,8 +45,6 @@ var attacking: bool = false #could have as a seperate state to moving
 @onready var combat: Combat = $Combat
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@export var camera: Camera2D
-@export var weapon: MeleWeapon
 
 func _ready() -> void:
 	weapon.attack_finished.connect(_attack_finished)

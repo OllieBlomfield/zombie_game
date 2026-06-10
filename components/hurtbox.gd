@@ -9,7 +9,8 @@ signal received_damage(damage: int)
 func _ready():
 	area_entered.connect(_on_area_entered)
 
-func _on_area_entered(hitbox: HitBox) -> void:
+func _on_area_entered(area: Area2D) -> void:
+	var hitbox = area as HitBox
 	if hitbox == null:
 		return
 	print(hurtbox_name + " was hit by " + hitbox.hitbox_name)

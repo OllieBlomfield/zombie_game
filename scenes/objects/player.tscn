@@ -13,10 +13,12 @@ size = Vector2(7.9, 7.9)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("weapon") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("weapon", "health", "hurtbox") groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_a8lix")
 weapon = NodePath("MeleWeapon")
+health = NodePath("Health")
+hurtbox = NodePath("HurtBox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]
 sprite_frames = ExtResource("2_2147m")

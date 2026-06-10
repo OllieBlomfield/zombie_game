@@ -14,7 +14,7 @@ extends CharacterBody2D
 @export var friction: float = 800.0
 
 @onready var wall_detector: RayCast2D = $WallDetector
-
+var in_jump_zone: bool = false
 var near_player: bool = false
 
 enum States { CHASING, ATTACKING, DEAD }
@@ -57,11 +57,21 @@ func chase() -> void:
 	)
 
 	if wall_detector.is_colliding() and is_on_floor():
-		jump()
+		jump(player.global_position.y)
 
-func jump() -> void:
-	if is_on_floor() and wall_detector.is_colliding():
-		velocity.y = jump_velocity
+func jump(target_y: float) -> void:
+	if !is_on_floor():
+		return
+
+	velocity.y = get_jump_velocity_to_reach(target_y)
+
+func get_jump_velocity_to_reach(target_y: float) -> float:
+	var distance_y = global_position.y - target_y
+	distance_y = clamp(distance_y, 0, 120)
+
+	if distance_y <= 0:
+		return 0.0
+	return -sqrt(2 * gravity * distance_y) - 15
 
 func attack() -> void:
 	if abs(player.global_position.x - global_position.x) > 5:
@@ -75,3 +85,7 @@ func attack() -> void:
 
 func die() -> void:
 	queue_free()
+
+func _on_jump_zone_detector_area_entered(area: Area2D) -> void:
+	if area is JumpNode and abs(player.global_position.y - global_position.y) > 5:
+		jump(player.global_position.y)

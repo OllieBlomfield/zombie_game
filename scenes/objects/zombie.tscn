@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_d5t1q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnlsj"]
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rln44"]
 radius = 9.0
@@ -14,9 +15,11 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cutmx"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5t1q"]
+
 [node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox")]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 6
 script = ExtResource("1_xcqe2")
 health = NodePath("Health")
 hitbox = NodePath("HitBox")
@@ -41,7 +44,6 @@ metadata/_custom_type_script = "uid://clpibth8iopnl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=243866070]
 shape = SubResource("CircleShape2D_hnlsj")
-disabled = true
 debug_color = Color(0.24129903, 0.54600394, 0.871758, 0.41960785)
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=721889875 node_paths=PackedStringArray("health")]
@@ -63,3 +65,12 @@ debug_color = Color(0.08396467, 0.6295384, 0.459252, 0.41960785)
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=7802718]
 target_position = Vector2(20, 0)
 collision_mask = 4
+
+[node name="JumpZoneDetector" type="Area2D" parent="." unique_id=837750293]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpZoneDetector" unique_id=1186574895]
+shape = SubResource("CircleShape2D_d5t1q")
+
+[connection signal="area_entered" from="JumpZoneDetector" to="." method="_on_jump_zone_detector_area_entered"]
