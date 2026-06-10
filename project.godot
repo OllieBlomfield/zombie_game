@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://cqbepbie0df8x"
 
+[global_group]
+
+player=""
+enemy=""
+
 [input]
 
 left={

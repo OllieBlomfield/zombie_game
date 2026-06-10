@@ -11,16 +11,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rln44"]
 radius = 9.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cutmx"]
-size = Vector2(13.0625, 12.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cutmx"]
+radius = 6.0
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox")]
 script = ExtResource("1_xcqe2")
 health = NodePath("Health")
 hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
-speed = 200
-jump_height = -200
+speed = 100
+jump_height = -300
+gravity = 980.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=107358941]
 position = Vector2(0, -1)
@@ -50,4 +51,11 @@ debug_color = Color(0.83817405, 0.36629915, 0.3307443, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=834686617]
 position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_cutmx")
+shape = SubResource("CircleShape2D_cutmx")
+debug_color = Color(0.08396467, 0.6295384, 0.459252, 0.41960785)
+
+[node name="BreadCrumbTimer" type="Timer" parent="." unique_id=149706323]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="BreadCrumbTimer" to="." method="_on_bread_crumb_timer_timeout"]
