@@ -7,63 +7,71 @@ extends CharacterBody2D
 @export var hitbox: HitBox
 @export var hurtbox: HurtBox
 
-@export var speed: int
-@export var jump_height: int
-@export var gravity: float = 200
+@export var speed: float = 50.0
+@export var jump_velocity: float = -300.0
+@export var gravity: float = 900.0
+@export var acceleration: float = 600.0
+@export var friction: float = 800.0
 
-var breadcrumbs: Array = []
+@onready var wall_detector: RayCast2D = $WallDetector
 
+var near_player: bool = false
 
-enum States{CHASING, ATTACKING, JUMPING, DEAD}
+enum States { CHASING, ATTACKING, DEAD }
 var state: States = States.CHASING
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	breadcrumbs.append(player.global_position)
-	
+
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
-	#update_state(delta)
-func move():
-	pass
-	
-func attack():
-	pass 
-	
-func chase(delta):
-	if breadcrumbs.is_empty():
-		return
-	if global_position.distance_to(breadcrumbs[0]) < 5:
-		breadcrumbs.pop_front()
-		if breadcrumbs.is_empty():
-			return
-	var dir = global_position.direction_to(breadcrumbs[0]) * speed
-	velocity.x = dir.x
-	if is_on_wall():
-		jump()
-	if player.global_position.y < global_position.y - 20:
-		jump()
+	if !is_on_floor():
+		velocity.y += gravity * delta
+
+	update_state()
 	move_and_slide()
-	
-func jump():
-	if is_on_floor():
-		velocity.y = jump_height
 
-func die():
-	queue_free()
-
-func update_state(delta):
+func update_state() -> void:
 	match state:
 		States.CHASING:
-			chase(delta)
+			chase()
 		States.ATTACKING:
-			pass
+			attack()
 		States.DEAD:
-			pass
+			die()
 
+func chase() -> void:
+	if player == null:
+		return
 
-func _on_bread_crumb_timer_timeout() -> void:
-	breadcrumbs.append(player.global_position)
-	if breadcrumbs.size() > 20:
-		breadcrumbs.pop_back()
-	print(breadcrumbs[0])
+	if abs(player.global_position.x - global_position.x) < 5:
+		state = States.ATTACKING
+
+	var dir = sign(player.global_position.x - global_position.x)
+
+	wall_detector.target_position.x = 20 * dir
+
+	velocity.x = move_toward(
+		velocity.x,
+		dir * speed,
+		acceleration * get_physics_process_delta_time()
+	)
+
+	if wall_detector.is_colliding() and is_on_floor():
+		jump()
+
+func jump() -> void:
+	if is_on_floor() and wall_detector.is_colliding():
+		velocity.y = jump_velocity
+
+func attack() -> void:
+	if abs(player.global_position.x - global_position.x) > 5:
+		state = States.CHASING
+
+	velocity.x = move_toward(
+		velocity.x,
+		0,
+		friction * get_physics_process_delta_time()
+	)
+
+func die() -> void:
+	queue_free()
