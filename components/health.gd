@@ -5,7 +5,8 @@ signal health_depleted
 
 @export var max_health: int
 @export var health: int 
-@export var immortality: bool 
+@export var immortality: bool
+@export var immortality_time: float 
 
 var immortality_timer: Timer = null
 
