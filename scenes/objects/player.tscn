@@ -14,7 +14,6 @@ size = Vector2(7.9, 7.9)
 radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1359689479 groups=["player"]]
-collision_mask = 6
 script = ExtResource("1_a8lix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]

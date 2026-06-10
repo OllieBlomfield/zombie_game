@@ -86,3 +86,15 @@ zoom = Vector2(4, 4)
 
 [node name="Zombie" parent="." unique_id=1721881803 instance=ExtResource("3_xciyh")]
 position = Vector2(39, -15)
+
+[node name="Zombie2" parent="." unique_id=742250357 instance=ExtResource("3_xciyh")]
+position = Vector2(-2, -24)
+
+[node name="Zombie3" parent="." unique_id=34724614 instance=ExtResource("3_xciyh")]
+position = Vector2(53, -42)
+
+[node name="Zombie4" parent="." unique_id=1637961752 instance=ExtResource("3_xciyh")]
+position = Vector2(6, -37)
+
+[node name="Zombie5" parent="." unique_id=777664701 instance=ExtResource("3_xciyh")]
+position = Vector2(75, -31)

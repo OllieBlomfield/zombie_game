@@ -33,7 +33,7 @@ func attack():
 func chase(delta):
 	if breadcrumbs.is_empty():
 		return
-	if global_position.distance_to(breadcrumbs[0]) < 2.0:
+	if global_position.distance_to(breadcrumbs[0]) < 5:
 		breadcrumbs.pop_front()
 		if breadcrumbs.is_empty():
 			return
@@ -41,7 +41,7 @@ func chase(delta):
 	velocity.x = dir.x
 	if is_on_wall():
 		jump()
-	if player.global_position.y < global_position.y - 50:
+	if player.global_position.y < global_position.y - 20:
 		jump()
 	move_and_slide()
 	
@@ -64,6 +64,6 @@ func update_state(delta):
 
 func _on_bread_crumb_timer_timeout() -> void:
 	breadcrumbs.append(player.global_position)
-	if breadcrumbs.size() > 10:
-		breadcrumbs.pop_front()
+	if breadcrumbs.size() > 20:
+		breadcrumbs.pop_back()
 	print(breadcrumbs[0])
