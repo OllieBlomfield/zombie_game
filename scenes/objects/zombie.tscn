@@ -14,8 +14,13 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cutmx"]
 size = Vector2(13.0625, 12.5)
 
-[node name="Zombie" type="CharacterBody2D" unique_id=1721881803]
+[node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox")]
 script = ExtResource("1_xcqe2")
+health = NodePath("Health")
+hitbox = NodePath("HitBox")
+hurtbox = NodePath("HurtBox")
+speed = 200
+jump_height = -200
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=107358941]
 position = Vector2(0, -1)
