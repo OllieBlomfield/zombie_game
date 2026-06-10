@@ -1,0 +1,65 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dp5o2awmwhqu6"]
+
+[ext_resource type="Texture2D" uid="uid://d2tksylfr4r0o" path="res://graphics/weapons/mele_weapon_sprite_sheet.png" id="1_00ert"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whfmu"]
+atlas = ExtResource("1_00ert")
+region = Rect2(0, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkwpf"]
+atlas = ExtResource("1_00ert")
+region = Rect2(12, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev81s"]
+atlas = ExtResource("1_00ert")
+region = Rect2(24, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28103"]
+atlas = ExtResource("1_00ert")
+region = Rect2(36, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk8b1"]
+atlas = ExtResource("1_00ert")
+region = Rect2(48, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnhs3"]
+atlas = ExtResource("1_00ert")
+region = Rect2(60, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00ert"]
+atlas = ExtResource("1_00ert")
+region = Rect2(0, 0, 12, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whfmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkwpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev81s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28103")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk8b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnhs3")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00ert")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

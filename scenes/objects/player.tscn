@@ -4,6 +4,8 @@
 [ext_resource type="SpriteFrames" uid="uid://lormeva0l4n8" path="res://graphics/player/player_sprite_frames.tres" id="2_2147m"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="4_ksjmp"]
+[ext_resource type="Script" uid="uid://1kgpo4ysg2r4" path="res://components/combat.gd" id="5_ksjmp"]
+[ext_resource type="PackedScene" uid="uid://s7s5nvrfefnl" path="res://scenes/weapons/mele_weapon.tscn" id="6_2rlf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
 size = Vector2(7.9, 7.9)
@@ -12,14 +14,18 @@ size = Vector2(7.9, 7.9)
 radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1359689479 groups=["player"]]
+collision_mask = 6
 script = ExtResource("1_a8lix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]
 sprite_frames = ExtResource("2_2147m")
-animation = &"idle"
+animation = &"mele_attack"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807991088]
 shape = SubResource("RectangleShape2D_h5uus")
+debug_color = Color(0.35540143, 0.6160664, 0.16589752, 0.41960785)
 
 [node name="Health" type="Node" parent="." unique_id=713127109]
 script = ExtResource("3_q8hb4")
@@ -28,6 +34,8 @@ health = 3
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=491201341 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("4_ksjmp")
 health = NodePath("../Health")
 metadata/_custom_type_script = "uid://bwjbhslyjufr3"
@@ -35,3 +43,10 @@ metadata/_custom_type_script = "uid://bwjbhslyjufr3"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=703613534]
 shape = SubResource("CircleShape2D_54rde")
 debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
+
+[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("current_weapon")]
+script = ExtResource("5_ksjmp")
+current_weapon = NodePath("../MeleWeapon")
+metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
+
+[node name="MeleWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]

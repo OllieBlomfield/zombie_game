@@ -1,9 +1,9 @@
 class_name Combat
 extends Node
 
-var current_weapon
+@export var current_weapon: MeleWeapon
 
 signal attack_finished
 
 func attack(direction: float):
-	pass
+	current_weapon.attack_init()

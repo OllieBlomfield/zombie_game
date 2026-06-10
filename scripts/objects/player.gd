@@ -34,12 +34,14 @@ var look_up_time: float = 0
 var crouch_time: float = 0
 
 #@export var dust_particle: PackedScene
+@onready var combat: Combat = $Combat
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var camera: Camera2D
 
 func _ready() -> void:
-	GameManager.player = self
+	pass
+	#GameManager.player = self
 
 func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
@@ -53,6 +55,11 @@ func _physics_process(delta: float) -> void:
 	_handle_animation(direction)
 	
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("attack"):
+		combat.attack(1)
+		
+		#animated_sprite_2d.play("mele_attack")
 	
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
