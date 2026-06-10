@@ -23,7 +23,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
-	update_state(delta)
+	#update_state(delta)
 func move():
 	pass
 	
@@ -66,4 +66,4 @@ func _on_bread_crumb_timer_timeout() -> void:
 	breadcrumbs.append(player.global_position)
 	if breadcrumbs.size() > 10:
 		breadcrumbs.pop_front()
-	print(breadcrumbs[0])
+	#print(breadcrumbs[0])

@@ -13,9 +13,10 @@ size = Vector2(7.9, 7.9)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1359689479 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("weapon") groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_a8lix")
+weapon = NodePath("MeleWeapon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]
 sprite_frames = ExtResource("2_2147m")
@@ -35,9 +36,10 @@ metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=491201341 node_paths=PackedStringArray("health")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("4_ksjmp")
 health = NodePath("../Health")
+hurtbox_name = "Player"
 metadata/_custom_type_script = "uid://bwjbhslyjufr3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=703613534]
@@ -50,3 +52,4 @@ current_weapon = NodePath("../MeleWeapon")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="MeleWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]
+position = Vector2(1, 0)

@@ -12,12 +12,14 @@ script = ExtResource("1_ixv1l")
 hit_box = NodePath("HitBoxComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102882708]
+position = Vector2(3, 0)
 sprite_frames = ExtResource("2_wlobd")
 animation = &"attack"
 
 [node name="HitBoxComponent" type="Area2D" parent="." unique_id=1075786225]
 collision_mask = 0
 script = ExtResource("3_m7uc0")
+hitbox_name = "Bat"
 metadata/_custom_type_script = "uid://clpibth8iopnl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" unique_id=72647079]

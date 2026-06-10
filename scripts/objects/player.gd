@@ -33,19 +33,23 @@ var coyote_time: float = 0
 var look_up_time: float = 0
 var crouch_time: float = 0
 
+var attacking: bool = false #could have as a seperate state to moving
+
 #@export var dust_particle: PackedScene
 @onready var combat: Combat = $Combat
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var camera: Camera2D
+@export var weapon: MeleWeapon
 
 func _ready() -> void:
+	weapon.attack_finished.connect(_attack_finished)
 	pass
 	#GameManager.player = self
 
 func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
-	
+			
 	_handle_jump(delta)
 
 	_handle_camera_change(delta)
@@ -57,6 +61,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("attack"):
+		attacking = true
+		animated_sprite_2d.play("mele_attack")
 		combat.attack(1)
 		
 		#animated_sprite_2d.play("mele_attack")
@@ -103,7 +109,9 @@ func  _handle_animation(direction):
 	animated_sprite_2d.scale.y = 1 + abs(velocity.y)/700
 	animated_sprite_2d.scale.x = 1
 	
-	if is_on_floor():
+	if attacking:
+		return
+	elif is_on_floor():
 		if Input.is_action_pressed("down"):
 			animated_sprite_2d.play("crouch")
 			animated_sprite_2d.scale.x = 1.05
@@ -126,6 +134,7 @@ func set_gravity(type: GravityType):
 			current_gravity = SLOW_GRAVITY
 	
 func _handle_camera_change(delta: float):
+	
 	if Input.is_action_pressed("down"):
 		crouch_time += delta
 		if crouch_time > CROUCH_CAM_CHANGE_TIME:
@@ -140,3 +149,6 @@ func _handle_camera_change(delta: float):
 			camera.position = UP_CAM_POSITION
 		else:
 			camera.position = DEFAULT_CAM_POSITION
+
+func _attack_finished():
+	attacking = false

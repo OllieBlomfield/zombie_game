@@ -2,6 +2,7 @@ class_name HitBox
 extends Area2D
 
 @export var damage: int
+@export var hitbox_name: String = "John"
 
 func set_damage(value: int):
 	damage = value

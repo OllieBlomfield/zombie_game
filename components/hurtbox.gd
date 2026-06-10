@@ -4,12 +4,15 @@ extends Area2D
 signal received_damage(damage: int)
 
 @export var health: Health
+@export var hurtbox_name: String = "Barry"
 
 func _ready():
 	area_entered.connect(_on_area_entered)
 
 func _on_area_entered(hitbox: HitBox) -> void:
-	if hitbox == null or health == null:
+	if hitbox == null:
 		return
-	health.take_damage(hitbox.damage, health.immortality_time)
+	print(hurtbox_name + " was hit by " + hitbox.hitbox_name)
+	if health:
+		health.take_damage(hitbox.damage, health.immortality_time)
 	received_damage.emit(hitbox.damage)
