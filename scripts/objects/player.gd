@@ -39,7 +39,19 @@ var crouch_time: float = 0
 @export var camera: Camera2D
 
 func _physics_process(delta: float) -> void:
+	_handle_gravity(delta)
 	
+	_handle_jump(delta)
+
+	_handle_camera_change(delta)
+	
+	var direction := Input.get_axis("left", "right")
+	_handle_horizontal_velocity(delta,direction)
+	_handle_animation(direction)
+	
+	move_and_slide()
+	
+func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
 		set_gravity(GravityType.SLOW)
 	else:
@@ -47,7 +59,8 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity.y = move_toward(velocity.y, 150, current_gravity*delta)
-	
+
+func _handle_jump(delta: float):
 	coyote_time = max(0,coyote_time-delta)
 	if is_on_floor():
 		coyote_time = COYOTE_TIME
@@ -60,12 +73,7 @@ func _physics_process(delta: float) -> void:
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
 
-	_handle_camera_change(delta)
-
-	var direction := Input.get_axis("left", "right")
-	
-	_handle_animation(direction)
-	
+func _handle_horizontal_velocity(delta: float, direction):
 	if not turning and direction * velocity.x < -40: #can expand into checking until turning is done (should make game less slippery)
 		turning = true
 	
@@ -79,18 +87,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = velocity.x <= 0
 		velocity.x += ACCELERATION * direction * delta
 		
-		
 	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
-	
-	#if abs(velocity.x) > 4 and is_on_floor():
-		#var dust = dust_particle.instantiate()
-		#dust.global_position = position
-		#get_parent().add_child(dust)
-		
-	#velocity.x *= 0.8
-	
-	move_and_slide()
-	
+
 func  _handle_animation(direction):
 	animated_sprite_2d.scale.y = 1 + abs(velocity.y)/700
 	animated_sprite_2d.scale.x = 1
