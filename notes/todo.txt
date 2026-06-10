@@ -1,0 +1,14 @@
+TODO OVERALL (must be finished by Friday):
+	- Finish implementing combat system
+	- Implement wave system in GameManager script
+	- Implement range weapons
+	- Implement score calculating system
+	
+TODO OLLIE:
+	- Improve player script (mainly fix bugs)
+	- add more JUICE to combat
+	- give more functionality to hitbox component (have it generate an object like the example in class)
+	
+TODO JAKE:
+	
+	
