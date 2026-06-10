@@ -21,6 +21,7 @@ enum States { CHASING, ATTACKING, DEAD }
 var state: States = States.CHASING
 
 func _ready() -> void:
+	speed = randi_range(50,70)
 	player = get_tree().get_first_node_in_group("player")
 	hurtbox.received_damage.connect(damaged_received)
 

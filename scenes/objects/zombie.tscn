@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fthck4igf32o"]
 
 [ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
-[ext_resource type="Texture2D" uid="uid://vgs7dg8rjuxu" path="res://icon.svg" id="2_hnlsj"]
+[ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="2_hnlsj"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_d5t1q"]
@@ -13,7 +13,7 @@ radius = 11.0
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cutmx"]
-radius = 3.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5t1q"]
 
@@ -26,15 +26,19 @@ hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=107358941]
-position = Vector2(0, -1)
-scale = Vector2(0.09375, 0.09375)
+self_modulate = Color(0.4, 1, 0.34509805, 1)
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(1.1678182, 1.1678182)
 texture = ExtResource("2_hnlsj")
+region_enabled = true
+region_rect = Rect2(40.315697, 0.19953728, 7.7666283, 8.175398)
 
 [node name="Health" type="Node" parent="." unique_id=374794825]
 script = ExtResource("3_rln44")
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1811941341]
+scale = Vector2(0.7570505, 0.7570505)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_cutmx")
@@ -47,6 +51,7 @@ shape = SubResource("CircleShape2D_hnlsj")
 debug_color = Color(0.24129903, 0.54600394, 0.871758, 0.41960785)
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=721889875 node_paths=PackedStringArray("health")]
+scale = Vector2(0.7484565, 0.7484565)
 collision_layer = 0
 script = ExtResource("5_d5t1q")
 health = NodePath("../Health")
@@ -67,6 +72,7 @@ target_position = Vector2(20, 0)
 collision_mask = 4
 
 [node name="JumpZoneDetector" type="Area2D" parent="." unique_id=837750293]
+scale = Vector2(1.0158892, 1.0158892)
 collision_layer = 8
 collision_mask = 8
 
