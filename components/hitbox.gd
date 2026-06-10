@@ -9,3 +9,11 @@ func set_damage(value: int):
 
 func get_damage() -> int:
 	return damage
+
+func enable() -> void:
+	monitoring = true
+	monitorable = true
+	
+func disable() -> void:
+	monitoring = false
+	monitorable = false
