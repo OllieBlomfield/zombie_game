@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://jrasxf24v7bo" path="res://graphics/tilesets/temp_tile_set.png" id="1_p757t"]
 [ext_resource type="PackedScene" uid="uid://dmkq5jw7w02uv" path="res://scenes/objects/player.tscn" id="2_7dm00"]
+[ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="3_xciyh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dm00"]
 texture = ExtResource("1_p757t")
@@ -77,7 +78,11 @@ tile_map_data = PackedByteArray("AAD6/wAAAAAAAAQAAAD7/wAAAAABAAQAAAD8/wAAAAAAAAQ
 tile_set = SubResource("TileSet_xciyh")
 
 [node name="Player" parent="." unique_id=1359689479 node_paths=PackedStringArray("camera") instance=ExtResource("2_7dm00")]
+position = Vector2(-16, -10)
 camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1684185074]
 zoom = Vector2(4, 4)
+
+[node name="Zombie" parent="." unique_id=1721881803 instance=ExtResource("3_xciyh")]
+position = Vector2(39, -15)
