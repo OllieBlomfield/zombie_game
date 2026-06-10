@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://scripts/objects/player.gd" id="1_a8lix"]
 [ext_resource type="SpriteFrames" uid="uid://lormeva0l4n8" path="res://graphics/player/player_sprite_frames.tres" id="2_2147m"]
+[ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
+[ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="4_ksjmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
 size = Vector2(7.9, 7.9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1359689479]
 script = ExtResource("1_a8lix")
@@ -15,3 +20,18 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807991088]
 shape = SubResource("RectangleShape2D_h5uus")
+
+[node name="Health" type="Node" parent="." unique_id=713127109]
+script = ExtResource("3_q8hb4")
+max_health = 3
+health = 3
+metadata/_custom_type_script = "uid://bcrt8c45areik"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=491201341 node_paths=PackedStringArray("health")]
+script = ExtResource("4_ksjmp")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://bwjbhslyjufr3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=703613534]
+shape = SubResource("CircleShape2D_54rde")
+debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)

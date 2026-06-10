@@ -12,6 +12,7 @@ var immortality_timer: Timer = null
 
 func _ready() -> void:
 	health = max_health
+	health_depleted.connect(die)
 
 func set_health(value: int) -> void:
 	if value < health and immortality:
@@ -41,5 +42,10 @@ func take_damage(amount: int, temp_immortality: float = 0.0) -> void:
 	if immortality:
 		return 
 	set_health(health - amount)
+	print(health)
+	print("HIT")
 	if temp_immortality > 0:
 		set_temporary_immortality(temp_immortality)
+		
+func die():
+	print("DEAD")

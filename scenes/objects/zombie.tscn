@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://fthck4igf32o"]
+
+[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
+[ext_resource type="Texture2D" uid="uid://vgs7dg8rjuxu" path="res://icon.svg" id="2_hnlsj"]
+[ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
+[ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
+[ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_d5t1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnlsj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rln44"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cutmx"]
+size = Vector2(13.0625, 12.5)
+
+[node name="Zombie" type="CharacterBody2D" unique_id=1721881803]
+script = ExtResource("1_xcqe2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=107358941]
+position = Vector2(0, -1)
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("2_hnlsj")
+
+[node name="Health" type="Node" parent="." unique_id=374794825]
+script = ExtResource("3_rln44")
+metadata/_custom_type_script = "uid://bcrt8c45areik"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1811941341]
+script = ExtResource("4_cutmx")
+damage = 1
+metadata/_custom_type_script = "uid://clpibth8iopnl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=243866070]
+shape = SubResource("CircleShape2D_hnlsj")
+debug_color = Color(0.24129903, 0.54600394, 0.871758, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=721889875]
+script = ExtResource("5_d5t1q")
+metadata/_custom_type_script = "uid://bwjbhslyjufr3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=775504974]
+shape = SubResource("CircleShape2D_rln44")
+debug_color = Color(0.83817405, 0.36629915, 0.3307443, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=834686617]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_cutmx")
