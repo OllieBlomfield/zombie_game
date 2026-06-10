@@ -38,6 +38,9 @@ var crouch_time: float = 0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var camera: Camera2D
 
+func _ready() -> void:
+	GameManager.player = self
+
 func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
 	
