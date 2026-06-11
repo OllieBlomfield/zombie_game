@@ -50,7 +50,8 @@ var attacking: bool = false #could have as a seperate state to moving
 func _ready() -> void:
 	weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_hurtbox_hit)
-	#global_position = player_spawn_point.global_position
+	if player_spawn_point:
+		global_position = player_spawn_point.global_position
 	pass
 	#GameManager.player = self
 

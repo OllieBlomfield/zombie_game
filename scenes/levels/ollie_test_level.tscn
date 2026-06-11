@@ -126,7 +126,7 @@ camera = NodePath("../Camera2D")
 zoom = Vector2(4, 4)
 
 [node name="HurtBox2" type="Area2D" parent="." unique_id=1002553801]
-position = Vector2(45, -7)
+position = Vector2(89, -31)
 collision_layer = 2
 script = ExtResource("5_23odc")
 metadata/_custom_type_script = "uid://bwjbhslyjufr3"
