@@ -42,6 +42,7 @@ func take_damage(amount: int, temp_immortality: float = 0.0) -> void:
 	if immortality:
 		return 
 	set_health(health - amount)
+	
 	print(health)
 	if temp_immortality > 0:
 		set_temporary_immortality(temp_immortality)
