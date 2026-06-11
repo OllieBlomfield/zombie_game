@@ -50,4 +50,5 @@ func take_damage(amount: int) -> void:
 	set_temporary_immortality(immortality_time)
 		
 func die():
-	print("DEAD")
+	pass
+	#print("DEAD")

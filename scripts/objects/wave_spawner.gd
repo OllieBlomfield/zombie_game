@@ -9,13 +9,14 @@ var enemy_cost: Dictionary = {"zombie": 1}
 var spawn_queue: Array[PackedScene] = []
 
 var current_wave: int = 1
+var max_waves: int = 1
 var points: int = 0
 
 func _ready() -> void:
 	generate_wave()
 	
 func get_spawn_points() -> Array:
-	return get_tree().get_nodes_in_group("spawnpoint")
+	return get_tree().get_nodes_in_group("enemyspawnpoint")
 
 func generate_wave():
 	spawn_queue.clear()
@@ -46,4 +47,9 @@ func spawn_wave():
 		var point = spawn_points.pick_random()
 		enemy.global_position = point.global_position
 		await get_tree().create_timer(0.5).timeout
+	current_wave += 1
+	if current_wave > max_waves:
+		GameManager.can_leave = true
+	else:
+		generate_wave()
 	

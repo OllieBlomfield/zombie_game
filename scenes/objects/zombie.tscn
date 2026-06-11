@@ -35,6 +35,7 @@ region_rect = Rect2(40.315697, 0.19953728, 7.7666283, 8.175398)
 
 [node name="Health" type="Node" parent="." unique_id=374794825]
 script = ExtResource("3_rln44")
+max_health = 1
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1811941341]

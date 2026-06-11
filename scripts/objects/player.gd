@@ -45,10 +45,12 @@ var attacking: bool = false #could have as a seperate state to moving
 @onready var combat: Combat = $Combat
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player_spawn_point: Area2D = $"../PlayerSpawnPoint"
 
 func _ready() -> void:
 	weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_hurtbox_hit)
+	global_position = player_spawn_point.global_position
 	pass
 	#GameManager.player = self
 

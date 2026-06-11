@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://6ibxjm03shfd"]
+
+[ext_resource type="Script" uid="uid://i3kfb8ps12rd" path="res://scripts/objects/player_spawn_point.gd" id="1_s0jg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usswc"]
+size = Vector2(35, 35)
+
+[node name="PlayerSpawnPoint" type="Area2D" unique_id=1309186216]
+script = ExtResource("1_s0jg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1992448660]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_usswc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2003498333]
+offset_left = -18.0
+offset_top = -17.0
+offset_right = 22.0
+offset_bottom = 23.0
+color = Color(0.42745098, 1, 0.40392157, 0.21568628)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
