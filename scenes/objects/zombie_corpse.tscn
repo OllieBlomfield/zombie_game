@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cu7c7xb3s47re"]
+
+[ext_resource type="Texture2D" uid="uid://beljfkcwcnq2" path="res://graphics/enemies/base_zombie.png" id="1_fvgvb"]
+
+[node name="ZombieCorpse" type="Node2D" unique_id=442081129]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=758524122]
+texture = ExtResource("1_fvgvb")
+region_enabled = true
+region_rect = Rect2(16, 24, 8, 8)

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_d5t1q"]
+[ext_resource type="Texture2D" uid="uid://beljfkcwcnq2" path="res://graphics/enemies/base_zombie.png" id="6_rln44"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnlsj"]
 radius = 11.0
@@ -17,6 +18,68 @@ radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5t1q"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rln44"]
+atlas = ExtResource("6_rln44")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eyec"]
+atlas = ExtResource("6_rln44")
+region = Rect2(8, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v35iv"]
+atlas = ExtResource("6_rln44")
+region = Rect2(16, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cutmx"]
+atlas = ExtResource("6_rln44")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5t1q"]
+atlas = ExtResource("6_rln44")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfled"]
+atlas = ExtResource("6_rln44")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0upb5"]
+atlas = ExtResource("6_rln44")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2eyec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rln44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eyec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v35iv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cutmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5t1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfled")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0upb5")
+}],
+"loop": true,
+"name": &"move",
+"speed": 3.0
+}]
+
 [node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox")]
 collision_layer = 2
 collision_mask = 6
@@ -26,6 +89,7 @@ hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=107358941]
+visible = false
 self_modulate = Color(0.4, 1, 0.34509805, 1)
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(1.1678182, 1.1678182)
@@ -36,6 +100,7 @@ region_rect = Rect2(40.315697, 0.19953728, 7.7666283, 8.175398)
 [node name="Health" type="Node" parent="." unique_id=374794825]
 script = ExtResource("3_rln44")
 max_health = 5
+immortality_time = 0.01
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1811941341]
@@ -79,5 +144,9 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDetector" unique_id=1186574895]
 shape = SubResource("CircleShape2D_d5t1q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1271038872]
+sprite_frames = SubResource("SpriteFrames_2eyec")
+animation = &"death"
 
 [connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]

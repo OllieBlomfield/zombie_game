@@ -13,23 +13,29 @@ extends CharacterBody2D
 @export var acceleration: float = 2.0
 @export var friction: float = 800.0
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
+
+const ZOMBIE_CORPSE: PackedScene = preload("uid://cu7c7xb3s47re")
+
 var in_jump_zone: bool = false
 var near_player: bool = false
 
-enum States { CHASING, ATTACKING, DEAD }
+enum States { CHASING, ATTACKING, DEAD}
 var state: States = States.CHASING
 
 func _ready() -> void:
 	speed = randi_range(50,70)
 	player = get_tree().get_first_node_in_group("player")
 	hurtbox.received_hit.connect(damaged_received)
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
-
+	
 	update_state()
+	_handle_animation()
 	move_and_slide()
 
 func update_state() -> void:
@@ -89,13 +95,35 @@ func attack() -> void:
 		friction * get_physics_process_delta_time()
 	)
 	
+func _handle_animation() -> void:
+	var facing_direction: float = sign(player.global_position.x - global_position.x)
+	animated_sprite_2d.flip_h = (velocity.x < 0)
+	match state:
+		States.CHASING:
+			animated_sprite_2d.play("move")
+		States.ATTACKING:
+			#attack()
+			pass
+		States.DEAD:
+			animated_sprite_2d.play("death")
+	
 func damaged_received(context: HitContext):
 	velocity += context.direction * context.knockback
+	velocity.y -= context.extra_y_knockback
 	if health.current_health <= 0:
 		die()
 
 func die() -> void:
-	queue_free()
+	if state != States.DEAD:
+		state = States.DEAD
+
+func _on_animation_finished() -> void:
+	print("DONE")
+	if state == States.DEAD:
+		var corpse = ZOMBIE_CORPSE.instantiate() as Node2D
+		corpse.global_position = global_position
+		get_parent().add_child(corpse)
+		queue_free()
 
 func _on_zone_detector_area_entered(area: Area2D) -> void:
 	if area is JumpNode and abs(player.global_position.y - global_position.y) > 5:

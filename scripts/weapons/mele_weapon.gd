@@ -1,11 +1,14 @@
-extends Node2D
+extends Weapon
 class_name MeleWeapon
 
 
 @export var damage: int = 2
-@export var knockback: float = 50
+@export var knockback: float = 80
+@export var extra_knockback_y: float = 100
 @export var hit_box: HitBox
+@export var flip_h: bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 
 signal attack_finished
 
@@ -16,12 +19,12 @@ func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_attack_finished)
 	
 func _process(delta: float) -> void:
-	pass
+	animated_sprite_2d.flip_h = flip_h #ask about this approach
 	#for area in hit_box.get_overlapping_areas():
 		#if area is HurtBox: #add something to check correct layers
 			
-	
-func attack_init() -> void: #call pefrom_attack or execute_attack to imply something active is happening
+
+func perform_attack() -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	hit_box.enable()
 	animated_sprite_2d.play("attack")
 
@@ -39,5 +42,6 @@ func _attack_hit(hurtbox: HurtBox):
 	context.direction = (hurtbox.global_position - global_position).normalized()
 	context.hit_point = global_position
 	context.knockback = knockback
+	context.extra_y_knockback = extra_knockback_y
 	hurtbox.handle_hit(context)
 	
