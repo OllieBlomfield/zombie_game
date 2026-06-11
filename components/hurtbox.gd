@@ -19,4 +19,4 @@ func spawn_label(context: HitContext):
 	var damage_label = DAMAGE_LABEL.instantiate() as DamageLabel
 	damage_label.global_position = context.hit_point
 	damage_label.init(context)
-	get_parent().add_child(damage_label)
+	get_tree().current_scene.add_child(damage_label)

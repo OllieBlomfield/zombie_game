@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_pressed("attack"):
-		attacking = true
+		#attacking = true
 		combat.attack(facing_direction)
 			
 func _handle_gravity(delta: float):
