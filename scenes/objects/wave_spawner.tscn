@@ -6,4 +6,4 @@
 [node name="WaveSpawner" type="Node2D" unique_id=1270486080]
 script = ExtResource("1_minw8")
 dude = ExtResource("2_horpt")
-enemy_list = [ExtResource("2_horpt")]
+enemy_list = Array[PackedScene]([ExtResource("2_horpt")])

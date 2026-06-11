@@ -48,6 +48,7 @@ var attacking: bool = false #could have as a seperate state to moving
 
 func _ready() -> void:
 	weapon.attack_finished.connect(_attack_finished)
+	hurtbox.received_damage.connect(damage_taken)
 	pass
 	#GameManager.player = self
 
@@ -159,3 +160,6 @@ func _handle_camera_change(delta: float):
 
 func _attack_finished():
 	attacking = false
+
+func damage_taken(damage: int):
+	ScoreManager.damage_taken += damage

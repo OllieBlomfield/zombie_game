@@ -17,3 +17,4 @@ func _on_area_entered(area: Area2D) -> void:
 	if health:
 		health.take_damage(hitbox.damage)
 	received_damage.emit(hitbox.damage)
+	
