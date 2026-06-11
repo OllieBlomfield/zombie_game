@@ -25,7 +25,7 @@ ScoreManager="*uid://bn0wgdku7xsy7"
 
 player=""
 enemy=""
-spawnpoint=""
+enemyspawnpoint=""
 
 [input]
 

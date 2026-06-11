@@ -16,7 +16,7 @@ func _ready() -> void:
 	generate_wave()
 	
 func get_spawn_points() -> Array:
-	return get_tree().get_nodes_in_group("spawnpoint")
+	return get_tree().get_nodes_in_group("enemyspawnpoint")
 
 func generate_wave():
 	spawn_queue.clear()
@@ -49,7 +49,7 @@ func spawn_wave():
 		await get_tree().create_timer(0.5).timeout
 	current_wave += 1
 	if current_wave > max_waves:
-		print(ScoreManager.get_score())
+		GameManager.can_leave = true
 	else:
 		generate_wave()
 	

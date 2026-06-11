@@ -13,7 +13,8 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	time_elapsed += delta
+	if GameManager.player_active:
+		time_elapsed += delta
 	
 func get_score():
 	return calculate_score(time_elapsed,max_time,damage_taken,key_item_collected)
