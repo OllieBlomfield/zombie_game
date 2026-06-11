@@ -1,5 +1,6 @@
-extends Weapon
 class_name MeleWeapon
+extends Weapon
+
 
 
 @export var damage: int = 2
@@ -38,7 +39,6 @@ func _attack_hit(hurtbox: HurtBox):
 	print("ATTACK HIT")
 	var context: HitContext = HitContext.new()
 	context.damage = damage
-	#context.hit_point = 
 	context.direction = (hurtbox.global_position - global_position).normalized()
 	context.hit_point = global_position
 	context.knockback = knockback

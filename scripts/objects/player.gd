@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var camera: Camera2D
-@export var weapon: MeleWeapon
+@export var weapon: Weapon
 
 @export var health: Health
 @export var hurtbox: HurtBox
@@ -48,7 +48,7 @@ var attacking: bool = false #could have as a seperate state to moving
 @onready var player_spawn_point: Area2D = $"../PlayerSpawnPoint"
 
 func _ready() -> void:
-	weapon.attack_finished.connect(_attack_finished)
+	#weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_hurtbox_hit)
 	if player_spawn_point:
 		global_position = player_spawn_point.global_position
@@ -58,7 +58,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("right"): facing_direction = 1
 	if Input.is_action_just_pressed("left"): facing_direction = -1 
-	
+	weapon.flip_h = facing_direction < 0
 	_handle_gravity(delta)
 			
 	_handle_jump(delta)

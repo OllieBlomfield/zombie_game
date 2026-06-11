@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dfm5mc3s3vq0j"]
+
+[ext_resource type="Script" uid="uid://cngmuurt3c3ix" path="res://ranged_bullet.gd" id="1_tv6er"]
+[ext_resource type="Texture2D" uid="uid://c0k2yxjsge1ll" path="res://graphics/Props/Car 15 [16x8].png" id="2_imdju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cryw"]
+atlas = ExtResource("2_imdju")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwmic"]
+atlas = ExtResource("2_imdju")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j866"]
+atlas = ExtResource("2_imdju")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s7o1"]
+atlas = ExtResource("2_imdju")
+region = Rect2(48, 0, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_llvys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cryw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwmic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j866")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s7o1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uh1wj"]
+
+[node name="RangedBullet" type="Area2D" unique_id=1845268733]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_tv6er")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1937034321]
+sprite_frames = SubResource("SpriteFrames_llvys")
+frame_progress = 0.18998434
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2123978625]
+shape = SubResource("CircleShape2D_uh1wj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
