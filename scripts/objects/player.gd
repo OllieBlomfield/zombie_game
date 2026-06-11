@@ -32,7 +32,7 @@ const SLOW_GRAVITY: int = 400
 
 var current_gravity: int = SLOW_GRAVITY
 var turning: bool = false
-
+var facing_direction: int = 1
 var jump_buffer: int = 0
 var coyote_time: float = 0
 
@@ -52,6 +52,9 @@ func _ready() -> void:
 	#GameManager.player = self
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("right"): facing_direction = 1
+	if Input.is_action_just_pressed("left"): facing_direction = -1 
+	
 	_handle_gravity(delta)
 			
 	_handle_jump(delta)
@@ -104,12 +107,12 @@ func _handle_horizontal_velocity(delta: float, direction):
 		if direction * velocity.x >= 0:
 			turning = false
 	else:
-		animated_sprite_2d.flip_h = velocity.x <= 0
 		velocity.x += ACCELERATION * direction * delta
 		
 	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
 
 func  _handle_animation(direction):
+	animated_sprite_2d.flip_h = (facing_direction < 0)
 	animated_sprite_2d.scale.y = 1 + abs(velocity.y)/700
 	animated_sprite_2d.scale.x = 1
 	

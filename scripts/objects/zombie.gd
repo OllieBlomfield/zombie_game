@@ -86,7 +86,7 @@ func attack() -> void:
 	)
 	
 func damaged_received(damage: int):
-	if health.health <= 0:
+	if health.current_health <= 0:
 		die()
 
 func die() -> void:

@@ -15,5 +15,5 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	print(hurtbox_name + " was hit by " + hitbox.hitbox_name)
 	if health:
-		health.take_damage(hitbox.damage, health.immortality_time)
+		health.take_damage(hitbox.damage)
 	received_damage.emit(hitbox.damage)

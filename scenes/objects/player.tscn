@@ -30,10 +30,9 @@ frame_progress = 1.0
 shape = SubResource("RectangleShape2D_h5uus")
 debug_color = Color(0.35540143, 0.6160664, 0.16589752, 0.41960785)
 
-[node name="Health" type="Node" parent="." unique_id=713127109]
+[node name="Health" type="Node" parent="." unique_id=713127109 node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_q8hb4")
-max_health = 3
-health = 3
+sprite = NodePath("../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=491201341 node_paths=PackedStringArray("health")]
