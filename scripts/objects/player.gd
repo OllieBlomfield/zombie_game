@@ -125,6 +125,7 @@ func  _handle_animation(direction):
 	elif is_on_floor():
 		if Input.is_action_pressed("down"):
 			animated_sprite_2d.play("crouch")
+			position.y += 1
 			animated_sprite_2d.scale.x = 1.05
 		elif turning:
 			animated_sprite_2d.play("turn")
