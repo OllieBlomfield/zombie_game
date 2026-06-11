@@ -21,11 +21,18 @@ func add_upgrade(upgrade, stats):
 		upgrades.MELEE_KNOCKBACK:
 			player.melee_weapon.knockback += stats
 		upgrades.RANGED_DAMAGE:
-mmdm			player.ranged_weapon.damage += stats
+			player.ranged_weapon.damage += stats
 		#upgrades.RANGED_PIERCE:
 			#player.ranged_weapon.damage += stats
 		upgrades.PLAYER_HEALTH:
 			player.health.max_health += stats
+			
+func pause_game():
+	get_tree().paused = true
+	
+func unpause_game():
+	get_tree().paused = false
 
 func debug():
 	get_tree().reload_current_scene()
+	

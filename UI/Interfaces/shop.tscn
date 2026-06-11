@@ -3,9 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://1w18kbjvihl6" path="res://UI/Interfaces/upgrade_card.tscn" id="1_hpwef"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="3_r8dvb"]
 [ext_resource type="Texture2D" uid="uid://dmjwdc30tvq6l" path="res://graphics/Props/Bird 1 [8x8].png" id="3_t3yd4"]
+[ext_resource type="StyleBox" uid="uid://da1ki24krbar7" path="res://UI/Styles/ButtonHovered.tres" id="4_jjwfl"]
 [ext_resource type="Texture2D" uid="uid://beqcl8127s5ru" path="res://graphics/Props/Car 6 [16x8].png" id="4_t3yd4"]
+[ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
+[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
+[ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,3 +64,17 @@ layout_mode = 2
 
 [node name="UpgradeCard5" parent="HBoxContainer" unique_id=743144707 instance=ExtResource("1_hpwef")]
 layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="." unique_id=607113533]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 523.0
+offset_right = 1144.0
+offset_bottom = 639.0
+theme_override_styles/normal = ExtResource("5_euo2n")
+theme_override_styles/pressed = ExtResource("6_jjwfl")
+theme_override_styles/hover = ExtResource("4_jjwfl")
+text = "Exit"
+script = ExtResource("5_qhxmu")
+
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]

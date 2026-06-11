@@ -19,3 +19,7 @@ func apply_upgrade():
 	
 func _on_pressed() -> void:
 	apply_upgrade()
+
+
+func _on_exit_button_pressed() -> void:
+	pass # Replace with function body.

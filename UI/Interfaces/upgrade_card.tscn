@@ -1,33 +1,18 @@
 [gd_scene format=3 uid="uid://1w18kbjvihl6"]
 
+[ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="1_fufta"]
 [ext_resource type="Script" uid="uid://dlcpko7esu2k3" path="res://scripts/Ui/upgrade_card.gd" id="1_m4k1d"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4k1d"]
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maf7d"]
-bg_color = Color(0.30138952, 0.30138955, 0.3013894, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82mvs"]
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+[ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="2_fno1k"]
+[ext_resource type="StyleBox" uid="uid://da1ki24krbar7" path="res://UI/Styles/ButtonHovered.tres" id="3_7uhiw"]
 
 [node name="UpgradeCard" type="Button" unique_id=1616431121]
+process_mode = 3
 custom_minimum_size = Vector2(150, 200)
 offset_right = 150.0
 offset_bottom = 200.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_m4k1d")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_maf7d")
-theme_override_styles/hover = SubResource("StyleBoxFlat_82mvs")
+theme_override_styles/normal = ExtResource("1_fufta")
+theme_override_styles/pressed = ExtResource("2_fno1k")
+theme_override_styles/hover = ExtResource("3_7uhiw")
 script = ExtResource("1_m4k1d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1035860880]
