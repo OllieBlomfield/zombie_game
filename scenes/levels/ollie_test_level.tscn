@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://hyty3ti1voqp" path="res://shaders/flash.gdshader" id="2_jkqgx"]
 [ext_resource type="Texture2D" uid="uid://dyk5jbgs2jc3q" path="res://graphics/objects/punching_bag.png" id="3_xciyh"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_23odc"]
+[ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="7_23odc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dm00"]
 texture = ExtResource("1_p757t")
@@ -97,7 +98,7 @@ tile_set = SubResource("TileSet_xciyh")
 material = SubResource("ShaderMaterial_fpl3d")
 position = Vector2(20, -7)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("2_5oirl")
 
 [node name="Sprite2D" type="Sprite2D" parent="PunchingBag" unique_id=737714994]
@@ -120,6 +121,7 @@ debug_color = Color(0.9284709, 0.19225076, 0.47511607, 0.41960785)
 
 [node name="Player" parent="." unique_id=1359689479 node_paths=PackedStringArray("camera") instance=ExtResource("2_7dm00")]
 position = Vector2(-16, -10)
+collision_mask = 4
 camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1684185074]
@@ -137,3 +139,5 @@ debug_color = Color(0.9284709, 0.19225076, 0.47511607, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="HurtBox2" unique_id=774285090]
 texture = ExtResource("3_xciyh")
+
+[node name="Zombie" parent="." unique_id=1721881803 instance=ExtResource("7_23odc")]

@@ -3,7 +3,7 @@ class_name MeleWeapon
 
 
 @export var damage: int = 2
-@export var knockback: float = 1.5
+@export var knockback: float = 50
 @export var hit_box: HitBox
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		#if area is HurtBox: #add something to check correct layers
 			
 	
-func attack_init() -> void:
+func attack_init() -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	hit_box.enable()
 	animated_sprite_2d.play("attack")
 
@@ -36,6 +36,7 @@ func _attack_hit(hurtbox: HurtBox):
 	var context: HitContext = HitContext.new()
 	context.damage = damage
 	#context.hit_point = 
+	context.direction = (hurtbox.global_position - global_position).normalized()
 	context.hit_point = global_position
 	context.knockback = knockback
 	hurtbox.handle_hit(context)
