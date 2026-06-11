@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var speed: float = 50.0
 @export var jump_velocity: float = -300.0
 @export var gravity: float = 900.0
-@export var acceleration: float = 600.0
+@export var acceleration: float = 2.0
 @export var friction: float = 800.0
 
 @onready var wall_detector: RayCast2D = $WallDetector
@@ -52,11 +52,15 @@ func chase() -> void:
 
 	wall_detector.target_position.x = 20 * dir
 
-	velocity.x = move_toward(
-		velocity.x,
-		dir * speed,
-		acceleration * get_physics_process_delta_time()
-	)
+	#velocity.x = move_toward(
+		#velocity.x,
+		#dir * speed,
+		#acceleration * get_physics_process_delta_time()
+	#)
+	var direction = sign(player.position.x - position.x)
+	velocity.x += acceleration * direction
+	velocity *= 0.9
+	
 
 	if wall_detector.is_colliding() and is_on_floor():
 		jump(player.global_position.y)
@@ -86,6 +90,7 @@ func attack() -> void:
 	)
 	
 func damaged_received(context: HitContext):
+	velocity += context.direction * context.knockback
 	if health.current_health <= 0:
 		die()
 

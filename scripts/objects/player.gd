@@ -145,7 +145,6 @@ func set_gravity(type: GravityType):
 			current_gravity = SLOW_GRAVITY
 	
 func _handle_camera_change(delta: float):
-	
 	if Input.is_action_pressed("down"):
 		crouch_time += delta
 		if crouch_time > CROUCH_CAM_CHANGE_TIME:
