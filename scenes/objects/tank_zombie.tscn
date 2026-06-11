@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://t62muxfho6v5"]
+
+[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_q43cu"]
+[ext_resource type="Shader" uid="uid://hyty3ti1voqp" path="res://shaders/flash.gdshader" id="2_rvy5v"]
+[ext_resource type="Texture2D" uid="uid://c3uimqytrq8r0" path="res://graphics/enemies/tank_zombie.png" id="3_aue2k"]
+[ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="4_kpwv2"]
+[ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="5_jkts3"]
+[ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="6_b5fqp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atslc"]
+shader = ExtResource("2_rvy5v")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_084vx"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(0, 14, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_016er"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(13, 14, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12m7w"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(26, 14, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r6iy"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(39, 14, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1145e"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(0, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2glb"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(13, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pccdy"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(26, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f0he"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(39, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuxy1"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(52, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5d0v"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(65, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ochql"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(78, 0, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrab8"]
+atlas = ExtResource("3_aue2k")
+region = Rect2(91, 0, 13, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_erqut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_084vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_016er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12m7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r6iy")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1145e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2glb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pccdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f0he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuxy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5d0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ochql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrab8")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hky68"]
+radius = 9.24641
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmuqh"]
+radius = 10.688664
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q43cu"]
+size = Vector2(13, 13.8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy46e"]
+radius = 11.812312
+
+[node name="TankZombie" type="CharacterBody2D" unique_id=1844717594 node_paths=PackedStringArray("health", "hitbox", "hurtbox")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_q43cu")
+health = NodePath("Health")
+hitbox = NodePath("HitBox")
+hurtbox = NodePath("HurtBox")
+speed = 12.0
+jump_velocity = -200.0
+acceleration = 1.2
+metadata/_custom_type_script = "uid://c3vd3j8w8ginx"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=451278756]
+material = SubResource("ShaderMaterial_atslc")
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_erqut")
+animation = &"move"
+
+[node name="Health" type="Node" parent="." unique_id=1928973991]
+script = ExtResource("4_kpwv2")
+max_health = 15
+immortality_time = 0.01
+metadata/_custom_type_script = "uid://bcrt8c45areik"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1859903864]
+visible = false
+scale = Vector2(0.7570505, 0.7570505)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("5_jkts3")
+damage = 1
+hitbox_name = "Zombie"
+metadata/_custom_type_script = "uid://clpibth8iopnl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=521635551]
+position = Vector2(0, 1.3209158)
+shape = SubResource("CircleShape2D_hky68")
+debug_color = Color(0.24129903, 0.54600394, 0.871758, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1722003808 node_paths=PackedStringArray("health")]
+visible = false
+scale = Vector2(0.7484565, 0.7484565)
+collision_layer = 2
+script = ExtResource("6_b5fqp")
+health = NodePath("../Health")
+hurtbox_name = "Zombie"
+metadata/_custom_type_script = "uid://bwjbhslyjufr3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=79805504]
+shape = SubResource("CircleShape2D_jmuqh")
+debug_color = Color(0.83817405, 0.36629915, 0.3307443, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1101769446]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_q43cu")
+debug_color = Color(0.08396467, 0.6295384, 0.459252, 0.41960785)
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=43437991]
+target_position = Vector2(23, 0)
+collision_mask = 4
+
+[node name="ZoneDetector" type="Area2D" parent="." unique_id=1200687626]
+visible = false
+scale = Vector2(1.0158892, 1.0158892)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDetector" unique_id=2089434431]
+shape = SubResource("CircleShape2D_gy46e")
