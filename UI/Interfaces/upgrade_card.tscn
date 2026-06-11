@@ -39,7 +39,18 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 10
 
-[node name="label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=1459302132]
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=1459302132]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer" unique_id=1973019386]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+
+[node name="CostLabel" type="Label" parent="VBoxContainer/MarginContainer3" unique_id=1119741904]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 14

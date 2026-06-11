@@ -4,11 +4,9 @@ var time_elapsed: float = 0
 var max_time: float = 150
 var damage_taken: int = 0
 var key_item_collected: bool = false
-var current_coins: int = 0
+var current_money: int = 0
 
 const POINT_MULT = 10
-
-
 
 func _ready() -> void:
 	pass
@@ -31,11 +29,19 @@ func calculate_score(time_elapsed: float, max_time: float, damage_taken: float, 
 	print(damage_score)
 	print(collection_score)
 	
-	add_coins(roundi(final_score * 0.1))
+	add_money(roundi(final_score * 0.1))
 	
 	return round(final_score)
 		
 
-func add_coins(amount: int):
-	current_coins += amount
-	print(current_coins)
+func add_money(amount: int):
+	current_money += amount
+	print("current money: " + str(current_money))
+	
+func spend_money(amount: int):
+	current_money -= amount
+
+func check_balance(amount: int):
+	if current_money - amount < 0:
+		return false
+	return true

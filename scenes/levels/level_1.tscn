@@ -12530,7 +12530,6 @@ sources/1 = SubResource("TileSetAtlasSource_6iamk")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1153384009]
 
 [node name="Shop" parent="CanvasLayer" unique_id=1402826952 instance=ExtResource("1_qxy0u")]
-process_mode = 2
 visible = false
 
 [node name="Level1" type="Node2D" parent="." unique_id=916176207]

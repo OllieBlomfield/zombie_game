@@ -1,5 +1,8 @@
 extends Node
 
+signal ui_active
+signal ui_inactive
+
 var player: Player
 var can_leave: bool = false
 var player_active: bool = true
@@ -16,7 +19,7 @@ func add_upgrade(upgrade, stats):
 		return
 	match upgrade:
 		upgrades.MELEE_DAMAGE:
-			print("upgraded!")
+			print("upgraded melee damage")
 			player.melee_weapon.damage += stats
 		upgrades.MELEE_KNOCKBACK:
 			player.melee_weapon.knockback += stats
@@ -28,9 +31,11 @@ func add_upgrade(upgrade, stats):
 			player.health.max_health += stats
 			
 func pause_game():
+	ui_active.emit()
 	get_tree().paused = true
 	
 func unpause_game():
+	ui_inactive.emit()
 	get_tree().paused = false
 
 func debug():
