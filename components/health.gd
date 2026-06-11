@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 
 func set_health(value: int) -> void:
 	current_health = clamp(value, 0, max_health)
-	if current_health == 0:
+	if current_health <= 0:
 		health_depleted.emit()
 	
 func set_immortality(value: bool) -> void: 

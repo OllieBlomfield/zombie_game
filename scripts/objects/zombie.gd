@@ -101,7 +101,7 @@ func attack() -> void:
 	
 func _handle_animation() -> void:
 	var facing_direction: float = sign(player.global_position.x - global_position.x)
-	animated_sprite_2d.flip_h = (velocity.x < 0)
+	animated_sprite_2d.flip_h = (facing_direction < 0)
 	match state:
 		States.CHASING:
 			animated_sprite_2d.play("move")
