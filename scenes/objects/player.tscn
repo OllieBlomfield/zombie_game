@@ -54,3 +54,4 @@ metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="MeleWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]
 position = Vector2(1, 0)
+knockback = 150.0
