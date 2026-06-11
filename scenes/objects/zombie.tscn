@@ -53,7 +53,7 @@ debug_color = Color(0.24129903, 0.54600394, 0.871758, 0.41960785)
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=721889875 node_paths=PackedStringArray("health")]
 scale = Vector2(0.7484565, 0.7484565)
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("5_d5t1q")
 health = NodePath("../Health")
 hurtbox_name = "Zombie"
@@ -72,12 +72,12 @@ debug_color = Color(0.08396467, 0.6295384, 0.459252, 0.41960785)
 target_position = Vector2(20, 0)
 collision_mask = 4
 
-[node name="JumpZoneDetector" type="Area2D" parent="." unique_id=837750293]
+[node name="ZoneDetector" type="Area2D" parent="." unique_id=837750293]
 scale = Vector2(1.0158892, 1.0158892)
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpZoneDetector" unique_id=1186574895]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDetector" unique_id=1186574895]
 shape = SubResource("CircleShape2D_d5t1q")
 
-[connection signal="area_entered" from="JumpZoneDetector" to="." method="_on_jump_zone_detector_area_entered"]
+[connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]

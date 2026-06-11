@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dbucj1jn3la5f"]
+
+[ext_resource type="Script" uid="uid://f7haxsbnfv7s" path="res://scripts/objects/drop_node.gd" id="1_p1aev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp7np"]
+
+[node name="DropNode" type="Area2D" unique_id=90883388]
+scale = Vector2(0.15889642, 0.15889642)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_p1aev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1584217912]
+shape = SubResource("RectangleShape2D_wp7np")
+debug_color = Color(1, 0.5215125, 0.74479324, 0.41960785)
