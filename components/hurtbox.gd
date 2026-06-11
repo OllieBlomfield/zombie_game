@@ -17,7 +17,7 @@ func handle_hit(context: HitContext) -> void:
 
 func spawn_label(context: HitContext):
 	var damage_label = DAMAGE_LABEL.instantiate() as DamageLabel
+	damage_label.global_position = context.hit_point
 	damage_label.init(context)
-	damage_label.position = position
 	get_parent().add_child(damage_label)
 	

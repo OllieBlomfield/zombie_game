@@ -36,6 +36,7 @@ func _attack_hit(hurtbox: HurtBox):
 	var context: HitContext = HitContext.new()
 	context.damage = damage
 	#context.hit_point = 
+	context.hit_point = global_position
 	context.knockback = knockback
 	hurtbox.handle_hit(context)
 	

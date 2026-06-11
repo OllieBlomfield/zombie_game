@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://biobengcqimdd"]
 
 [ext_resource type="Script" uid="uid://cmuuih82pm568" path="res://scripts/objects/damage_label.gd" id="1_6b3me"]
+[ext_resource type="LabelSettings" uid="uid://klcolmvnufme" path="res://UI/Label Settings/damage_number_label_settings.tres" id="2_ny86i"]
 
-[node name="DamageLabel" type="Label" unique_id=2084595937]
+[node name="DamageLabel" type="Node2D" unique_id=877570005 node_paths=PackedStringArray("label")]
 z_index = 5
-offset_right = 10.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 8
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("1_6b3me")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=1320140073]
+offset_left = -14.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 5.0
+text = "10"
+label_settings = ExtResource("2_ny86i")
