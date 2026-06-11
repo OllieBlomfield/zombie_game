@@ -10,14 +10,7 @@ signal hurtbox_hit(hurtbox: HurtBox)
 
 func _ready() -> void:
 	area_entered.connect(_test_candidate)
-
-func set_damage(value: int):
-	damage = value
-
-
-func get_damage() -> int:
-	return damage
-
+	
 func enable() -> void:
 	monitoring = true
 	monitorable = true
