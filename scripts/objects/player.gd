@@ -7,9 +7,9 @@ extends CharacterBody2D
 @export var health: Health
 @export var hurtbox: HurtBox
 
-const DEFAULT_CAM_POSITION: Vector2 = Vector2(0,0)
-const UP_CAM_POSITION: Vector2 = Vector2(0,-34)
-const DOWN_CAM_POSITION: Vector2 = Vector2(0,34)
+const DEFAULT_CAM_POSITION: Vector2 = Vector2(0,-17)
+const UP_CAM_POSITION: Vector2 = Vector2(0,-51)
+const DOWN_CAM_POSITION: Vector2 = Vector2(0,17)
 
 const CROUCH_CAM_CHANGE_TIME: float = 0.8
 const LOOK_UP_CAM_CHANGE_TIME: float = 0.8

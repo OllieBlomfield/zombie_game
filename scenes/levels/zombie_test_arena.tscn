@@ -6858,24 +6858,36 @@ limit_enabled = false
 [node name="Zombie" parent="." unique_id=1721881803 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(95, 5)
 player = NodePath("../Player")
+speed = null
+jump_velocity = null
+gravity = null
 acceleration = 250.0
 friction = 10.0
 
 [node name="Zombie2" parent="." unique_id=958034914 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(96, 74)
 player = NodePath("../Player")
+speed = null
+jump_velocity = null
+gravity = null
 acceleration = 250.0
 friction = 10.0
 
 [node name="Zombie3" parent="." unique_id=1189026204 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(248, 16)
 player = NodePath("../Player")
+speed = null
+jump_velocity = null
+gravity = null
 acceleration = 250.0
 friction = 10.0
 
 [node name="Zombie4" parent="." unique_id=515619140 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(29, 3)
 player = NodePath("../Player")
+speed = null
+jump_velocity = null
+gravity = null
 acceleration = 250.0
 friction = 10.0
 

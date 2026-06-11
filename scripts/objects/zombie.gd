@@ -9,12 +9,14 @@ extends CharacterBody2D
 
 @export var speed: float = 50.0
 @export var jump_velocity: float = -300.0
-@export var gravity: float = 900.0
+@export var gravity: float = 600.0
 @export var acceleration: float = 2.0
 @export var friction: float = 800.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
+
+var _flashing: bool = false
 
 const ZOMBIE_CORPSE: PackedScene = preload("uid://cu7c7xb3s47re")
 
@@ -33,6 +35,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
+	
+	_handle_flash()
 	
 	update_state()
 	_handle_animation()
@@ -108,6 +112,7 @@ func _handle_animation() -> void:
 			animated_sprite_2d.play("death")
 	
 func damaged_received(context: HitContext):
+	_flashing = true
 	velocity += context.direction * context.knockback
 	velocity.y -= context.extra_y_knockback
 	if health.current_health <= 0:
@@ -116,6 +121,14 @@ func damaged_received(context: HitContext):
 func die() -> void:
 	if state != States.DEAD:
 		state = States.DEAD
+
+func _handle_flash():
+	if _flashing:
+		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",1.0)
+		_flashing = false
+	else:
+		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",0.0)
+	
 
 func _on_animation_finished() -> void:
 	print("DONE")

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://fthck4igf32o"]
 
 [ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
-[ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="2_hnlsj"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_d5t1q"]
+[ext_resource type="Shader" uid="uid://hyty3ti1voqp" path="res://shaders/flash.gdshader" id="5_rln44"]
 [ext_resource type="Texture2D" uid="uid://beljfkcwcnq2" path="res://graphics/enemies/base_zombie.png" id="6_rln44"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnlsj"]
@@ -17,6 +17,10 @@ radius = 9.0
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5t1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cutmx"]
+shader = ExtResource("5_rln44")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rln44"]
 atlas = ExtResource("6_rln44")
@@ -88,15 +92,6 @@ health = NodePath("Health")
 hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=107358941]
-visible = false
-self_modulate = Color(0.4, 1, 0.34509805, 1)
-position = Vector2(0, 2.3841858e-07)
-scale = Vector2(1.1678182, 1.1678182)
-texture = ExtResource("2_hnlsj")
-region_enabled = true
-region_rect = Rect2(40.315697, 0.19953728, 7.7666283, 8.175398)
-
 [node name="Health" type="Node" parent="." unique_id=374794825]
 script = ExtResource("3_rln44")
 max_health = 5
@@ -146,6 +141,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_d5t1q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1271038872]
+material = SubResource("ShaderMaterial_cutmx")
 sprite_frames = SubResource("SpriteFrames_2eyec")
 animation = &"death"
 
