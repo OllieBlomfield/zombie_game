@@ -9,14 +9,25 @@ extends Weapon
 @export var cooldown_time: float = 0.5
 @onready var cooldown_timer: Timer = $CooldownTimer
 
+var deadzone: float = 0.2
+var roatation_speed: float = 5.0
+var target_angle: float
+
 var is_on_cooldown = false
 
 func _ready() -> void:
 	cooldown_timer.timeout.connect(_on_timeout)
-
+	
+func _process(delta: float) -> void:
+	var input_vec: Vector2 = Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_LEFT_X),
+		Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	)
 func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	if is_on_cooldown:
 		return
+		
+		
 	
 	var bullet = bullet_scene.instantiate()
 
@@ -26,12 +37,17 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 
 	var spread := deg_to_rad(5)
 
+	var input_vec: Vector2 = Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	)
+	
 	var dir := Vector2(facing_direction, 0)
-	dir.y += randf_range(-spread, spread)
+	input_vec.y += randf_range(-spread, spread)
 
-	dir = dir.normalized()
+	input_vec = input_vec.normalized()
 
-	bullet.velocity = dir * bullet_speed
+	bullet.velocity = input_vec * bullet_speed
 	
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)

@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 			
 	_handle_jump(delta)
 
-	_handle_camera_change(delta)
+	#_handle_camera_change(delta)
 	
 	var direction := Input.get_axis("left", "right")
 	_handle_horizontal_velocity(delta,direction)
@@ -141,21 +141,21 @@ func set_gravity(type: GravityType):
 		GravityType.SLOW:
 			current_gravity = SLOW_GRAVITY
 	
-func _handle_camera_change(delta: float):
-	if Input.is_action_pressed("down"):
-		crouch_time += delta
-		if crouch_time > CROUCH_CAM_CHANGE_TIME:
-			camera.position = DOWN_CAM_POSITION
-	else:
-		crouch_time = 0
-		if Input.is_action_pressed("up"):
-			look_up_time += delta
-		else:
-			look_up_time = 0
-		if look_up_time > LOOK_UP_CAM_CHANGE_TIME:
-			camera.position = UP_CAM_POSITION
-		else:
-			camera.position = DEFAULT_CAM_POSITION
+#func _handle_camera_change(delta: float):
+#	if Input.is_action_pressed("down"):
+#		crouch_time += delta
+#		if crouch_time > CROUCH_CAM_CHANGE_TIME:
+#			camera.position = DOWN_CAM_POSITION
+#	else:
+#		crouch_time = 0
+#		if Input.is_action_pressed("up"):
+#			look_up_time += delta
+#		else:
+#			look_up_time = 0
+#		if look_up_time > LOOK_UP_CAM_CHANGE_TIME:
+#			camera.position = UP_CAM_POSITION
+#		else:
+#			camera.position = DEFAULT_CAM_POSITION
 
 func _attack_finished():
 	attacking = false

@@ -29,3 +29,4 @@ sprite_frames = SubResource("SpriteFrames_7dvhj")
 position = Vector2(4, -1)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1985008729]
+wait_time = 0.75
