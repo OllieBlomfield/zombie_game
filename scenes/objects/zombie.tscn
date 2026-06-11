@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fthck4igf32o"]
 
 [ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
+[ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="2_cutmx"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_d5t1q"]
@@ -91,6 +92,7 @@ script = ExtResource("1_xcqe2")
 health = NodePath("Health")
 hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
+corpse_texture = ExtResource("2_cutmx")
 
 [node name="Health" type="Node" parent="." unique_id=374794825]
 script = ExtResource("3_rln44")

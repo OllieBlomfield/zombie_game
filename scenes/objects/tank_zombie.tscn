@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t62muxfho6v5"]
 
 [ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_q43cu"]
+[ext_resource type="Texture2D" uid="uid://b8d6r5acjitm7" path="res://graphics/enemies/tank_corpse.png" id="2_aue2k"]
 [ext_resource type="Shader" uid="uid://hyty3ti1voqp" path="res://shaders/flash.gdshader" id="2_rvy5v"]
 [ext_resource type="Texture2D" uid="uid://c3uimqytrq8r0" path="res://graphics/enemies/tank_zombie.png" id="3_aue2k"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="4_kpwv2"]
@@ -130,6 +131,7 @@ hurtbox = NodePath("HurtBox")
 speed = 12.0
 jump_velocity = -200.0
 acceleration = 1.2
+corpse_texture = ExtResource("2_aue2k")
 metadata/_custom_type_script = "uid://c3vd3j8w8ginx"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=451278756]

@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://cu7c7xb3s47re"]
 
-[ext_resource type="Texture2D" uid="uid://beljfkcwcnq2" path="res://graphics/enemies/base_zombie.png" id="1_fvgvb"]
+[ext_resource type="Script" uid="uid://br5gnlsbdfel2" path="res://scripts/objects/zombie_corpse.gd" id="1_q7hdk"]
+[ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="2_2j251"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvgvb"]
 size = Vector2(8, 3)
 
-[node name="ZombieCorpse" type="RigidBody2D" unique_id=1538134358]
+[node name="ZombieCorpse" type="CharacterBody2D" unique_id=100542997]
 collision_layer = 0
 collision_mask = 4
+script = ExtResource("1_q7hdk")
+corpse_texture = ExtResource("2_2j251")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=758524122]
-texture = ExtResource("1_fvgvb")
-region_enabled = true
-region_rect = Rect2(16, 24, 8, 8)
+position = Vector2(0, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1210668645]
-position = Vector2(0, 2.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_fvgvb")

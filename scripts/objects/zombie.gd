@@ -13,6 +13,8 @@ extends CharacterBody2D
 @export var acceleration: float = 2.0
 @export var friction: float = 800.0
 
+@export var corpse_texture: CompressedTexture2D
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
 
@@ -132,9 +134,10 @@ func _handle_flash():
 
 func _on_animation_finished() -> void:
 	print("DONE")
-	if state == States.DEAD:
-		var corpse = ZOMBIE_CORPSE.instantiate() as Node2D
+	if state == States.DEAD: #might be more satisfying to only do this when they land on the ground?
+		var corpse = ZOMBIE_CORPSE.instantiate() as ZombieCorpse
 		corpse.global_position = global_position
+		corpse.corpse_texture = corpse_texture
 		get_parent().add_child(corpse)
 		queue_free()
 
