@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="4_ksjmp"]
 [ext_resource type="Script" uid="uid://1kgpo4ysg2r4" path="res://components/combat.gd" id="5_ksjmp"]
-[ext_resource type="PackedScene" uid="uid://s7s5nvrfefnl" path="res://scenes/weapons/mele_weapon.tscn" id="6_2rlf8"]
+[ext_resource type="PackedScene" uid="uid://s7s5nvrfefnl" path="res://scenes/weapons/melee_weapon.tscn" id="6_2rlf8"]
 [ext_resource type="PackedScene" uid="uid://dlv05bwuk610j" path="res://scenes/weapons/ranged_weapon.tscn" id="7_2rlf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
@@ -49,10 +49,10 @@ debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
 
 [node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("current_weapon")]
 script = ExtResource("5_ksjmp")
-current_weapon = NodePath("../RangedWeapon")
+current_weapon = NodePath("../MeleeWeapon")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
-[node name="MeleWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]
+[node name="MeleeWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]
 position = Vector2(1, 0)
 knockback = 150.0
 

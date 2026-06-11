@@ -43,6 +43,8 @@ var attacking: bool = false #could have as a seperate state to moving
 
 #@export var dust_particle: PackedScene
 @onready var combat: Combat = $Combat
+@onready var melee_weapon: MeleeWeapon = $MeleeWeapon
+@onready var ranged_weapon: RangedWeapon = $RangedWeapon
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_spawn_point: Area2D = $"../PlayerSpawnPoint"
@@ -53,7 +55,7 @@ func _ready() -> void:
 	if player_spawn_point:
 		global_position = player_spawn_point.global_position
 	pass
-	#GameManager.player = self
+	GameManager.player = self
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("right"): facing_direction = 1

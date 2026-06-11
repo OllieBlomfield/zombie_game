@@ -1,4 +1,4 @@
-class_name MeleWeapon
+class_name MeleeWeapon
 extends Weapon
 
 
@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 func perform_attack(direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	hit_box.enable()
 	animated_sprite_2d.play("attack")
-
 func _attack_finished() -> void:
 	hit_box.disable()
 	attack_finished.emit()

@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 GameManager="*uid://cqbepbie0df8x"
 ScoreManager="*uid://bn0wgdku7xsy7"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""

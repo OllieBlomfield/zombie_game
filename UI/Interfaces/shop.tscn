@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://brfc8nam2jl1o"]
+
+[ext_resource type="PackedScene" uid="uid://1w18kbjvihl6" path="res://UI/Interfaces/upgrade_card.tscn" id="1_hpwef"]
+[ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="3_r8dvb"]
+[ext_resource type="Texture2D" uid="uid://dmjwdc30tvq6l" path="res://graphics/Props/Bird 1 [8x8].png" id="3_t3yd4"]
+[ext_resource type="Texture2D" uid="uid://beqcl8127s5ru" path="res://graphics/Props/Car 6 [16x8].png" id="4_t3yd4"]
+
+[node name="Shop" type="Control" unique_id=1402826952]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=387489807]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 656.0
+color = Color(0.37800002, 0.63, 0.6258, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2138225643]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="UpgradeCard" parent="HBoxContainer" unique_id=1616431121 instance=ExtResource("1_hpwef")]
+layout_mode = 2
+image = ExtResource("3_r8dvb")
+description = "+1 Melee Attack"
+upgrade_amount = 1
+
+[node name="UpgradeCard2" parent="HBoxContainer" unique_id=343475134 instance=ExtResource("1_hpwef")]
+layout_mode = 2
+image = ExtResource("3_t3yd4")
+description = "+20 Melee Knockback"
+upgrade = 1
+upgrade_amount = 20
+
+[node name="UpgradeCard3" parent="HBoxContainer" unique_id=2069139678 instance=ExtResource("1_hpwef")]
+layout_mode = 2
+image = ExtResource("4_t3yd4")
+description = "+1 Ranged Damage"
+upgrade = 2
+upgrade_amount = 1
+
+[node name="UpgradeCard4" parent="HBoxContainer" unique_id=317777048 instance=ExtResource("1_hpwef")]
+layout_mode = 2
+
+[node name="UpgradeCard5" parent="HBoxContainer" unique_id=743144707 instance=ExtResource("1_hpwef")]
+layout_mode = 2

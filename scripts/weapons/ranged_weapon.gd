@@ -43,11 +43,11 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	)
 	
 	var dir := Vector2(facing_direction, 0)
-	input_vec.y += randf_range(-spread, spread)
+	dir.y += randf_range(-spread, spread)
 
-	input_vec = input_vec.normalized()
+	dir = dir.normalized()
 
-	bullet.velocity = input_vec * bullet_speed
+	bullet.velocity = dir * bullet_speed
 	
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)
