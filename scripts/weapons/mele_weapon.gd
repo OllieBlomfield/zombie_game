@@ -17,5 +17,4 @@ func attack_init() -> void:
 func _attack_finished() -> void:
 	hit_box.disable()
 	attack_finished.emit()
-	print("DONE ATTACKING YAY")
 	animated_sprite_2d.play("idle")

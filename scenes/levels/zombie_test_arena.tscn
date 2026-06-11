@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmkq5jw7w02uv" path="res://scenes/objects/player.tscn" id="3_8q587"]
 [ext_resource type="PackedScene" uid="uid://dk7ovbqn0vufj" path="res://scenes/objects/jump_node.tscn" id="4_v2aq7"]
 [ext_resource type="PackedScene" uid="uid://doqdmasuxdcvj" path="res://scenes/objects/spawn_point.tscn" id="6_s5e7t"]
+[ext_resource type="PackedScene" uid="uid://berr8kutkdow4" path="res://scenes/objects/key_item.tscn" id="7_efcdb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5e7t"]
 texture = ExtResource("1_e7gdu")
@@ -209,3 +210,6 @@ position = Vector2(203, 60)
 position = Vector2(552, 14)
 
 [node name="WaveSpawner" parent="." unique_id=1270486080 instance=ExtResource("1_8q587")]
+
+[node name="KeyItem" parent="." unique_id=372765257 instance=ExtResource("7_efcdb")]
+position = Vector2(462, 50)
