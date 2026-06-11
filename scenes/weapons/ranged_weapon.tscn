@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dlv05bwuk610j"]
 
 [ext_resource type="Script" uid="uid://ccu5kprubgnfa" path="res://scripts/weapons/ranged_weapon.gd" id="1_0hegm"]
+[ext_resource type="PackedScene" uid="uid://dfm5mc3s3vq0j" path="res://scenes/weapons/ranged_bullet.tscn" id="2_7dvhj"]
 [ext_resource type="Texture2D" uid="uid://df76glc4vk7qt" path="res://graphics/Props/Supports in a trailer 2 [24x16].png" id="2_l4v5d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7dvhj"]
@@ -14,9 +15,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="RangedWeapon" type="Node2D" unique_id=1371481615]
+[node name="RangedWeapon" type="Node2D" unique_id=1371481615 node_paths=PackedStringArray("fire_point")]
 script = ExtResource("1_0hegm")
+bullet_scene = ExtResource("2_7dvhj")
+fire_point = NodePath("Marker2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1954218496]
-scale = Vector2(0.26041666, 1)
+position = Vector2(9.536743e-07, -1)
+scale = Vector2(0.0813802, 0.3125)
 sprite_frames = SubResource("SpriteFrames_7dvhj")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=783226747]
+position = Vector2(4, -1)

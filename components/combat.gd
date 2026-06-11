@@ -7,4 +7,4 @@ signal attack_finished
 
 func attack(direction: float):
 	current_weapon.flip_h = direction < 0
-	current_weapon.perform_attack()
+	current_weapon.perform_attack(direction)

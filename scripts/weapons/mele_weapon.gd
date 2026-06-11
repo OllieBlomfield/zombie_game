@@ -14,7 +14,7 @@ extends Weapon
 signal attack_finished
 
 func _ready() -> void:
-	#hit_box.body_entered.connect(_attack_hit)
+	hit_box.body_entered.connect(_attack_hit)
 	hit_box.hurtbox_hit.connect(_attack_hit)
 	hit_box.disable()
 	animated_sprite_2d.animation_finished.connect(_attack_finished)
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		#if area is HurtBox: #add something to check correct layers
 			
 
-func perform_attack() -> void: #call pefrom_attack or execute_attack to imply something active is happening
+func perform_attack(direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	hit_box.enable()
 	animated_sprite_2d.play("attack")
 

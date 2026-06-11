@@ -58,7 +58,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("right"): facing_direction = 1
 	if Input.is_action_just_pressed("left"): facing_direction = -1 
-	weapon.flip_h = facing_direction < 0
 	_handle_gravity(delta)
 			
 	_handle_jump(delta)
@@ -73,11 +72,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack"):
 		attacking = true
-		animated_sprite_2d.play("mele_attack")
-		combat.attack(1)
-		
-		#animated_sprite_2d.play("mele_attack")
-	
+		combat.attack(facing_direction)
+			
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
 		set_gravity(GravityType.SLOW)

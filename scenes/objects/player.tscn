@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="4_ksjmp"]
 [ext_resource type="Script" uid="uid://1kgpo4ysg2r4" path="res://components/combat.gd" id="5_ksjmp"]
 [ext_resource type="PackedScene" uid="uid://s7s5nvrfefnl" path="res://scenes/weapons/mele_weapon.tscn" id="6_2rlf8"]
-[ext_resource type="Script" uid="uid://ccu5kprubgnfa" path="res://scripts/weapons/ranged_weapon.gd" id="7_0ay4w"]
-[ext_resource type="PackedScene" uid="uid://dfm5mc3s3vq0j" path="res://scenes/weapons/ranged_bullet.tscn" id="8_tuhu7"]
+[ext_resource type="PackedScene" uid="uid://dlv05bwuk610j" path="res://scenes/weapons/ranged_weapon.tscn" id="7_2rlf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
 size = Vector2(7.9, 7.9)
@@ -15,10 +14,9 @@ size = Vector2(7.9, 7.9)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("weapon", "health", "hurtbox") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("health", "hurtbox") groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_a8lix")
-weapon = NodePath("RangedWeapon")
 health = NodePath("Health")
 hurtbox = NodePath("HurtBox")
 
@@ -58,11 +56,5 @@ metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 position = Vector2(1, 0)
 knockback = 150.0
 
-[node name="RangedWeapon" type="Node2D" parent="." unique_id=14749098 node_paths=PackedStringArray("fire_point")]
-script = ExtResource("7_0ay4w")
-bullet_scene = ExtResource("8_tuhu7")
-fire_point = NodePath("../Marker2D")
-metadata/_custom_type_script = "uid://ccu5kprubgnfa"
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1430482251]
-position = Vector2(4, 0)
+[node name="RangedWeapon" parent="." unique_id=1371481615 instance=ExtResource("7_2rlf8")]
+position = Vector2(6, 0)
