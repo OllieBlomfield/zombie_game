@@ -129,6 +129,4 @@ func _on_zone_detector_area_entered(area: Area2D) -> void:
 	if area is JumpNode and abs(player.global_position.y - global_position.y) > 5:
 		jump(player.global_position.y)
 	elif area is DropNode and player.global_position.y > global_position.y + 3:
-		await get_tree().create_timer(0.1).timeout
-		print("down")
 		position.y += 5
