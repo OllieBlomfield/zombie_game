@@ -1,20 +1,13 @@
 class_name HurtBox
 extends Area2D
 
-signal received_damage(damage: int)
+signal received_hit(context: HitContext)
 
 @export var health: Health
 @export var hurtbox_name: String = "Barry"
-
-func _ready():
-	area_entered.connect(_on_area_entered)
-
-func _on_area_entered(area: Area2D) -> void:
-	var hitbox = area as HitBox
-	if hitbox == null:
-		return
-	print(hurtbox_name + " was hit by " + hitbox.hitbox_name)
-	if health:
-		health.take_damage(hitbox.damage)
-	received_damage.emit(hitbox.damage)
 	
+func handle_hit(context: HitContext) -> void:
+	print("I'VE BEEN HIT with " + str(context.damage) + " damage")
+	if health and context.damage > 0:
+		health.take_damage(context.damage)
+	received_hit.emit(context)

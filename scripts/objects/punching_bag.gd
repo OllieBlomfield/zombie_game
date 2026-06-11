@@ -6,7 +6,7 @@ extends CharacterBody2D
 var flash: bool = false
 
 func _ready() -> void:
-	hurt_box.received_damage.connect(_on_received_damage)
+	hurt_box.received_hit.connect(_on_received_hit)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	else:
 		sprite_2d.set_instance_shader_parameter("flash_modifier",0.0)
 
-func _on_received_damage(damage):
+func _on_received_hit(context: HitContext):
 	print("IM HIT")
 	flash = true
 	#sprite_2d.set_instance_shader_parameter("flash_modifier",1.0)

@@ -124,3 +124,16 @@ camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1684185074]
 zoom = Vector2(4, 4)
+
+[node name="HurtBox2" type="Area2D" parent="." unique_id=1002553801]
+position = Vector2(45, -7)
+collision_layer = 2
+script = ExtResource("5_23odc")
+metadata/_custom_type_script = "uid://bwjbhslyjufr3"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox2" unique_id=1094879137]
+shape = SubResource("RectangleShape2D_hnfed")
+debug_color = Color(0.9284709, 0.19225076, 0.47511607, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="HurtBox2" unique_id=774285090]
+texture = ExtResource("3_xciyh")

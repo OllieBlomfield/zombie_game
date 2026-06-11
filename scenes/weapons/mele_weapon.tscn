@@ -17,7 +17,7 @@ sprite_frames = ExtResource("2_wlobd")
 animation = &"attack"
 
 [node name="HitBoxComponent" type="Area2D" parent="." unique_id=1075786225]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("3_m7uc0")
 damage = 1
 hitbox_name = "Bat"

@@ -23,7 +23,7 @@ var state: States = States.CHASING
 func _ready() -> void:
 	speed = randi_range(50,70)
 	player = get_tree().get_first_node_in_group("player")
-	hurtbox.received_damage.connect(damaged_received)
+	hurtbox.received_hit.connect(damaged_received)
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -85,7 +85,7 @@ func attack() -> void:
 		friction * get_physics_process_delta_time()
 	)
 	
-func damaged_received(damage: int):
+func damaged_received(context: HitContext):
 	if health.current_health <= 0:
 		die()
 
