@@ -6,8 +6,18 @@ extends Weapon
 @export var fire_point: Marker2D
 @export var bullet_speed: float = 400
 @export var flip_h: bool = false
+@export var cooldown_time: float = 0.5
+@onready var cooldown_timer: Timer = $CooldownTimer
+
+var is_on_cooldown = false
+
+func _ready() -> void:
+	cooldown_timer.timeout.connect(_on_timeout)
 
 func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
+	if is_on_cooldown:
+		return
+	
 	var bullet = bullet_scene.instantiate()
 
 	get_tree().current_scene.add_child(bullet)
@@ -22,3 +32,11 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	dir = dir.normalized()
 
 	bullet.velocity = dir * bullet_speed
+	
+	is_on_cooldown = true
+	cooldown_timer.start(cooldown_time)
+	
+
+func _on_timeout():
+	is_on_cooldown = false
+	

@@ -21,7 +21,7 @@ func _on_area_entered(area: Area2D) -> void:
 	var context := HitContext.new()
 	context.damage = damage
 	context.direction = velocity.normalized()
-	context.hit_point = global_position
+	context.hit_point = position
 	context.knockback = knockback
 
 	hurtbox.handle_hit(context)

@@ -46,8 +46,6 @@ radius = 2.0
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_tv6er")
-damage = null
-knockback = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1937034321]
 scale = Vector2(0.25, 0.25)

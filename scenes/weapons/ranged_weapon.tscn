@@ -27,3 +27,5 @@ sprite_frames = SubResource("SpriteFrames_7dvhj")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=783226747]
 position = Vector2(4, -1)
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1985008729]
