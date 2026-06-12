@@ -43,7 +43,7 @@ var attacking: bool = false #could have as a seperate state to moving
 
 #@export var dust_particle: PackedScene
 @onready var combat: Combat = $Combat
-@onready var melee_weapon: MeleeWeapon = $MeleeWeapon
+@onready var mele_weapon: MeleWeapon = $MeleWeapon
 @onready var ranged_weapon: RangedWeapon = $RangedWeapon
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		#attacking = true
 		var attack_context: AttackContext = combat.get_attack_context()
 		print("player knockback" + str(attack_context.knockback))
-		add_knockback(Vector2(-sign(velocity.x),0),attack_context.knockback,0)
+		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 		combat.attack(facing_direction)
 			
 func _handle_gravity(delta: float):
