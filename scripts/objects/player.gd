@@ -1,6 +1,8 @@
 class_name Player
 extends GameCharacter
 
+signal update_weapon_ui
+
 @export var camera: Camera2D
 @export var weapon: Weapon
 
@@ -75,12 +77,14 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("attack"):
 		#attacking = true
+		update_weapon_ui.emit()
 		var attack_context: AttackContext = combat.get_attack_context()
 		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 		combat.attack(facing_direction)
 	
 	if Input.is_action_just_pressed("next_weapon"):
 		combat.next_weapon()
+		update_weapon_ui.emit()
 	
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):

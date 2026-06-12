@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://t62muxfho6v5" path="res://scenes/objects/tank_zombie.tscn" id="6_hnfed"]
 [ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="7_23odc"]
 [ext_resource type="Script" uid="uid://bvgdc4xr5wg63" path="res://scripts/Misc/fps.gd" id="9_tl6ts"]
+[ext_resource type="PackedScene" uid="uid://2kjm14phkjtq" path="res://scenes/UI/player_ui.tscn" id="10_ou863"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dm00"]
 texture = ExtResource("1_p757t")
@@ -150,3 +151,12 @@ texture = ExtResource("3_xciyh")
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("9_tl6ts")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1972373154]
+
+[node name="PlayerUI" parent="CanvasLayer" unique_id=752472071 instance=ExtResource("10_ou863")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(3, 3)
