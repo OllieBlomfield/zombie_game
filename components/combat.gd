@@ -9,7 +9,8 @@ extends Node
 var _current_weapon: Weapon
 var _current_weapon_index: int = 0
 
-signal attack_finished
+signal finished_attack
+signal play_attack_anim
 
 func _ready() -> void:
 	set_weapon(0)
@@ -37,9 +38,20 @@ func next_weapon() -> void:
 
 func set_weapon(index) -> void:
 	if _current_weapon:
+		_current_weapon.finished_attack.disconnect(_finished_attack)
+		_current_weapon.play_attack_anim.connect(_play_attack_anim)
 		_current_weapon.visible = false
+		
 	_current_weapon = weapon_list[index]
 	_current_weapon.visible = true
+	_current_weapon.finished_attack.connect(_finished_attack)
+	_current_weapon.play_attack_anim.connect(_play_attack_anim)
 
 func get_current_weapon() -> Weapon:
 	return _current_weapon
+
+func _finished_attack() -> void:
+	finished_attack.emit()
+
+func _play_attack_anim() -> void:
+	play_attack_anim.emit()

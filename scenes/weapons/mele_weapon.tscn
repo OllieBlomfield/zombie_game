@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://l0r51cd21m7k"]
 
-[ext_resource type="Script" uid="uid://dq0n7mlcl0p3k" path="res://scripts/weapons/mele_weapon.gd" id="1_ixv1l"]
+[ext_resource type="Script" uid="uid://dq0n7mlcl0p3k" path="res://Scripts/weapons/mele_weapon.gd" id="1_ixv1l"]
 [ext_resource type="Texture2D" uid="uid://cy6gm7ughdtvs" path="res://graphics/weapons/Icons/bat.png" id="2_m7uc0"]
 [ext_resource type="SpriteFrames" uid="uid://dp5o2awmwhqu6" path="res://graphics/weapons/mele_weapon_sprite_frames.tres" id="2_wlobd"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="3_m7uc0"]
@@ -28,3 +28,6 @@ metadata/_custom_type_script = "uid://clpibth8iopnl"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" unique_id=72647079]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_ixv1l")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=138201665]
+one_shot = true

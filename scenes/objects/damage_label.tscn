@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://biobengcqimdd"]
 
-[ext_resource type="Script" uid="uid://cmuuih82pm568" path="res://scripts/objects/damage_label.gd" id="1_6b3me"]
+[ext_resource type="Script" uid="uid://cmuuih82pm568" path="res://Scripts/objects/damage_label.gd" id="1_6b3me"]
 [ext_resource type="LabelSettings" uid="uid://klcolmvnufme" path="res://UI/Label Settings/damage_number_label_settings.tres" id="2_ny86i"]
 
 [node name="DamageLabel" type="Node2D" unique_id=877570005 node_paths=PackedStringArray("label")]

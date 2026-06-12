@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1w18kbjvihl6"]
 
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="1_fufta"]
-[ext_resource type="Script" uid="uid://dlcpko7esu2k3" path="res://scripts/Ui/upgrade_card.gd" id="1_m4k1d"]
+[ext_resource type="Script" uid="uid://dlcpko7esu2k3" path="res://Scripts/UI/upgrade_card.gd" id="1_m4k1d"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="2_fno1k"]
 [ext_resource type="StyleBox" uid="uid://da1ki24krbar7" path="res://UI/Styles/ButtonHovered.tres" id="3_7uhiw"]
 

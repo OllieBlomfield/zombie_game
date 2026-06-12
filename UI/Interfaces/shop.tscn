@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://beqcl8127s5ru" path="res://graphics/Props/Car 6 [16x8].png" id="4_t3yd4"]
 [ext_resource type="Texture2D" uid="uid://y1nmapalf78g" path="res://graphics/Props/UFO flying 1 [24x24].png" id="5_b7lmq"]
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
-[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
+[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://Scripts/UI/exit_button.gd" id="5_qhxmu"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
 [ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="6_pbuxf"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
-[ext_resource type="PackedScene" uid="uid://cq6av6mp4b24f" path="res://scenes/levels/level_1.tscn" id="11_pbuxf"]
+[ext_resource type="PackedScene" uid="uid://dcbblyvxmku4p" path="res://scenes/levels/level_1.tscn" id="11_pbuxf"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
 process_mode = 2

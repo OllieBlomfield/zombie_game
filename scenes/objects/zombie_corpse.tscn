@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu7c7xb3s47re"]
 
-[ext_resource type="Script" uid="uid://br5gnlsbdfel2" path="res://scripts/objects/zombie_corpse.gd" id="1_q7hdk"]
+[ext_resource type="Script" uid="uid://br5gnlsbdfel2" path="res://Scripts/objects/zombie_corpse.gd" id="1_q7hdk"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="2_2j251"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvgvb"]

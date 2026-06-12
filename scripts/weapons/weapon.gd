@@ -1,8 +1,12 @@
 extends Node2D
 class_name Weapon
 
+signal finished_attack
+signal play_attack_anim
+
 @export var icon_texture: CompressedTexture2D
 @export var has_ammo: bool = false
+@export var player_anim: String = "mele_attack"
 
 func perform_attack(direction: int) -> void:
 	pass
