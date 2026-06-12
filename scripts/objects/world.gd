@@ -1,18 +1,11 @@
 extends Node2D
 
-@onready var level: Node2D = $Level1
-@onready var wave_spawner: WaveSpawner = $WaveSpawner
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
 
 
-func reset_level() -> void:
-	#var level_scene := load(level.scene_file_path)
-
-	#level.queue_free()
-
-	#var new_level = level_scene.instantiate()
-	#add_child(new_level)
-
-	#new_level.name = "Level"
-
-	#level = new_level
-	wave_spawner.reset_wave()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

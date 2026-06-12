@@ -50,14 +50,12 @@ var attacking: bool = false #could have as a seperate state to moving
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
 
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_received_hit)
-	if player_spawn_point:
-		global_position = player_spawn_point.global_position
-	pass
+	#if player_spawn_point:
+	#	global_position = player_spawn_point.global_position
 	GameManager.player = self
 
 func _physics_process(delta: float) -> void:
