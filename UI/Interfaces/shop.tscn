@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://dmjwdc30tvq6l" path="res://graphics/Props/Bird 1 [8x8].png" id="3_t3yd4"]
 [ext_resource type="StyleBox" uid="uid://da1ki24krbar7" path="res://UI/Styles/ButtonHovered.tres" id="4_jjwfl"]
 [ext_resource type="Texture2D" uid="uid://beqcl8127s5ru" path="res://graphics/Props/Car 6 [16x8].png" id="4_t3yd4"]
+[ext_resource type="Texture2D" uid="uid://y1nmapalf78g" path="res://graphics/Props/UFO flying 1 [24x24].png" id="5_b7lmq"]
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
 [ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
-[ext_resource type="LabelSettings" uid="uid://klcolmvnufme" path="res://UI/Label Settings/damage_number_label_settings.tres" id="9_50ol2"]
+[ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="6_pbuxf"]
+[ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
@@ -62,12 +64,23 @@ image = ExtResource("4_t3yd4")
 description = "+1 Ranged Damage"
 upgrade = 2
 upgrade_amount = 1
+upgrade_cost = 50
 
 [node name="UpgradeCard4" parent="HBoxContainer" unique_id=317777048 instance=ExtResource("1_hpwef")]
 layout_mode = 2
+image = ExtResource("5_b7lmq")
+description = "+1 Ranged Pierce"
+upgrade = 3
+upgrade_amount = 1
+upgrade_cost = 40
 
 [node name="UpgradeCard5" parent="HBoxContainer" unique_id=743144707 instance=ExtResource("1_hpwef")]
 layout_mode = 2
+image = ExtResource("6_pbuxf")
+description = "+1 Player Health"
+upgrade = 4
+upgrade_amount = 1
+upgrade_cost = 30
 
 [node name="ExitButton" type="Button" parent="." unique_id=607113533]
 process_mode = 3
@@ -88,13 +101,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -162.0
-offset_top = 22.0
-offset_right = 266.0
-offset_bottom = 130.0
+offset_left = -214.0
+offset_top = 37.0
+offset_right = 214.0
+offset_bottom = 145.0
 grow_horizontal = 2
 text = "Money: 0"
-label_settings = ExtResource("9_50ol2")
+label_settings = ExtResource("9_d367l")
+horizontal_alignment = 1
 script = ExtResource("10_d367l")
 
 [connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]

@@ -1,7 +1,7 @@
 class_name WaveSpawner
 extends Node2D
 
-@export var dude: PackedScene
+@export var WaveLabel: Label
 
 @export var enemy_list: Array[PackedScene]
 
@@ -9,7 +9,8 @@ var enemy_cost: Dictionary = {"zombie": 1}
 var spawn_queue: Array[PackedScene] = []
 
 var current_wave: int = 1
-var max_waves: int = 1
+@export var max_waves: int = 1
+@export var wave_length: int = 30
 var points: int = 0
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func get_spawn_points() -> Array:
 	return get_tree().get_nodes_in_group("enemyspawnpoint")
 
 func generate_wave():
+	change_wave_label()
 	spawn_queue.clear()
 	points = current_wave * 10
 	while points > 0:
@@ -46,10 +48,12 @@ func spawn_wave():
 		add_child(enemy)
 		var point = spawn_points.pick_random()
 		enemy.global_position = point.global_position
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(wave_length).timeout
 	current_wave += 1
 	if current_wave > max_waves:
 		GameManager.can_leave = true
 	else:
 		generate_wave()
-	
+		
+func change_wave_label():
+	WaveLabel.text = "Wave: " + str(current_wave)

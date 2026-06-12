@@ -19,7 +19,6 @@ func add_upgrade(upgrade, stats):
 		return
 	match upgrade:
 		upgrades.MELEE_DAMAGE:
-			print("upgraded melee damage")
 			player.melee_weapon.damage += stats
 		upgrades.MELEE_KNOCKBACK:
 			player.melee_weapon.knockback += stats

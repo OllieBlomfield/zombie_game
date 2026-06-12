@@ -23,5 +23,7 @@ func apply_upgrade():
 	GameManager.add_upgrade(upgrade,upgrade_amount)
 	
 func _on_pressed() -> void:
-	money_label.text = "Money: " + str(ScoreManager.current_money)
-	apply_upgrade()
+	if ScoreManager.check_balance(upgrade_cost):
+		ScoreManager.spend_money(upgrade_cost)
+		apply_upgrade()
+		money_label.text = "Money: " + str(ScoreManager.current_money)
