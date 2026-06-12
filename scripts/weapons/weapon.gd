@@ -3,6 +3,7 @@ class_name Weapon
 
 signal finished_attack
 signal play_attack_anim
+signal camera_shake(intensity: int, time: float)
 
 @export var icon_texture: CompressedTexture2D
 @export var has_ammo: bool = false

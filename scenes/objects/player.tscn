@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://1kgpo4ysg2r4" path="res://components/combat.gd" id="5_ksjmp"]
 [ext_resource type="PackedScene" uid="uid://l0r51cd21m7k" path="res://scenes/weapons/mele_weapon.tscn" id="7_0ay4w"]
 [ext_resource type="PackedScene" uid="uid://dlv05bwuk610j" path="res://scenes/weapons/ranged_weapon.tscn" id="7_2rlf8"]
+[ext_resource type="Script" uid="uid://dju8ggrlb3527" path="res://scenes/objects/player_camera.gd" id="8_0ay4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
 size = Vector2(7.9, 7.9)
@@ -47,12 +48,13 @@ metadata/_custom_type_script = "uid://bwjbhslyjufr3"
 shape = SubResource("CircleShape2D_54rde")
 debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
 
-[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("player", "weapon_list", "right_weapon_position", "left_weapon_position")]
+[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("player", "weapon_list", "right_weapon_position", "left_weapon_position", "camera")]
 script = ExtResource("5_ksjmp")
 player = NodePath("..")
 weapon_list = [NodePath("../Weapons/MeleWeapon"), NodePath("../Weapons/RangedWeapon")]
 right_weapon_position = NodePath("../Weapons/RightWeaponPos")
 left_weapon_position = NodePath("../Weapons/LeftWeaponPos")
+camera = NodePath("../Camera2D")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="Weapons" type="Node2D" parent="." unique_id=12420141]
@@ -76,3 +78,4 @@ position = Vector2(-2, 0)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1163764167]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+script = ExtResource("8_0ay4w")

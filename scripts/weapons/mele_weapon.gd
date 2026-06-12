@@ -48,6 +48,7 @@ func _attack_finished() -> void:
 	
 func _attack_hit(hurtbox: HurtBox):
 	print("ATTACK HIT")
+	camera_shake.emit(1,0.2)
 	var context: HitContext = HitContext.new()
 	context.damage = damage
 	context.direction = (hurtbox.global_position - global_position).normalized()

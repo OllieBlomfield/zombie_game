@@ -66,6 +66,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	
 	muzzle_flash.flash()
 	play_attack_anim.emit()
+	camera_shake.emit(1,0.1)
 	
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)

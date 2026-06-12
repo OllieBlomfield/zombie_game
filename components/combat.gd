@@ -5,6 +5,7 @@ extends Node
 @export var weapon_list: Array[Weapon] #would later need to add to this list from code
 @export var right_weapon_position: Marker2D
 @export var left_weapon_position: Marker2D
+@export var camera: PlayerCamera
 
 var _current_weapon: Weapon
 var _current_weapon_index: int = 0
@@ -46,6 +47,7 @@ func set_weapon(index) -> void:
 	_current_weapon.visible = true
 	_current_weapon.finished_attack.connect(_finished_attack)
 	_current_weapon.play_attack_anim.connect(_play_attack_anim)
+	_current_weapon.camera_shake.connect(_camera_shake)
 
 func get_current_weapon() -> Weapon:
 	return _current_weapon
@@ -55,3 +57,7 @@ func _finished_attack() -> void:
 
 func _play_attack_anim() -> void:
 	play_attack_anim.emit()
+
+func _camera_shake(intensity: int, time: float) -> void:
+	print("shake camera")
+	camera.screen_shake(intensity, time)
