@@ -1,5 +1,5 @@
 class_name Enemy
-extends CharacterBody2D
+extends GameCharacter
 
 @export var player: CharacterBody2D
 
@@ -64,16 +64,10 @@ func chase() -> void:
 
 	wall_detector.target_position.x = 20 * dir
 
-	#velocity.x = move_toward(
-		#velocity.x,
-		#dir * speed,
-		#acceleration * get_physics_process_delta_time()
-	#)
 	var direction = sign(player.position.x - position.x)
 	velocity.x += acceleration * direction
 	velocity *= 0.9
 	
-
 	if wall_detector.is_colliding() and is_on_floor():
 		jump(player.global_position.y)
 
@@ -115,8 +109,7 @@ func _handle_animation() -> void:
 	
 func damaged_received(context: HitContext):
 	_flashing = true
-	velocity += context.direction * context.knockback
-	velocity.y -= context.extra_y_knockback
+	apply_hit_effects(context)
 	if health.current_health <= 0:
 		die()
 

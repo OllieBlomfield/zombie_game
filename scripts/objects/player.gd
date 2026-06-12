@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody2D
+extends GameCharacter
 
 @export var camera: Camera2D
 @export var weapon: Weapon
@@ -163,4 +163,5 @@ func _attack_finished():
 	attacking = false
 
 func _on_hurtbox_hit(context: HitContext):
+	apply_hit_effects(context)
 	ScoreManager.damage_taken += context.damage

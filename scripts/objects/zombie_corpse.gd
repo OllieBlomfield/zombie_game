@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends GameCharacter
 class_name ZombieCorpse
 
 @export var corpse_texture: CompressedTexture2D
