@@ -2,6 +2,7 @@ class_name RangedWeapon
 extends Weapon
 
 @export var damage: int
+@export var pierce: int
 @export var bullet_scene: PackedScene
 @export var fire_point: Marker2D
 @export var bullet_speed: float = 400
@@ -38,6 +39,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	get_tree().current_scene.add_child(bullet)
 	
 	bullet.damage = damage
+	bullet.pierce = pierce
 
 	bullet.global_position = fire_point.global_position
 

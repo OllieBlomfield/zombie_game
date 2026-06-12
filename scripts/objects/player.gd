@@ -43,8 +43,9 @@ var attacking: bool = false #could have as a seperate state to moving
 
 #@export var dust_particle: PackedScene
 @onready var combat: Combat = $Combat
-@onready var mele_weapon: MeleWeapon = $MeleWeapon
-@onready var ranged_weapon: RangedWeapon = $RangedWeapon
+@onready var ranged_weapon: RangedWeapon = $Weapons/RangedWeapon
+@onready var mele_weapon: MeleWeapon = $Weapons/MeleWeapon
+
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"

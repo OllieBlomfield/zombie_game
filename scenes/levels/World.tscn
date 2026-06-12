@@ -44,7 +44,8 @@ horizontal_alignment = 1
 [node name="WaveSpawner" parent="." unique_id=1270486080 node_paths=PackedStringArray("wave_label", "escape_label") instance=ExtResource("3_1mg1y")]
 wave_label = NodePath("../CanvasLayer/WaveLabel")
 escape_label = NodePath("../CanvasLayer/EscapeLabel")
-wave_length = 1
+max_waves = 2
+wave_length = 15
 
 [node name="Player" parent="." unique_id=1359689479 node_paths=PackedStringArray("camera") instance=ExtResource("4_nhw2q")]
 position = Vector2(868, -19)
@@ -52,6 +53,7 @@ camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1982746922]
 position = Vector2(-19, 17)
+offset = Vector2(0, -15)
 zoom = Vector2(4, 4)
 limit_left = -300
 limit_top = -159

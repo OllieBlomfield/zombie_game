@@ -6,7 +6,7 @@ extends Node2D
 
 @export var enemy_list: Array[PackedScene]
 
-var enemy_cost: Dictionary = {"zombie": 1}
+var enemy_cost: Dictionary = {"zombie": 1, "tank": 3}
 var spawn_queue: Array[PackedScene] = []
 
 var current_wave: int = 1
@@ -26,13 +26,6 @@ func generate_wave():
 	points = current_wave * 10
 	while points > 0:
 		var enemy = enemy_list.pick_random()
-		spawn_queue.append(enemy)
-		points -= 1
-	spawn_wave()
-	
-func add_enemies():
-	while points > 0:
-		var enemy = enemy_list.pick_random()
 		var enemy_cost_value = 1
 		
 		if points - enemy_cost_value >= 0:
@@ -40,7 +33,7 @@ func add_enemies():
 			points -= enemy_cost_value
 		elif points <=0:
 			spawn_wave()
-	
+
 func spawn_wave():
 	var spawn_points = get_spawn_points()
 
@@ -49,7 +42,8 @@ func spawn_wave():
 		add_child(enemy)
 		var point = spawn_points.pick_random()
 		enemy.global_position = point.global_position
-		await get_tree().create_timer(wave_length).timeout
+		await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(wave_length).timeout
 	current_wave += 1
 	if current_wave > max_waves:
 		escape_label.text = "Return to the shelter!"
@@ -61,6 +55,7 @@ func change_wave_label():
 	wave_label.text = "Wave: " + str(current_wave)
 	
 func reset_wave():
+	GameManager.player_active = true
 	max_waves += 1
 	current_wave = 1
 	generate_wave()

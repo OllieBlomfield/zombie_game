@@ -19,13 +19,13 @@ func add_upgrade(upgrade, stats):
 		return
 	match upgrade:
 		upgrades.MELEE_DAMAGE:
-			player.melee_weapon.damage += stats
+			player.mele_weapon.damage += stats
 		upgrades.MELEE_KNOCKBACK:
-			player.melee_weapon.knockback += stats
+			player.mele_weapon.knockback += stats
 		upgrades.RANGED_DAMAGE:
 			player.ranged_weapon.damage += stats
-		#upgrades.RANGED_PIERCE:
-			#player.ranged_weapon.damage += stats
+		upgrades.RANGED_PIERCE:
+			player.ranged_weapon.pierce += stats
 		upgrades.PLAYER_HEALTH:
 			player.health.max_health += stats
 		_:
