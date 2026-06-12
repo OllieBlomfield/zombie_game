@@ -9,6 +9,7 @@
 [node name="PlayerUI" type="Control" unique_id=752472071]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(3, 3)
 script = ExtResource("1_q3y81")
 
 [node name="Label" type="Label" parent="." unique_id=1987694737]

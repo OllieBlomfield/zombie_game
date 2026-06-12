@@ -31,3 +31,5 @@ shape = SubResource("RectangleShape2D_ixv1l")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=138201665]
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1143095268]

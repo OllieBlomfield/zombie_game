@@ -1,11 +1,9 @@
 class_name Player
 extends GameCharacter
 
-
 signal update_weapon_ui
 
 @export var camera: Camera2D
-@export var weapon: Weapon
 
 @export var health: Health
 @export var hurtbox: HurtBox
@@ -79,8 +77,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("attack"):
 		update_weapon_ui.emit()
-		var attack_context: AttackContext = combat.get_attack_context()
-		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 		combat.attack(facing_direction)
 	
 	if Input.is_action_just_pressed("next_weapon"):
@@ -171,10 +167,11 @@ func set_gravity(type: GravityType):
 #			camera.position = DEFAULT_CAM_POSITION
 
 func _attack_finished():
-	print("finished attacking")
 	attacking = false
 
-func _play_attack_anim():
+func _play_attack_anim(): #change name
+	var attack_context: AttackContext = combat.get_attack_context()
+	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 	attacking = true
 	animated_sprite_2d.play(combat.get_current_weapon().player_anim)
 

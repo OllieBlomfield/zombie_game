@@ -1,21 +1,36 @@
 [gd_scene format=3 uid="uid://dh66xemkmac2y"]
 
-[ext_resource type="Script" uid="uid://xomigwrl5nnj" path="res://scripts/Ui/canvas_layer.gd" id="1_7xgas"]
+[ext_resource type="Script" uid="uid://xomigwrl5nnj" path="res://Scripts/UI/canvas_layer.gd" id="1_7xgas"]
 [ext_resource type="PackedScene" uid="uid://dcbblyvxmku4p" path="res://scenes/levels/level_1.tscn" id="1_lfyvx"]
 [ext_resource type="PackedScene" uid="uid://brfc8nam2jl1o" path="res://UI/Interfaces/shop.tscn" id="1_w2p53"]
 [ext_resource type="PackedScene" uid="uid://bskwqmmwtsupu" path="res://scenes/objects/wave_spawner.tscn" id="2_w2p53"]
 [ext_resource type="PackedScene" uid="uid://dmkq5jw7w02uv" path="res://scenes/objects/player.tscn" id="3_7xgas"]
 [ext_resource type="LabelSettings" uid="uid://dymstalnyf7or" path="res://UI/Label Settings/Wave_count_label.tres" id="3_gy5pc"]
+[ext_resource type="PackedScene" uid="uid://2kjm14phkjtq" path="res://scenes/UI/player_ui.tscn" id="4_1mg1y"]
 
 [node name="World" type="Node2D" unique_id=2129332960]
+
+[node name="Player" parent="." unique_id=1359689479 instance=ExtResource("3_7xgas")]
+
+[node name="Level1" parent="." unique_id=1871229206 instance=ExtResource("1_lfyvx")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=717482915]
 script = ExtResource("1_7xgas")
 
+[node name="PlayerUI" parent="CanvasLayer" unique_id=752472071 node_paths=PackedStringArray("player") instance=ExtResource("4_1mg1y")]
+z_index = 100
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+player = NodePath("../../Player")
+
 [node name="Shop" parent="CanvasLayer" unique_id=1402826952 instance=ExtResource("1_w2p53")]
 visible = false
+z_index = 100
 
 [node name="WaveLabel" type="Label" parent="CanvasLayer" unique_id=2048865028]
+z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -26,6 +41,7 @@ grow_horizontal = 2
 label_settings = ExtResource("3_gy5pc")
 
 [node name="EscapeLabel" type="Label" parent="CanvasLayer" unique_id=365116433]
+z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -36,11 +52,7 @@ offset_bottom = 58.0
 grow_horizontal = 2
 label_settings = ExtResource("3_gy5pc")
 
-[node name="Level1" parent="." unique_id=1871229206 instance=ExtResource("1_lfyvx")]
-
 [node name="WaveSpawner" parent="." unique_id=1270486080 groups=["spawner"] instance=ExtResource("2_w2p53")]
 wave_length = 5
-
-[node name="Player" parent="." unique_id=1359689479 instance=ExtResource("3_7xgas")]
 
 [editable path="Level1"]
