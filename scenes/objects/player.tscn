@@ -60,10 +60,23 @@ metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 [node name="RangedWeapon" parent="Weapons" unique_id=1371481615 instance=ExtResource("7_2rlf8")]
 position = Vector2(6, 0)
 damage = 1
+pierce = null
+bullet_speed = null
+flip_h = null
+cooldown_time = null
+spray = null
+user_knockback = null
+max_ammo = null
+current_ammo = null
 
 [node name="MeleWeapon" parent="Weapons" unique_id=1078517139 instance=ExtResource("7_0ay4w")]
 visible = false
 position = Vector2(1, 0)
+damage = null
+knockback = null
+extra_knockback_y = null
+flip_h = null
+user_knockback = null
 
 [node name="RightWeaponPos" type="Marker2D" parent="Weapons" unique_id=517200295]
 position = Vector2(1, 0)
