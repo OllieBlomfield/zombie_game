@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ZombiePestControl"
-run/main_scene="uid://dh66xemkmac2y"
+run/main_scene="uid://c6l8nvlqbktli"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"

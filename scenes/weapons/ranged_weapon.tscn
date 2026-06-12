@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dfm5mc3s3vq0j" path="res://scenes/weapons/ranged_bullet.tscn" id="2_7dvhj"]
 [ext_resource type="Texture2D" uid="uid://l6nxvb5m1t11" path="res://graphics/weapons/ak-47-mini.png" id="3_7dvhj"]
 [ext_resource type="Texture2D" uid="uid://37k4b6n1to7r" path="res://graphics/weapons/Icons/ak-47.png" id="3_ermv8"]
-[ext_resource type="Script" uid="uid://b6ufmobgmnr01" path="res://scenes/weapons/muzzle_flash.gd" id="4_70ego"]
+[ext_resource type="Script" uid="uid://b6ufmobgmnr01" path="res://scripts/weapons/muzzle_flash.gd" id="4_70ego"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70ego"]
 atlas = ExtResource("3_7dvhj")
@@ -38,11 +38,11 @@ icon_texture = ExtResource("3_ermv8")
 has_ammo = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1954218496]
-position = Vector2(9.536743e-07, -1)
+position = Vector2(5.000001, -0.5)
 sprite_frames = SubResource("SpriteFrames_7dvhj")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=783226747]
-position = Vector2(4, -1.5)
+position = Vector2(9, -1)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1985008729]
 wait_time = 0.75

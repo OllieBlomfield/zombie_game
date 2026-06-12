@@ -20,7 +20,9 @@ func _set_weapon():
 	
 	if current_weapon.has_ammo:
 		ammo_background.visible = true
+		ammo_label.visible = true
 		ammo_label.text = str(current_weapon.current_ammo) + "/" + str(current_weapon.max_ammo)
 	else:
 		ammo_background.visible = false
+		ammo_label.visible = false
 	

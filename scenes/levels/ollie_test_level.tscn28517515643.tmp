@@ -1,0 +1,162 @@
+[gd_scene format=4 uid="uid://c6l8nvlqbktli"]
+
+[ext_resource type="Texture2D" uid="uid://jrasxf24v7bo" path="res://graphics/tilesets/temp_tile_set.png" id="1_p757t"]
+[ext_resource type="Script" uid="uid://be3ofyq6b165r" path="res://scripts/objects/punching_bag.gd" id="2_5oirl"]
+[ext_resource type="PackedScene" uid="uid://dmkq5jw7w02uv" path="res://scenes/objects/player.tscn" id="2_7dm00"]
+[ext_resource type="Shader" uid="uid://hyty3ti1voqp" path="res://shaders/flash.gdshader" id="2_jkqgx"]
+[ext_resource type="Texture2D" uid="uid://dyk5jbgs2jc3q" path="res://graphics/objects/punching_bag.png" id="3_xciyh"]
+[ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_23odc"]
+[ext_resource type="PackedScene" uid="uid://t62muxfho6v5" path="res://scenes/objects/tank_zombie.tscn" id="6_hnfed"]
+[ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="7_23odc"]
+[ext_resource type="Script" uid="uid://bvgdc4xr5wg63" path="res://scripts/Misc/fps.gd" id="9_tl6ts"]
+[ext_resource type="PackedScene" uid="uid://2kjm14phkjtq" path="res://scenes/UI/player_ui.tscn" id="10_ou863"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dm00"]
+texture = ExtResource("1_p757t")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:1/0 = 0
+1:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+6:6/0 = 0
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+6:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xciyh"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_7dm00")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpl3d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkqgx"]
+shader = ExtResource("2_jkqgx")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkqgx"]
+size = Vector2(6, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnfed"]
+size = Vector2(6, 13)
+
+[node name="OllieTestLevel" type="Node2D" unique_id=184525551]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1121927564]
+tile_map_data = PackedByteArray("AAD6/wAAAAAAAAQAAAD7/wAAAAABAAQAAAD8/wAAAAAAAAQAAAD9/wAAAAAAAAQAAAD+/wAAAAABAAQAAAD//wAAAAABAAQAAAAAAAAAAAABAAQAAAABAAAAAAAAAAQAAAACAAAAAAAAAAQAAAADAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAGAAAAAAABAAQAAAAHAAAAAAAAAAQAAAAIAAAAAAAAAAQAAAD6/wEAAAABAAUAAAD7/wEAAAABAAUAAAD8/wEAAAABAAUAAAD9/wEAAAAAAAUAAAD+/wEAAAAAAAUAAAD//wEAAAABAAUAAAAAAAEAAAAAAAUAAAABAAEAAAABAAUAAAACAAEAAAABAAUAAAADAAEAAAAAAAUAAAAEAAEAAAAAAAUAAAAFAAEAAAABAAUAAAAGAAEAAAABAAUAAAAHAAEAAAAAAAUAAAAIAAEAAAABAAUAAAAIAAIAAAAAAAUAAAAHAAIAAAAAAAUAAAAGAAIAAAABAAUAAAAFAAIAAAAAAAUAAAAEAAIAAAABAAUAAAADAAIAAAAAAAUAAAACAAIAAAABAAUAAAABAAIAAAABAAUAAAAAAAIAAAABAAUAAAD//wIAAAABAAUAAAD+/wIAAAABAAUAAAD9/wIAAAAAAAUAAAD8/wIAAAAAAAUAAAD8/wMAAAAAAAUAAAD7/wMAAAAAAAUAAAD7/wIAAAAAAAUAAAD6/wIAAAABAAUAAAD8/wQAAAAAAAUAAAD8/wUAAAABAAUAAAD9/wUAAAABAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD//wcAAAABAAUAAAD//wYAAAABAAUAAAD+/wUAAAABAAUAAAD+/wQAAAABAAUAAAD9/wQAAAABAAUAAAD9/wMAAAABAAUAAAD+/wMAAAABAAUAAAD//wMAAAABAAUAAAAAAAMAAAAAAAUAAAABAAMAAAAAAAUAAAACAAMAAAAAAAUAAAADAAMAAAABAAUAAAAEAAMAAAABAAUAAAAFAAMAAAAAAAUAAAAGAAMAAAAAAAUAAAAGAAQAAAAAAAUAAAAFAAQAAAABAAUAAAAFAAUAAAABAAUAAAAFAAYAAAAAAAUAAAAFAAcAAAAAAAUAAAAEAAcAAAAAAAUAAAAEAAgAAAABAAUAAAADAAgAAAABAAUAAAACAAgAAAABAAUAAAABAAcAAAABAAUAAAAAAAcAAAAAAAUAAAAAAAYAAAABAAUAAAD//wUAAAAAAAUAAAD//wQAAAABAAUAAAAAAAQAAAAAAAUAAAABAAQAAAABAAUAAAACAAUAAAABAAUAAAACAAYAAAAAAAUAAAABAAYAAAAAAAUAAAAAAAUAAAABAAUAAAABAAUAAAAAAAUAAAACAAcAAAABAAUAAAADAAcAAAABAAUAAAADAAYAAAABAAUAAAADAAUAAAAAAAUAAAADAAQAAAABAAUAAAACAAQAAAABAAUAAAAEAAQAAAAAAAUAAAAEAAUAAAABAAUAAAAEAAYAAAAAAAUAAAAMAP3/AAABAAQAAAANAP3/AAABAAQAAAAOAP3/AAABAAQAAAAPAP3/AAAAAAQAAAD1//z/AAAAAAQAAAD2//z/AAABAAQAAAD3//z/AAAAAAQAAAACAPj/AAAAAAQAAAADAPj/AAAAAAQAAAAEAPj/AAABAAQAAAAFAPj/AAABAAQAAAAGAPj/AAABAAQAAAAHAPj/AAABAAQAAAD6//f/AAAAAAQAAAD5//f/AAABAAQAAAD4//f/AAABAAQAAAD3//f/AAABAAQAAAD5////AAAGAAAAAAD5//7/AAAGAAAAAAD5//3/AAAGAAAAAAD5//z/AAAGAAAAAAD4//z/AAAGAAAAAAAJAP//AAAGAAAAAAAJAP7/AAAGAAAAAAAJAP3/AAAGAAAAAAAKAP3/AAAGAAAAAAALAP3/AAAGAAAAAAA=")
+tile_set = SubResource("TileSet_xciyh")
+
+[node name="PunchingBag" type="CharacterBody2D" parent="." unique_id=286153305]
+material = SubResource("ShaderMaterial_fpl3d")
+position = Vector2(20, -7)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_5oirl")
+
+[node name="Sprite2D" type="Sprite2D" parent="PunchingBag" unique_id=737714994]
+material = SubResource("ShaderMaterial_jkqgx")
+texture = ExtResource("3_xciyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PunchingBag" unique_id=74216893]
+visible = false
+shape = SubResource("RectangleShape2D_jkqgx")
+debug_color = Color(0.27499, 0.6242929, 0.29675555, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="PunchingBag" unique_id=43476055]
+collision_layer = 2
+script = ExtResource("5_23odc")
+metadata/_custom_type_script = "uid://bwjbhslyjufr3"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PunchingBag/HurtBox" unique_id=1787315391]
+shape = SubResource("RectangleShape2D_hnfed")
+debug_color = Color(0.9284709, 0.19225076, 0.47511607, 0.41960785)
+
+[node name="TankZombie" parent="PunchingBag" unique_id=1844717594 instance=ExtResource("6_hnfed")]
+position = Vector2(58, -23)
+
+[node name="Player" parent="." unique_id=1359689479 node_paths=PackedStringArray("camera") instance=ExtResource("2_7dm00")]
+position = Vector2(-16, -10)
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1684185074]
+zoom = Vector2(4, 4)
+
+[node name="HurtBox2" type="Area2D" parent="." unique_id=1002553801]
+position = Vector2(89, -31)
+collision_layer = 2
+script = ExtResource("5_23odc")
+metadata/_custom_type_script = "uid://bwjbhslyjufr3"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox2" unique_id=1094879137]
+shape = SubResource("RectangleShape2D_hnfed")
+debug_color = Color(0.9284709, 0.19225076, 0.47511607, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="HurtBox2" unique_id=774285090]
+texture = ExtResource("3_xciyh")
+
+[node name="Zombie" parent="." unique_id=1721881803 instance=ExtResource("7_23odc")]
+
+[node name="FPS" type="Label" parent="." unique_id=431130832]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("9_tl6ts")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1972373154]
+
+[node name="PlayerUI" parent="CanvasLayer" unique_id=752472071 instance=ExtResource("10_ou863")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(3, 3)

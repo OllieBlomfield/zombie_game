@@ -48,9 +48,12 @@ metadata/_custom_type_script = "uid://bwjbhslyjufr3"
 shape = SubResource("CircleShape2D_54rde")
 debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
 
-[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("weapon_list")]
+[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("player", "weapon_list", "right_weapon_position", "left_weapon_position")]
 script = ExtResource("5_ksjmp")
+player = NodePath("..")
 weapon_list = [NodePath("../Weapons/RangedWeapon"), NodePath("../Weapons/MeleWeapon")]
+right_weapon_position = NodePath("../Weapons/RightWeaponPos")
+left_weapon_position = NodePath("../Weapons/LeftWeaponPos")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="Weapons" type="Node2D" parent="." unique_id=12420141]
@@ -58,11 +61,26 @@ metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 [node name="RangedWeapon" parent="Weapons" unique_id=1371481615 instance=ExtResource("7_2rlf8")]
 position = Vector2(6, 0)
 damage = 1
+pierce = null
+bullet_speed = null
+flip_h = null
+cooldown_time = null
+spray = null
+user_knockback = null
+max_ammo = null
+current_ammo = null
 
 [node name="MeleWeapon" parent="Weapons" unique_id=1078517139 instance=ExtResource("7_0ay4w")]
 visible = false
 position = Vector2(1, 0)
+damage = null
+knockback = null
+extra_knockback_y = null
+flip_h = null
+user_knockback = null
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1612447365]
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
+[node name="RightWeaponPos" type="Marker2D" parent="Weapons" unique_id=517200295]
+position = Vector2(1, 0)
+
+[node name="LeftWeaponPos" type="Marker2D" parent="Weapons" unique_id=517322158]
+position = Vector2(-2, 0)
