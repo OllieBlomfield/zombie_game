@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dymstalnyf7or"]
+
+[ext_resource type="FontFile" uid="uid://c508ya7op44uq" path="res://graphics/fonts/TinyPixy.ttf" id="1_fdbqb"]
+
+[resource]
+font = ExtResource("1_fdbqb")
+font_size = 72
+outline_size = 4
+outline_color = Color(0.27935672, 0.27935672, 0.27935672, 1)
+shadow_color = Color(0.25, 0.25, 0.25, 0.27058825)

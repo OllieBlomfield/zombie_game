@@ -61,3 +61,4 @@ user_knockback = 40.0
 
 [node name="RangedWeapon" parent="." unique_id=1371481615 instance=ExtResource("7_2rlf8")]
 position = Vector2(6, 0)
+damage = 1
