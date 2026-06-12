@@ -10,7 +10,7 @@ extends Weapon
 @export var flip_h: bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var user_knockback: float = 40
+@export var user_knockback: float = 5
 
 signal attack_finished
 

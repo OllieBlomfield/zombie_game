@@ -47,14 +47,17 @@ metadata/_custom_type_script = "uid://bwjbhslyjufr3"
 shape = SubResource("CircleShape2D_54rde")
 debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
 
-[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("current_weapon")]
+[node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("weapon_list")]
 script = ExtResource("5_ksjmp")
-current_weapon = NodePath("../RangedWeapon")
+weapon_list = [NodePath("../Weapons/RangedWeapon"), NodePath("../Weapons/MeleWeapon")]
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
-[node name="RangedWeapon" parent="." unique_id=1371481615 instance=ExtResource("7_2rlf8")]
+[node name="Weapons" type="Node2D" parent="." unique_id=12420141]
+
+[node name="RangedWeapon" parent="Weapons" unique_id=1371481615 instance=ExtResource("7_2rlf8")]
 position = Vector2(6, 0)
 damage = 1
 
-[node name="MeleWeapon" parent="." unique_id=1078517139 instance=ExtResource("7_0ay4w")]
+[node name="MeleWeapon" parent="Weapons" unique_id=1078517139 instance=ExtResource("7_0ay4w")]
+visible = false
 position = Vector2(1, 0)

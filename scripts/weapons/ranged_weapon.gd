@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
 	)
+
 func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	if is_on_cooldown:
 		return

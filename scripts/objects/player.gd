@@ -75,10 +75,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
 		#attacking = true
 		var attack_context: AttackContext = combat.get_attack_context()
-		print("player knockback" + str(attack_context.knockback))
 		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 		combat.attack(facing_direction)
-			
+	
+	if Input.is_action_just_pressed("next_weapon"):
+		combat.next_weapon()
+	
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
 		set_gravity(GravityType.SLOW)
