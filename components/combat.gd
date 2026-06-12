@@ -28,3 +28,6 @@ func set_weapon(index) -> void:
 		_current_weapon.visible = false
 	_current_weapon = weapon_list[index]
 	_current_weapon.visible = true
+
+func get_current_weapon() -> Weapon:
+	return _current_weapon

@@ -15,6 +15,9 @@ extends Weapon
 
 @export var user_knockback: float = 5
 
+@export var max_ammo: int = 100
+@export var current_ammo: int = 50
+
 var deadzone: float = 0.2
 var roatation_speed: float = 5.0
 var target_angle: float
@@ -33,7 +36,7 @@ func _process(delta: float) -> void:
 	)
 
 func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
-	if is_on_cooldown:
+	if is_on_cooldown or not has_ammunition():
 		return
 		
 	var bullet = bullet_scene.instantiate()
@@ -59,6 +62,8 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 
 	bullet.velocity = dir * bullet_speed
 	
+	_handle_ammo()
+	
 	muzzle_flash.flash()
 	
 	is_on_cooldown = true
@@ -74,4 +79,9 @@ func get_attack_context() -> AttackContext:
 
 func _on_timeout():
 	is_on_cooldown = false
-	
+
+func has_ammunition() -> bool:
+	return current_ammo > 0
+
+func _handle_ammo():
+	current_ammo = max(0, current_ammo - 1)
