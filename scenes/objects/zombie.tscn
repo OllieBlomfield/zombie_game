@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://beljfkcwcnq2" path="res://graphics/enemies/base_zombie.png" id="6_rln44"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnlsj"]
-radius = 11.0
+radius = 7.1428566
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rln44"]
 radius = 9.0
@@ -17,7 +17,8 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cutmx"]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d5t1q"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cutmx"]
+size = Vector2(7.874874, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cutmx"]
 shader = ExtResource("5_rln44")
@@ -85,9 +86,9 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox") groups=["RegularZombie"]]
+[node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox") groups=["RegularZombie", "enemy"]]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 22
 script = ExtResource("1_xcqe2")
 health = NodePath("Health")
 hitbox = NodePath("HitBox")
@@ -139,12 +140,12 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDetector" unique_id=1186574895]
-shape = SubResource("CircleShape2D_d5t1q")
+shape = SubResource("RectangleShape2D_cutmx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1271038872]
 material = SubResource("ShaderMaterial_cutmx")
 sprite_frames = SubResource("SpriteFrames_2eyec")
-animation = &"death"
+animation = &"move"
 
 [node name="AttackCooldownTimer" type="Timer" parent="." unique_id=146307673]
 one_shot = true
