@@ -1,4 +1,3 @@
-class_name RangedBullet
 extends Area2D
 
 

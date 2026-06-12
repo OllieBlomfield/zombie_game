@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ccu5kprubgnfa" path="res://scripts/weapons/ranged_weapon.gd" id="1_0hegm"]
 [ext_resource type="PackedScene" uid="uid://dfm5mc3s3vq0j" path="res://scenes/weapons/ranged_bullet.tscn" id="2_7dvhj"]
 [ext_resource type="Texture2D" uid="uid://l6nxvb5m1t11" path="res://graphics/weapons/ak-47-mini.png" id="3_7dvhj"]
-[ext_resource type="Script" uid="uid://b6ufmobgmnr01" path="res://scenes/weapons/muzzle_flash.gd" id="4_70ego"]
+[ext_resource type="Script" uid="uid://b6ufmobgmnr01" path="res://scripts/weapons/muzzle_flash.gd" id="4_70ego"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70ego"]
 atlas = ExtResource("3_7dvhj")

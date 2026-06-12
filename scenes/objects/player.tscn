@@ -61,3 +61,7 @@ damage = 1
 [node name="MeleWeapon" parent="Weapons" unique_id=1078517139 instance=ExtResource("7_0ay4w")]
 visible = false
 position = Vector2(1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1612447365]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
