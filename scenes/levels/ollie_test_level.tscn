@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="5_23odc"]
 [ext_resource type="PackedScene" uid="uid://t62muxfho6v5" path="res://scenes/objects/tank_zombie.tscn" id="6_hnfed"]
 [ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="7_23odc"]
+[ext_resource type="Script" uid="uid://bvgdc4xr5wg63" path="res://scripts/Misc/fps.gd" id="9_tl6ts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dm00"]
 texture = ExtResource("1_p757t")
@@ -144,3 +145,8 @@ debug_color = Color(0.9284709, 0.19225076, 0.47511607, 0.41960785)
 texture = ExtResource("3_xciyh")
 
 [node name="Zombie" parent="." unique_id=1721881803 instance=ExtResource("7_23odc")]
+
+[node name="FPS" type="Label" parent="." unique_id=431130832]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("9_tl6ts")

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends GameCharacter
 
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var sprite_2d: Sprite2D = $Sprite2D

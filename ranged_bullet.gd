@@ -1,13 +1,9 @@
 class_name RangedBullet
 extends Area2D
 
-
 @export var damage: int = 1
 @export var knockback: float = 50
-@export var pierce: int = 0
-@export var crit_chance: float = 0.2
-
-var pierce_count: = 0
+@export var crit_chance: float = 0
 
 @export var bullet_gravity: int = 50
 
@@ -31,11 +27,9 @@ func _on_area_entered(area: Area2D) -> void:
 	context.criticial_hit = (randf() < crit_chance)
 
 	hurtbox.handle_hit(context)
-	
-	if pierce_count >= pierce:
-		queue_free()
-	
-	pierce_count += 1
+
+	queue_free()
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:

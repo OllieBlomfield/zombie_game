@@ -38,7 +38,6 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 		
 	var bullet = bullet_scene.instantiate()
 	
-
 	get_tree().current_scene.add_child(bullet)
 	
 	bullet.damage = damage

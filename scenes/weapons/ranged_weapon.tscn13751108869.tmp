@@ -47,7 +47,7 @@ wait_time = 0.75
 [node name="MuzzleFlash" type="PointLight2D" parent="." unique_id=444250327]
 visible = false
 position = Vector2(4, -2)
-energy = 8.0
+energy = 4.0
 texture = SubResource("GradientTexture2D_70ego")
 script = ExtResource("4_70ego")
 

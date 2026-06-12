@@ -7,6 +7,7 @@
 z_index = 5
 script = ExtResource("1_6b3me")
 label = NodePath("Label")
+CRIT_COLOR = Color(0.9230211, 0.2328754, 0.26719496, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1320140073]
 offset_left = 9.0
