@@ -4,5 +4,8 @@ class_name GameCharacter
 
 func apply_hit_effects(context: HitContext):
 	#print("APPLYING STUFF SIR")
-	velocity += context.direction * context.knockback
-	velocity.y -= context.extra_y_knockback
+	add_knockback(context.direction, context.knockback, context.extra_y_knockback)
+
+func add_knockback(direction: Vector2, knockback: float, extra_y_knockback: float):
+	velocity += direction * knockback
+	velocity.y -= extra_y_knockback

@@ -13,6 +13,10 @@ extends GameCharacter
 @export var acceleration: float = 2.0
 @export var friction: float = 800.0
 
+@export var damage: float = 3
+@export var knockback: float = 100
+@export var extra_knockback_y: float = 50
+
 @export var corpse_texture: CompressedTexture2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -31,7 +35,9 @@ var state: States = States.CHASING
 func _ready() -> void:
 	speed = randi_range(50,70)
 	player = get_tree().get_first_node_in_group("player")
+	
 	hurtbox.received_hit.connect(damaged_received)
+	hitbox.hurtbox_hit.connect(_attack_hit)
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta: float) -> void:
@@ -123,7 +129,15 @@ func _handle_flash():
 		_flashing = false
 	else:
 		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",0.0)
-	
+
+func _attack_hit(hurtbox: HurtBox):
+	var context: HitContext = HitContext.new()
+	context.damage = damage
+	context.direction = (hurtbox.global_position - global_position).normalized()
+	context.hit_point = global_position
+	context.knockback = knockback
+	context.extra_y_knockback = extra_knockback_y
+	hurtbox.handle_hit(context)
 
 func _on_animation_finished() -> void:
 	print("DONE")

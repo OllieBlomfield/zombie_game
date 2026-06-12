@@ -51,7 +51,7 @@ var attacking: bool = false #could have as a seperate state to moving
 
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)
-	hurtbox.received_hit.connect(_on_hurtbox_hit)
+	hurtbox.received_hit.connect(_on_received_hit)
 	if player_spawn_point:
 		global_position = player_spawn_point.global_position
 	pass
@@ -74,6 +74,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("attack"):
 		#attacking = true
+		var attack_context: AttackContext = combat.get_attack_context()
+		print("player knockback" + str(attack_context.knockback))
+		add_knockback(Vector2(-sign(velocity.x),0),attack_context.knockback,0)
 		combat.attack(facing_direction)
 			
 func _handle_gravity(delta: float):
@@ -162,6 +165,6 @@ func set_gravity(type: GravityType):
 func _attack_finished():
 	attacking = false
 
-func _on_hurtbox_hit(context: HitContext):
+func _on_received_hit(context: HitContext):
 	apply_hit_effects(context)
 	ScoreManager.damage_taken += context.damage

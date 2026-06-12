@@ -149,8 +149,7 @@ metadata/_custom_type_script = "uid://bcrt8c45areik"
 [node name="HitBox" type="Area2D" parent="." unique_id=1859903864]
 visible = false
 scale = Vector2(0.7570505, 0.7570505)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 0
 script = ExtResource("5_jkts3")
 damage = 1
 hitbox_name = "Zombie"

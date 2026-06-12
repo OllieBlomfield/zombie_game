@@ -21,9 +21,9 @@ func _ready() -> void:
 	add_child(immortality_timer)
 	
 func _process(delta: float) -> void:
-	if immortality: print("immortal")
-	if sprite:
-		sprite.visible = !immortality
+	pass
+	#if sprite:
+		#sprite.visible = !immortality
 
 func set_health(value: int) -> void:
 	current_health = clamp(value, 0, max_health)
