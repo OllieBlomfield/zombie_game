@@ -1,5 +1,4 @@
 extends PointLight2D
-class_name MuzzleFlash
 
 @onready var timer: Timer = $Timer
 

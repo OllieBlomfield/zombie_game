@@ -14,11 +14,10 @@ size = Vector2(7.9, 7.9)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("camera", "health", "hurtbox") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("health", "hurtbox") groups=["player"]]
 z_index = 5
 collision_mask = 4
 script = ExtResource("1_a8lix")
-camera = NodePath("Camera2D")
 health = NodePath("Health")
 hurtbox = NodePath("HurtBox")
 
@@ -84,3 +83,7 @@ position = Vector2(1, 0)
 
 [node name="LeftWeaponPos" type="Marker2D" parent="Weapons" unique_id=517322158]
 position = Vector2(-2, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1163764167]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true

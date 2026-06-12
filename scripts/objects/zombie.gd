@@ -1,4 +1,4 @@
-class_name Enemy
+class_name EnemyTank
 extends GameCharacter
 
 @export var player: CharacterBody2D
@@ -35,10 +35,12 @@ var state: States = States.CHASING
 
 var can_attack = true
 
+var zombie_type: String
+
 func _ready() -> void:
-	speed = randi_range(50,70)
+	get_zombie_type()
+	set_speed(zombie_type)
 	player = get_tree().get_first_node_in_group("player")
-	
 	hurtbox.received_hit.connect(damaged_received)
 	hitbox.hurtbox_hit.connect(_attack_hit)
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
@@ -74,8 +76,7 @@ func chase() -> void:
 	wall_detector.target_position.x = 20 * dir
 
 	var direction = sign(player.position.x - position.x)
-	velocity.x += acceleration * direction
-	velocity *= 0.9
+	velocity.x = move_toward(velocity.x, dir * speed, acceleration)
 	
 	if wall_detector.is_colliding() and is_on_floor():
 		jump(player.global_position.y)
@@ -166,6 +167,15 @@ func _on_zone_detector_area_entered(area: Area2D) -> void:
 	elif area is DropNode and player.global_position.y > global_position.y + 3:
 		position.y += 5
 
+func get_zombie_type():
+	if is_in_group("RegularZombie"):
+		zombie_type = "RegularZombie"
+	elif is_in_group("TankZombie"):
+		zombie_type = "TankZombie"
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	print("HIT")
+func set_speed(zombie_type: String):
+	if zombie_type == "RegularZombie":
+		speed = randi_range(15,30)
+	elif zombie_type == "TankZombie":
+		speed = randi_range(10,20)
+	

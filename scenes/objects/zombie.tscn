@@ -85,7 +85,7 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox")]
+[node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("health", "hitbox", "hurtbox") groups=["RegularZombie"]]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_xcqe2")
