@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2kjm14phkjtq"]
 
 [ext_resource type="Texture2D" uid="uid://b0csa7bqmnnth" path="res://graphics/UI/WeaponUIBackground.png" id="1_50a1s"]
-[ext_resource type="Script" uid="uid://b6wass21ks8f" path="res://scripts/UI/player_ui.gd" id="1_q3y81"]
+[ext_resource type="Script" uid="uid://b6wass21ks8f" path="res://Scripts/UI/player_ui.gd" id="1_q3y81"]
 [ext_resource type="Texture2D" uid="uid://37k4b6n1to7r" path="res://graphics/weapons/Icons/ak-47.png" id="2_q3y81"]
 [ext_resource type="Texture2D" uid="uid://c02wu2ojyefkk" path="res://graphics/UI/WeaponUIAmmoBackground.png" id="3_hxbk0"]
 [ext_resource type="LabelSettings" uid="uid://dqvi3cjqr7qs7" path="res://UI/Label Settings/ammo_ui_label_settings.tres" id="4_8xbeg"]

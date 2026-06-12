@@ -54,6 +54,8 @@ var attacking: bool = false #could have as a seperate state to moving
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_received_hit)
+	combat.play_attack_anim.connect(_play_attack_anim)
+	combat.finished_attack.connect(_attack_finished)
 	#if player_spawn_point:
 	#	global_position = player_spawn_point.global_position
 	GameManager.player = self
@@ -74,7 +76,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_pressed("attack"):
-		#attacking = true
 		update_weapon_ui.emit()
 		var attack_context: AttackContext = combat.get_attack_context()
 		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
@@ -168,7 +169,12 @@ func set_gravity(type: GravityType):
 #			camera.position = DEFAULT_CAM_POSITION
 
 func _attack_finished():
+	print("finished attacking")
 	attacking = false
+
+func _play_attack_anim():
+	attacking = true
+	animated_sprite_2d.play(combat.get_current_weapon().player_anim)
 
 func _on_received_hit(context: HitContext):
 	apply_hit_effects(context)

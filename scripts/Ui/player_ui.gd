@@ -17,7 +17,6 @@ func _ready() -> void:
 func _set_weapon():
 	var current_weapon: Weapon = player.combat.get_current_weapon()
 	current_weapon_icon.texture = current_weapon.get_icon()
-	
 	if current_weapon.has_ammo:
 		ammo_background.visible = true
 		ammo_label.visible = true

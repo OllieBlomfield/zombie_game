@@ -42,6 +42,10 @@ region = Rect2(32, 32, 8, 8)
 atlas = ExtResource("1_x61g5")
 region = Rect2(40, 32, 8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_co0nh"]
+atlas = ExtResource("1_x61g5")
+region = Rect2(32, 32, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfmnp"]
 atlas = ExtResource("1_x61g5")
 region = Rect2(0, 0, 8, 8)
@@ -118,6 +122,14 @@ animations = [{
 "loop": false,
 "name": &"mele_attack",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co0nh")
+}],
+"loop": true,
+"name": &"ranged_attack",
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
