@@ -74,7 +74,14 @@ func chase() -> void:
 	var dir = sign(player.global_position.x - global_position.x)
 
 	wall_detector.target_position.x = 20 * dir
-
+	
+	for zombie in get_tree().get_nodes_in_group("enemy"):
+		if zombie == self:
+			continue
+		var dist = global_position.distance_to(zombie.global_position)
+		if dist < 20 and dist > 0:
+			velocity.x += sign(global_position.x - zombie.global_position.x) * 2
+	
 	var direction = sign(player.position.x - position.x)
 	velocity.x = move_toward(velocity.x, dir * speed, acceleration)
 	
@@ -84,7 +91,7 @@ func chase() -> void:
 func jump(target_y: float) -> void:
 	if !is_on_floor():
 		return
-
+	velocity.x *= .5
 	velocity.y = get_jump_velocity_to_reach(target_y)
 
 func get_jump_velocity_to_reach(target_y: float) -> float:
@@ -151,7 +158,7 @@ func attack_cooldown():
 	for area in hitbox.get_overlapping_areas():
 		print(area)
 		if area is HurtBox:
-			_attack_hit(area) 
+			_attack_hit(area)
 			
 func _on_animation_finished() -> void:
 	if state == States.DEAD: #might be more satisfying to only do this when they land on the ground?
@@ -165,7 +172,9 @@ func _on_zone_detector_area_entered(area: Area2D) -> void:
 	if area is JumpNode and abs(player.global_position.y - global_position.y) > 5:
 		jump(player.global_position.y)
 	elif area is DropNode and player.global_position.y > global_position.y + 3:
-		position.y += 5
+		set_collision_mask_value(5, false)
+		await get_tree().create_timer(0.3).timeout
+		set_collision_mask_value(5, true)
 
 func get_zombie_type():
 	if is_in_group("RegularZombie"):
