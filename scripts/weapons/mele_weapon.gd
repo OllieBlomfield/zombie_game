@@ -1,4 +1,4 @@
-class_name MeleeWeapon
+class_name MeleWeapon
 extends Weapon
 
 
@@ -10,6 +10,7 @@ extends Weapon
 @export var flip_h: bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var user_knockback: float = 5
 
 signal attack_finished
 
@@ -23,11 +24,16 @@ func _process(delta: float) -> void:
 	animated_sprite_2d.flip_h = flip_h #ask about this approach
 	#for area in hit_box.get_overlapping_areas():
 		#if area is HurtBox: #add something to check correct layers
-			
+
+func get_attack_context() -> AttackContext:
+	var attack_context: AttackContext = AttackContext.new()
+	attack_context.knockback = user_knockback
+	return attack_context			
 
 func perform_attack(direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	hit_box.enable()
 	animated_sprite_2d.play("attack")
+
 func _attack_finished() -> void:
 	hit_box.disable()
 	attack_finished.emit()

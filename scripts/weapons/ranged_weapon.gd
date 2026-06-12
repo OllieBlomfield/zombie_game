@@ -9,6 +9,8 @@ extends Weapon
 @export var cooldown_time: float = 0.5
 @onready var cooldown_timer: Timer = $CooldownTimer
 
+@export var user_knockback: float = 10
+
 var deadzone: float = 0.2
 var roatation_speed: float = 5.0
 var target_angle: float
@@ -23,6 +25,7 @@ func _process(delta: float) -> void:
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
 	)
+
 func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	if is_on_cooldown:
 		return
@@ -55,6 +58,13 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)
 	
+func get_attack_context() -> AttackContext:
+	if is_on_cooldown:
+		return AttackContext.new()
+	else:
+		var attack_context: AttackContext = AttackContext.new()
+		attack_context.knockback = user_knockback
+		return attack_context			
 
 func _on_timeout():
 	is_on_cooldown = false
