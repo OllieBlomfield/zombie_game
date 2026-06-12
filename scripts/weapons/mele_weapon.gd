@@ -1,8 +1,6 @@
 class_name MeleWeapon
 extends Weapon
 
-
-
 @export var damage: int = 2
 @export var knockback: float = 80
 @export var extra_knockback_y: float = 100

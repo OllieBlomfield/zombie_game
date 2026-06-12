@@ -5,12 +5,15 @@ extends Weapon
 @export var pierce: int
 @export var bullet_scene: PackedScene
 @export var fire_point: Marker2D
-@export var bullet_speed: float = 400
+@export var bullet_speed: float = 300
 @export var flip_h: bool = false
-@export var cooldown_time: float = 0.5
+@export var cooldown_time: float = 0.05
+@export var spray: float = 1
+
+@onready var muzzle_flash: PointLight2D = $MuzzleFlash
 @onready var cooldown_timer: Timer = $CooldownTimer
 
-@export var user_knockback: float = 10
+@export var user_knockback: float = 5
 
 var deadzone: float = 0.2
 var roatation_speed: float = 5.0
@@ -20,8 +23,10 @@ var is_on_cooldown = false
 
 func _ready() -> void:
 	cooldown_timer.timeout.connect(_on_timeout)
+	muzzle_flash.visible = false
 	
 func _process(delta: float) -> void:
+	#muzzle_flash.visible = false
 	var input_vec: Vector2 = Vector2(
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
@@ -31,8 +36,6 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	if is_on_cooldown:
 		return
 		
-		
-	
 	var bullet = bullet_scene.instantiate()
 	
 
@@ -43,7 +46,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 
 	bullet.global_position = fire_point.global_position
 
-	var spread := deg_to_rad(5)
+	var spread := deg_to_rad(spray)
 
 	var input_vec: Vector2 = Vector2(
 		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
@@ -56,6 +59,8 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	dir = dir.normalized()
 
 	bullet.velocity = dir * bullet_speed
+	
+	muzzle_flash.flash()
 	
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)

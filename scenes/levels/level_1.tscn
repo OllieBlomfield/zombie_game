@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cq6av6mp4b24f"]
+[gd_scene format=4 uid="uid://dcbblyvxmku4p"]
 
 [ext_resource type="Texture2D" uid="uid://cbg3lpna341p1" path="res://graphics/tilesets/Tileset small WORLD.png" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://doqdmasuxdcvj" path="res://scenes/objects/enemy_spawn_point.tscn" id="3_x42e6"]
