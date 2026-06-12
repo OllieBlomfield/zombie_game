@@ -71,3 +71,7 @@ position = Vector2(1, 0)
 
 [node name="LeftWeaponPos" type="Marker2D" parent="Weapons" unique_id=517322158]
 position = Vector2(-2, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1163764167]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true

@@ -1,4 +1,4 @@
-class_name Enemy
+class_name EnemyTank
 extends GameCharacter
 
 @export var player: CharacterBody2D
@@ -21,6 +21,7 @@ extends GameCharacter
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
+@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 
 var _flashing: bool = false
 
@@ -32,10 +33,14 @@ var near_player: bool = false
 enum States { CHASING, ATTACKING, DEAD}
 var state: States = States.CHASING
 
+var can_attack = true
+
+var zombie_type: String
+
 func _ready() -> void:
-	speed = randi_range(50,70)
+	get_zombie_type()
+	set_speed(zombie_type)
 	player = get_tree().get_first_node_in_group("player")
-	
 	hurtbox.received_hit.connect(damaged_received)
 	hitbox.hurtbox_hit.connect(_attack_hit)
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
@@ -71,8 +76,7 @@ func chase() -> void:
 	wall_detector.target_position.x = 20 * dir
 
 	var direction = sign(player.position.x - position.x)
-	velocity.x += acceleration * direction
-	velocity *= 0.9
+	velocity.x = move_toward(velocity.x, dir * speed, acceleration)
 	
 	if wall_detector.is_colliding() and is_on_floor():
 		jump(player.global_position.y)
@@ -100,7 +104,6 @@ func attack() -> void:
 		0,
 		friction * get_physics_process_delta_time()
 	)
-	
 func _handle_animation() -> void:
 	var facing_direction: float = sign(player.global_position.x - global_position.x)
 	animated_sprite_2d.flip_h = (facing_direction < 0)
@@ -131,16 +134,26 @@ func _handle_flash():
 		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",0.0)
 
 func _attack_hit(hurtbox: HurtBox):
-	var context: HitContext = HitContext.new()
-	context.damage = damage
-	context.direction = (hurtbox.global_position - global_position).normalized()
-	context.hit_point = global_position
-	context.knockback = knockback
-	context.extra_y_knockback = extra_knockback_y
-	hurtbox.handle_hit(context)
-
+	if can_attack:
+		var context: HitContext = HitContext.new()
+		context.damage = damage
+		context.direction = (hurtbox.global_position - global_position).normalized()
+		context.hit_point = global_position
+		context.knockback = knockback
+		context.extra_y_knockback = extra_knockback_y
+		hurtbox.handle_hit(context)
+		attack_cooldown()
+	
+func attack_cooldown():
+	can_attack = false
+	await get_tree().create_timer(1.0).timeout
+	can_attack = true
+	for area in hitbox.get_overlapping_areas():
+		print(area)
+		if area is HurtBox:
+			_attack_hit(area) 
+			
 func _on_animation_finished() -> void:
-	print("DONE")
 	if state == States.DEAD: #might be more satisfying to only do this when they land on the ground?
 		var corpse = ZOMBIE_CORPSE.instantiate() as ZombieCorpse
 		corpse.global_position = global_position
@@ -153,3 +166,16 @@ func _on_zone_detector_area_entered(area: Area2D) -> void:
 		jump(player.global_position.y)
 	elif area is DropNode and player.global_position.y > global_position.y + 3:
 		position.y += 5
+
+func get_zombie_type():
+	if is_in_group("RegularZombie"):
+		zombie_type = "RegularZombie"
+	elif is_in_group("TankZombie"):
+		zombie_type = "TankZombie"
+
+func set_speed(zombie_type: String):
+	if zombie_type == "RegularZombie":
+		speed = randi_range(15,30)
+	elif zombie_type == "TankZombie":
+		speed = randi_range(10,20)
+	
