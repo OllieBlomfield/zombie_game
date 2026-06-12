@@ -47,7 +47,7 @@ var attacking: bool = false #could have as a seperate state to moving
 @onready var ranged_weapon: RangedWeapon = $RangedWeapon
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player_spawn_point: Area2D = $"../PlayerSpawnPoint"
+@onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
 
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)

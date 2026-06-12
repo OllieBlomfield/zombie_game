@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="6_pbuxf"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
+[ext_resource type="PackedScene" uid="uid://cq6av6mp4b24f" path="res://scenes/levels/level_1.tscn" id="11_pbuxf"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
 process_mode = 2
@@ -94,6 +95,7 @@ theme_override_styles/pressed = ExtResource("6_jjwfl")
 theme_override_styles/hover = ExtResource("4_jjwfl")
 text = "Exit"
 script = ExtResource("5_qhxmu")
+level = ExtResource("11_pbuxf")
 
 [node name="MoneyLabel" type="Label" parent="." unique_id=1952923082]
 process_mode = 2

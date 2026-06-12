@@ -50,7 +50,7 @@ debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
 
 [node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("current_weapon")]
 script = ExtResource("5_ksjmp")
-current_weapon = NodePath("../RangedWeapon")
+current_weapon = NodePath("../MeleeWeapon")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="MeleeWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]

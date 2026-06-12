@@ -1,7 +1,8 @@
 class_name WaveSpawner
 extends Node2D
 
-@export var WaveLabel: Label
+@export var wave_label: Label
+@export var escape_label: Label
 
 @export var enemy_list: Array[PackedScene]
 
@@ -51,9 +52,15 @@ func spawn_wave():
 		await get_tree().create_timer(wave_length).timeout
 	current_wave += 1
 	if current_wave > max_waves:
+		escape_label.text = "Return to the shelter!"
 		GameManager.can_leave = true
 	else:
 		generate_wave()
 		
 func change_wave_label():
-	WaveLabel.text = "Wave: " + str(current_wave)
+	wave_label.text = "Wave: " + str(current_wave)
+	
+func reset_wave():
+	max_waves += 1
+	current_wave = 1
+	generate_wave()
