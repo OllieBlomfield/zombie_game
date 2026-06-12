@@ -28,6 +28,8 @@ func add_upgrade(upgrade, stats):
 			#player.ranged_weapon.damage += stats
 		upgrades.PLAYER_HEALTH:
 			player.health.max_health += stats
+		_:
+			pass
 			
 func pause_game():
 	ui_active.emit()

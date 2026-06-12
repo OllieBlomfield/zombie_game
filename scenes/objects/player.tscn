@@ -15,6 +15,7 @@ size = Vector2(7.9, 7.9)
 radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("health", "hurtbox") groups=["player"]]
+z_index = 5
 collision_mask = 4
 script = ExtResource("1_a8lix")
 health = NodePath("Health")
@@ -49,7 +50,7 @@ debug_color = Color(0.8975599, 0.2660589, 0.44467953, 0.41960785)
 
 [node name="Combat" type="Node" parent="." unique_id=1924109106 node_paths=PackedStringArray("current_weapon")]
 script = ExtResource("5_ksjmp")
-current_weapon = NodePath("../MeleeWeapon")
+current_weapon = NodePath("../RangedWeapon")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="MeleeWeapon" parent="." unique_id=1078517139 instance=ExtResource("6_2rlf8")]
