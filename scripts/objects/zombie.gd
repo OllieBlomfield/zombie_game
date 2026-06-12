@@ -166,6 +166,7 @@ func _on_animation_finished() -> void:
 		corpse.global_position = global_position
 		corpse.corpse_texture = corpse_texture
 		get_parent().add_child(corpse)
+		HitStopManager.hit_stop(0.05) #doesn't really do much
 		queue_free()
 
 func _on_zone_detector_area_entered(area: Area2D) -> void:
@@ -187,4 +188,3 @@ func set_speed(zombie_type: String):
 		speed = randi_range(15,30)
 	elif zombie_type == "TankZombie":
 		speed = randi_range(10,20)
-	

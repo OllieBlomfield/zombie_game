@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://cqbepbie0df8x"
 ScoreManager="*uid://bn0wgdku7xsy7"
+HitStopManager="*uid://d0f6j7sd87hbr"
 
 [display]
 
