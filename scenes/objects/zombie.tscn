@@ -101,7 +101,7 @@ immortality_time = 0.01
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1811941341]
-scale = Vector2(0.7570505, 0.7570505)
+scale = Vector2(0.7, 0.7)
 collision_layer = 0
 script = ExtResource("4_cutmx")
 damage = 1
@@ -146,4 +146,8 @@ material = SubResource("ShaderMaterial_cutmx")
 sprite_frames = SubResource("SpriteFrames_2eyec")
 animation = &"death"
 
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=146307673]
+one_shot = true
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]

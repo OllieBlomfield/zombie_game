@@ -21,6 +21,7 @@ extends GameCharacter
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
+@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 
 var _flashing: bool = false
 
@@ -31,6 +32,8 @@ var near_player: bool = false
 
 enum States { CHASING, ATTACKING, DEAD}
 var state: States = States.CHASING
+
+var can_attack = true
 
 func _ready() -> void:
 	speed = randi_range(50,70)
@@ -100,7 +103,6 @@ func attack() -> void:
 		0,
 		friction * get_physics_process_delta_time()
 	)
-	
 func _handle_animation() -> void:
 	var facing_direction: float = sign(player.global_position.x - global_position.x)
 	animated_sprite_2d.flip_h = (facing_direction < 0)
@@ -131,16 +133,26 @@ func _handle_flash():
 		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",0.0)
 
 func _attack_hit(hurtbox: HurtBox):
-	var context: HitContext = HitContext.new()
-	context.damage = damage
-	context.direction = (hurtbox.global_position - global_position).normalized()
-	context.hit_point = global_position
-	context.knockback = knockback
-	context.extra_y_knockback = extra_knockback_y
-	hurtbox.handle_hit(context)
-
+	if can_attack:
+		var context: HitContext = HitContext.new()
+		context.damage = damage
+		context.direction = (hurtbox.global_position - global_position).normalized()
+		context.hit_point = global_position
+		context.knockback = knockback
+		context.extra_y_knockback = extra_knockback_y
+		hurtbox.handle_hit(context)
+		attack_cooldown()
+	
+func attack_cooldown():
+	can_attack = false
+	await get_tree().create_timer(1.0).timeout
+	can_attack = true
+	for area in hitbox.get_overlapping_areas():
+		print(area)
+		if area is HurtBox:
+			_attack_hit(area) 
+			
 func _on_animation_finished() -> void:
-	print("DONE")
 	if state == States.DEAD: #might be more satisfying to only do this when they land on the ground?
 		var corpse = ZOMBIE_CORPSE.instantiate() as ZombieCorpse
 		corpse.global_position = global_position
@@ -153,3 +165,7 @@ func _on_zone_detector_area_entered(area: Area2D) -> void:
 		jump(player.global_position.y)
 	elif area is DropNode and player.global_position.y > global_position.y + 3:
 		position.y += 5
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	print("HIT")
