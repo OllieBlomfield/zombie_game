@@ -38,11 +38,11 @@ icon_texture = ExtResource("3_ermv8")
 has_ammo = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1954218496]
-position = Vector2(9.536743e-07, -1)
+position = Vector2(5.000001, -0.5)
 sprite_frames = SubResource("SpriteFrames_7dvhj")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=783226747]
-position = Vector2(4, -1.5)
+position = Vector2(9, -1)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1985008729]
 wait_time = 0.75
