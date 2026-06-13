@@ -6,6 +6,9 @@ class_name DamageVignette
 
 var current_effect_time: float = 0
 
+func _ready() -> void:
+	visible = true
+
 func _process(delta: float) -> void:
 	current_effect_time = max(current_effect_time - delta, 0)
 	if current_effect_time > 0:
