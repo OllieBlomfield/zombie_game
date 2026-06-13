@@ -17,6 +17,8 @@ extends Weapon
 @export var max_ammo: int = 100
 @export var current_ammo: int = 50
 
+const BULLET_CASING: PackedScene = preload("uid://dlotmvlm7iylq")
+
 var deadzone: float = 0.2
 var roatation_speed: float = 5.0
 var target_angle: float
@@ -62,6 +64,10 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	bullet.velocity = dir * bullet_speed
 	
 	_handle_ammo()
+	
+	var bullet_casing = BULLET_CASING.instantiate()
+	bullet_casing.position = position
+	get_parent().add_child(bullet_casing)
 	
 	muzzle_flash.flash()
 	play_attack_anim.emit()
