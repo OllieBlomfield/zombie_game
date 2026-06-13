@@ -4,8 +4,6 @@ extends GameCharacter
 signal update_weapon_ui
 
 @export var camera: Camera2D
-
-@export var health: Health
 @export var hurtbox: HurtBox
 
 const DEFAULT_CAM_POSITION: Vector2 = Vector2(0,-17)
@@ -66,8 +64,6 @@ func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
 			
 	_handle_jump(delta)
-
-	#_handle_camera_change(delta)
 	
 	var direction := Input.get_axis("left", "right")
 	_handle_horizontal_velocity(delta,direction)
@@ -181,3 +177,9 @@ func _play_attack_anim(): #change name
 func _on_received_hit(context: HitContext):
 	apply_hit_effects(context)
 	ScoreManager.damage_taken += context.damage
+
+#func _on_immortal():
+	#pass
+	#
+#func _on_immortal_done():
+	
