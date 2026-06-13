@@ -9,7 +9,7 @@ signal received_hit(context: HitContext)
 const DAMAGE_LABEL: PackedScene = preload("uid://biobengcqimdd")
 	
 func handle_hit(context: HitContext) -> void:
-	print("I'VE BEEN HIT with " + str(context.damage) + " damage")
+	#print("I'VE BEEN HIT with " + str(context.damage) + " damage")
 	received_hit.emit(context) #can use for audio and effects/special effects
 
 func spawn_label(context: HitContext):

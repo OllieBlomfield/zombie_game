@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dmkq5jw7w02uv" path="res://scenes/objects/player.tscn" id="3_7xgas"]
 [ext_resource type="LabelSettings" uid="uid://dymstalnyf7or" path="res://UI/Label Settings/Wave_count_label.tres" id="3_gy5pc"]
 [ext_resource type="PackedScene" uid="uid://2kjm14phkjtq" path="res://scenes/UI/player_ui.tscn" id="4_1mg1y"]
+[ext_resource type="Shader" uid="uid://cs6nrkiugoya2" path="res://scenes/objects/player_camera.gdshader" id="7_nhw2q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ombib"]
+shader = ExtResource("7_nhw2q")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.5
+shader_parameter/outer_radius = 1.0
 
 [node name="World" type="Node2D" unique_id=2129332960]
 
@@ -51,6 +58,16 @@ offset_right = 20.0
 offset_bottom = 144.0
 grow_horizontal = 2
 label_settings = ExtResource("3_gy5pc")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1999709268]
+z_index = 200
+material = SubResource("ShaderMaterial_ombib")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.66711545, 0.11711673, 0.16508114, 1)
 
 [node name="WaveSpawner" parent="." unique_id=1270486080 groups=["spawner"] instance=ExtResource("2_w2p53")]
 wave_length = 5

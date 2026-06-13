@@ -17,8 +17,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var health_component: Health = player.health
-	var percentage: float = 100 * health_component.current_health / health_component.max_health
-	health_bar.set_health_bar(percentage)
+	#var percentage: float = 100 * health_component.current_health / health_component.max_health
+	health_bar.set_health_bar(health_component.current_health, health_component.max_health)
 
 func _set_weapon():
 	var current_weapon: Weapon = player.combat.get_current_weapon()
