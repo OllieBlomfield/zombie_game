@@ -8,16 +8,21 @@
 [ext_resource type="LabelSettings" uid="uid://dymstalnyf7or" path="res://UI/Label Settings/Wave_count_label.tres" id="3_gy5pc"]
 [ext_resource type="PackedScene" uid="uid://2kjm14phkjtq" path="res://scenes/UI/player_ui.tscn" id="4_1mg1y"]
 [ext_resource type="Shader" uid="uid://cs6nrkiugoya2" path="res://scenes/objects/player_camera.gdshader" id="7_nhw2q"]
+[ext_resource type="Script" uid="uid://w3cj1am3gywm" path="res://Scripts/UI/damage_vignette.gd" id="8_ombib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ombib"]
 shader = ExtResource("7_nhw2q")
-shader_parameter/alpha = 1.0
-shader_parameter/inner_radius = 0.5
+shader_parameter/inner_radius = 0.9
 shader_parameter/outer_radius = 1.0
+
+[sub_resource type="Curve" id="Curve_ombib"]
+_data = [Vector2(0.016666673, 0), 0.0, 0.0, 0, 0, Vector2(0.11666667, 0), 0.0, 0.0, 0, 0, Vector2(0.41000003, 0.11900818), 0.0, 0.0, 0, 0, Vector2(0.5133333, 0.12438011), 0.0, 0.0, 0, 0, Vector2(0.7, 0.12438011), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
 
 [node name="World" type="Node2D" unique_id=2129332960]
 
-[node name="Player" parent="." unique_id=1359689479 instance=ExtResource("3_7xgas")]
+[node name="Player" parent="." unique_id=1359689479 node_paths=PackedStringArray("damage_vignette") instance=ExtResource("3_7xgas")]
+damage_vignette = NodePath("../CanvasLayer/DamageVignette")
 
 [node name="Level1" parent="." unique_id=1871229206 instance=ExtResource("1_lfyvx")]
 
@@ -59,7 +64,7 @@ offset_bottom = 144.0
 grow_horizontal = 2
 label_settings = ExtResource("3_gy5pc")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1999709268]
+[node name="DamageVignette" type="ColorRect" parent="CanvasLayer" unique_id=1999709268]
 z_index = 200
 material = SubResource("ShaderMaterial_ombib")
 anchors_preset = 15
@@ -68,6 +73,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.66711545, 0.11711673, 0.16508114, 1)
+script = ExtResource("8_ombib")
+alpha_curve = SubResource("Curve_ombib")
+effect_time = 0.6
 
 [node name="WaveSpawner" parent="." unique_id=1270486080 groups=["spawner"] instance=ExtResource("2_w2p53")]
 wave_length = 5

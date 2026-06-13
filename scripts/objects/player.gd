@@ -49,6 +49,8 @@ var attacking: bool = false #could have as a seperate state to moving
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
 
+@export var damage_vignette: DamageVignette
+
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_received_hit)
@@ -78,6 +80,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("next_weapon"):
 		combat.next_weapon()
 		update_weapon_ui.emit()
+
+	if float(health.current_health)/float(health.max_health) < 0.2:
+		damage_vignette.show_vignette(1.2)
 	
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
@@ -175,11 +180,12 @@ func _play_attack_anim(): #change name
 		#animated_sprite_2d.position = Vector2(4,-4)
 
 func _on_received_hit(context: HitContext):
+	if not health.immortality: damage_vignette.show_vignette()
 	apply_hit_effects(context)
 	ScoreManager.damage_taken += context.damage
 
 #func _on_immortal():
 	#pass
 	#
-#func _on_immortal_done():
+
 	
