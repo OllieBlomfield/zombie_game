@@ -23,6 +23,8 @@ extends GameCharacter
 @onready var wall_detector: RayCast2D = $WallDetector
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 
+const BLOOD_SPLAT: PackedScene = preload("uid://drqvuapd75i0e")
+
 var _flashing: bool = false
 
 const ZOMBIE_CORPSE: PackedScene = preload("uid://cu7c7xb3s47re")
@@ -166,7 +168,12 @@ func _on_animation_finished() -> void:
 		corpse.global_position = global_position
 		corpse.corpse_texture = corpse_texture
 		get_parent().add_child(corpse)
-		HitStopManager.hit_stop(0.05) #doesn't really do much
+		#HitStopManager.hit_stop(0.05) #doesn't really do much
+		
+		#var blood_splat: Node2D = BLOOD_SPLAT.instantiate()
+		#blood_splat.global_position = global_position
+		#get_parent().add_child(blood_splat)
+		
 		queue_free()
 
 func _on_zone_detector_area_entered(area: Area2D) -> void:

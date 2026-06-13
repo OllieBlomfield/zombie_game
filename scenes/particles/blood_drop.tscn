@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://m6vv16ke0ok4"]
+
+[ext_resource type="Script" uid="uid://c3jwus2pxjdgk" path="res://scenes/particles/blood_drop.gd" id="1_i8jq4"]
+
+[node name="BloodDrop" type="CPUParticles2D" unique_id=88837418]
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.53
+direction = Vector2(0, -1)
+gravity = Vector2(0, 200)
+initial_velocity_min = 5.5
+initial_velocity_max = 69.41
+color = Color(0.6449697, 0, 0.030435337, 1)
+script = ExtResource("1_i8jq4")
