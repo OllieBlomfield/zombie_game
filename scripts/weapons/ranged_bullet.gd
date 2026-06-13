@@ -30,10 +30,11 @@ func _on_area_entered(area: Area2D) -> void:
 	context.hit_point = global_position
 	context.knockback = knockback
 	context.criticial_hit = (randf() < crit_chance)
-	var blood_drop: CPUParticles2D = BLOOD_DROP.instantiate()
-	blood_drop.global_position = global_position
-	blood_drop.emitting = true
-	get_parent().add_child(blood_drop)
+	context.effect = BLOOD_DROP
+	#var blood_drop: CPUParticles2D = BLOOD_DROP.instantiate()
+	#blood_drop.global_position = global_position
+	#blood_drop.emitting = true
+	#get_parent().add_child(blood_drop)
 	hurtbox.handle_hit(context)
 	
 	if pierce_count >= pierce:

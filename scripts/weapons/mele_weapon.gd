@@ -9,6 +9,7 @@ extends Weapon
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
 
+const BLOOD_DROP_BIG = preload("uid://ccty5qickix53")
 
 @export var user_knockback: float = 0
 
@@ -55,6 +56,7 @@ func _attack_hit(hurtbox: HurtBox):
 	context.hit_point = global_position
 	context.knockback = knockback
 	context.extra_y_knockback = extra_knockback_y
+	context.effect = BLOOD_DROP_BIG
 	hurtbox.handle_hit(context)
 	
 func _on_timeout():

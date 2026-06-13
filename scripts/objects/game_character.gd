@@ -6,6 +6,12 @@ const DAMAGE_LABEL: PackedScene = preload("uid://biobengcqimdd")
 func apply_hit_effects(context: HitContext):
 	#print("APPLYING STUFF SIR")
 	add_knockback(context.direction, context.knockback, context.extra_y_knockback)
+	if context.effect:
+		var effect = context.effect.instantiate()
+		effect.global_position = global_position
+		effect.emitting = true
+		get_parent().add_child(effect)
+		
 	spawn_label(context)
 	
 	

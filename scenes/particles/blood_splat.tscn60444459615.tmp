@@ -3,5 +3,4 @@
 [ext_resource type="Script" uid="uid://bl67uqruclofk" path="res://Scripts/particles/blood_splat.gd" id="1_uhktq"]
 
 [node name="BloodSplat" type="Node2D" unique_id=13637790]
-z_index = -1
 script = ExtResource("1_uhktq")

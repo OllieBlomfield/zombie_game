@@ -170,9 +170,9 @@ func _on_animation_finished() -> void:
 		get_parent().add_child(corpse)
 		#HitStopManager.hit_stop(0.05) #doesn't really do much
 		
-		#var blood_splat: Node2D = BLOOD_SPLAT.instantiate()
-		#blood_splat.global_position = global_position
-		#get_parent().add_child(blood_splat)
+		var blood_splat: Node2D = BLOOD_SPLAT.instantiate()
+		blood_splat.global_position = global_position
+		get_parent().add_child(blood_splat)
 		
 		queue_free()
 

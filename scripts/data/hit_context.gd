@@ -8,3 +8,4 @@ var knockback: float = 0
 var extra_y_knockback: float = 0
 var direction: Vector2 = Vector2.ZERO
 var criticial_hit: bool = false
+var effect: PackedScene
