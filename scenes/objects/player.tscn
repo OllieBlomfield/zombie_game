@@ -21,6 +21,7 @@ collision_mask = 20
 script = ExtResource("1_a8lix")
 health = NodePath("Health")
 hurtbox = NodePath("HurtBox")
+display_damage_labels = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]
 sprite_frames = ExtResource("2_2147m")

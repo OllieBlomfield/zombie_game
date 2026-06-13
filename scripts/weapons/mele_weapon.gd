@@ -5,6 +5,7 @@ extends Weapon
 @export var knockback: float = 10
 @export var extra_knockback_y: float = 100
 @export var hit_box: HitBox
+@export var crit_chance: float = 0.3
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
 
@@ -56,6 +57,7 @@ func _attack_hit(hurtbox: HurtBox):
 	context.hit_point = global_position
 	context.knockback = knockback
 	context.extra_y_knockback = extra_knockback_y
+	context.criticial_hit = (randf() < crit_chance)
 	context.effect = BLOOD_DROP_BIG
 	hurtbox.handle_hit(context)
 	

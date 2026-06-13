@@ -3,6 +3,8 @@ class_name GameCharacter
 
 const DAMAGE_LABEL: PackedScene = preload("uid://biobengcqimdd")
 
+@export var display_damage_labels: bool = true
+
 func apply_hit_effects(context: HitContext):
 	#print("APPLYING STUFF SIR")
 	add_knockback(context.direction, context.knockback, context.extra_y_knockback)
@@ -11,8 +13,9 @@ func apply_hit_effects(context: HitContext):
 		effect.global_position = global_position
 		effect.emitting = true
 		get_parent().add_child(effect)
-		
-	spawn_label(context)
+	
+	if display_damage_labels:
+		spawn_label(context)
 	
 	
 func add_knockback(direction: Vector2, knockback: float, extra_y_knockback: float):
