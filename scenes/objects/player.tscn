@@ -24,9 +24,7 @@ hurtbox = NodePath("HurtBox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]
 sprite_frames = ExtResource("2_2147m")
-animation = &"mele_attack"
-frame = 5
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807991088]
 shape = SubResource("RectangleShape2D_h5uus")
@@ -54,7 +52,7 @@ player = NodePath("..")
 weapon_list = [NodePath("../Weapons/MeleWeapon"), NodePath("../Weapons/RangedWeapon")]
 right_weapon_position = NodePath("../Weapons/RightWeaponPos")
 left_weapon_position = NodePath("../Weapons/LeftWeaponPos")
-camera = NodePath("../Camera2D")
+camera = NodePath("../PlayerCamera")
 metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 
 [node name="Weapons" type="Node2D" parent="." unique_id=12420141]
@@ -75,7 +73,7 @@ position = Vector2(1, 0)
 [node name="LeftWeaponPos" type="Marker2D" parent="Weapons" unique_id=517322158]
 position = Vector2(-2, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1163764167]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1163764167]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 script = ExtResource("8_0ay4w")

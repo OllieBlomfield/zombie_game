@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="3_m7uc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixv1l"]
-size = Vector2(14, 7)
+size = Vector2(16, 10)
 
 [node name="MeleWeapon" type="Node2D" unique_id=1078517139 node_paths=PackedStringArray("hit_box")]
 script = ExtResource("1_ixv1l")
@@ -14,11 +14,12 @@ hit_box = NodePath("HitBoxComponent")
 icon_texture = ExtResource("2_m7uc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102882708]
-position = Vector2(3, 0)
+position = Vector2(3, -4)
 sprite_frames = ExtResource("2_wlobd")
-animation = &"attack"
+animation = &"idle"
 
 [node name="HitBoxComponent" type="Area2D" parent="." unique_id=1075786225]
+position = Vector2(3, -4)
 collision_mask = 2
 script = ExtResource("3_m7uc0")
 damage = 1
@@ -26,10 +27,8 @@ hitbox_name = "Bat"
 metadata/_custom_type_script = "uid://clpibth8iopnl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" unique_id=72647079]
-position = Vector2(0, -1.5)
+position = Vector2(7, 2)
 shape = SubResource("RectangleShape2D_ixv1l")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=138201665]
 one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1143095268]

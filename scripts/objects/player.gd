@@ -168,12 +168,15 @@ func set_gravity(type: GravityType):
 
 func _attack_finished():
 	attacking = false
+	#animated_sprite_2d.position = Vector2.ZERO
 
 func _play_attack_anim(): #change name
 	var attack_context: AttackContext = combat.get_attack_context()
 	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 	attacking = true
 	animated_sprite_2d.play(combat.get_current_weapon().player_anim)
+	#if combat.get_current_weapon().player_anim == "mele_attack":
+		#animated_sprite_2d.position = Vector2(4,-4)
 
 func _on_received_hit(context: HitContext):
 	apply_hit_effects(context)

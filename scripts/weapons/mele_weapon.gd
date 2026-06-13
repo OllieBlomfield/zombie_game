@@ -5,7 +5,6 @@ extends Weapon
 @export var knockback: float = 10
 @export var extra_knockback_y: float = 100
 @export var hit_box: HitBox
-@export var flip_h: bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
 
@@ -24,7 +23,8 @@ func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_attack_finished)
 	
 func _process(delta: float) -> void:
-	animated_sprite_2d.flip_h = flip_h #ask about this approach
+	pass
+	#animated_sprite_2d.flip_h = flip_h #ask about this approach
 	#for area in hit_box.get_overlapping_areas():
 		#if area is HurtBox: #add something to check correct layers
 

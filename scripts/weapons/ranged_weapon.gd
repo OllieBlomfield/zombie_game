@@ -6,7 +6,6 @@ extends Weapon
 @export var bullet_scene: PackedScene
 @export var fire_point: Marker2D
 @export var bullet_speed: float = 300
-@export var flip_h: bool = false
 @export var cooldown_time: float = 0.05
 @export var spray: float = 1
 
