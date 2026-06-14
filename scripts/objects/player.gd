@@ -54,8 +54,10 @@ var attacking: bool = false #could have as a seperate state to moving
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_received_hit)
+	
 	combat.play_attack_anim.connect(_play_attack_anim)
 	combat.finished_attack.connect(_attack_finished)
+	
 	if player_spawn_point:
 		global_position = player_spawn_point.global_position
 	GameManager.player = self
@@ -76,6 +78,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
 		update_weapon_ui.emit()
 		combat.attack(facing_direction)
+		
+		var attack_context: AttackContext = combat.get_attack_context() #very hacky approach needs to be moved later
+		print(attack_context.knockback)
+		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 	
 	if Input.is_action_just_pressed("next_weapon"):
 		combat.next_weapon()
@@ -172,10 +178,9 @@ func _attack_finished():
 	#animated_sprite_2d.position = Vector2.ZERO
 
 func _play_attack_anim(): #change name
-	var attack_context: AttackContext = combat.get_attack_context()
-	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 	attacking = true
 	animated_sprite_2d.play(combat.get_current_weapon().player_anim)
+	_apply_attack_context(combat.get_attack_context())
 	#if combat.get_current_weapon().player_anim == "mele_attack":
 		#animated_sprite_2d.position = Vector2(4,-4)
 
@@ -184,8 +189,10 @@ func _on_received_hit(context: HitContext):
 	apply_hit_effects(context)
 	ScoreManager.damage_taken += context.damage
 
-#func _on_immortal():
-	#pass
-	#
+func _apply_attack_context(attack_context: AttackContext):
+	#var attack_context: AttackContext = combat.get_attack_context() #very hacky approach needs to be moved later
+	#print(attack_context.knockback)
+	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
+
 
 	
