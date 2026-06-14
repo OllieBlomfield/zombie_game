@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://bskwqmmwtsupu"]
 
-[ext_resource type="Script" uid="uid://bjxyymtah340t" path="res://Scripts/objects/wave_spawner.gd" id="1_minw8"]
+[ext_resource type="Script" uid="uid://bjxyymtah340t" path="res://scripts/objects/wave_spawner.gd" id="1_minw8"]
 [ext_resource type="PackedScene" uid="uid://fthck4igf32o" path="res://scenes/objects/zombie.tscn" id="2_horpt"]
 [ext_resource type="PackedScene" uid="uid://t62muxfho6v5" path="res://scenes/objects/tank_zombie.tscn" id="3_tbv76"]
 
 [node name="WaveSpawner" type="Node2D" unique_id=1270486080]
 script = ExtResource("1_minw8")
-dude = ExtResource("2_horpt")
 enemy_list = Array[PackedScene]([ExtResource("2_horpt"), ExtResource("3_tbv76")])

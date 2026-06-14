@@ -7,12 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://beqcl8127s5ru" path="res://graphics/Props/Car 6 [16x8].png" id="4_t3yd4"]
 [ext_resource type="Texture2D" uid="uid://y1nmapalf78g" path="res://graphics/Props/UFO flying 1 [24x24].png" id="5_b7lmq"]
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
-[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://Scripts/UI/exit_button.gd" id="5_qhxmu"]
+[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
 [ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="6_pbuxf"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
-[ext_resource type="PackedScene" uid="uid://dcbblyvxmku4p" path="res://scenes/levels/level_1.tscn" id="11_pbuxf"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
 process_mode = 2
@@ -28,6 +27,19 @@ layout_mode = 0
 offset_right = 1156.0
 offset_bottom = 656.0
 color = Color(0.37800002, 0.63, 0.6258, 1)
+
+[node name="ExitButton" type="Button" parent="." unique_id=607113533]
+process_mode = 3
+layout_mode = 0
+offset_left = 933.0
+offset_top = 523.0
+offset_right = 1144.0
+offset_bottom = 639.0
+theme_override_styles/normal = ExtResource("5_euo2n")
+theme_override_styles/pressed = ExtResource("6_jjwfl")
+theme_override_styles/hover = ExtResource("4_jjwfl")
+text = "Exit"
+script = ExtResource("5_qhxmu")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2138225643]
 layout_mode = 1
@@ -82,20 +94,6 @@ description = "+1 Player Health"
 upgrade = 4
 upgrade_amount = 1
 upgrade_cost = 30
-
-[node name="ExitButton" type="Button" parent="." unique_id=607113533]
-process_mode = 3
-layout_mode = 0
-offset_left = 933.0
-offset_top = 523.0
-offset_right = 1144.0
-offset_bottom = 639.0
-theme_override_styles/normal = ExtResource("5_euo2n")
-theme_override_styles/pressed = ExtResource("6_jjwfl")
-theme_override_styles/hover = ExtResource("4_jjwfl")
-text = "Exit"
-script = ExtResource("5_qhxmu")
-level = ExtResource("11_pbuxf")
 
 [node name="MoneyLabel" type="Label" parent="." unique_id=1952923082]
 process_mode = 2
