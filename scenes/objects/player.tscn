@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmkq5jw7w02uv"]
 
-[ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://Scripts/objects/player.gd" id="1_a8lix"]
+[ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://scripts/objects/player.gd" id="1_a8lix"]
 [ext_resource type="SpriteFrames" uid="uid://lormeva0l4n8" path="res://graphics/player/player_sprite_frames.tres" id="2_2147m"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="4_ksjmp"]
@@ -15,10 +15,11 @@ size = Vector2(7.9, 7.9)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("health", "hurtbox") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("camera", "health", "hurtbox") groups=["player"]]
 z_index = 5
 collision_mask = 20
 script = ExtResource("1_a8lix")
+camera = NodePath("Camera2D")
 health = NodePath("Health")
 hurtbox = NodePath("HurtBox")
 
@@ -68,6 +69,13 @@ has_ammo = true
 [node name="MeleWeapon" parent="Weapons" unique_id=1078517139 instance=ExtResource("7_0ay4w")]
 visible = false
 position = Vector2(1, 0)
+damage = null
+knockback = null
+extra_knockback_y = null
+flip_h = null
+user_knockback = null
+has_ammo = null
+player_anim = null
 
 [node name="RightWeaponPos" type="Marker2D" parent="Weapons" unique_id=517200295]
 position = Vector2(1, 0)

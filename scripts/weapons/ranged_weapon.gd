@@ -65,8 +65,8 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	_handle_ammo()
 	
 	muzzle_flash.flash()
-	play_attack_anim.emit()
-	camera_shake.emit(1,0.1)
+	#play_attack_anim.emit()
+	#camera_shake.emit(1,0.1)
 	
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)
@@ -81,7 +81,7 @@ func get_attack_context() -> AttackContext:
 
 func _on_timeout():
 	is_on_cooldown = false
-	finished_attack.emit()
+	#finished_attack.emit()
 
 func has_ammunition() -> bool:
 	return current_ammo > 0

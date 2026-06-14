@@ -20,6 +20,7 @@ func _ready() -> void:
 	hit_box.body_entered.connect(_attack_hit)
 	hit_box.hurtbox_hit.connect(_attack_hit)
 	cooldown_timer.timeout.connect(_on_timeout)
+	
 	hit_box.disable()
 	animated_sprite_2d.animation_finished.connect(_attack_finished)
 	
