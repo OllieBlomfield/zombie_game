@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://6ibxjm03shfd" path="res://scenes/objects/player_spawn_point.tscn" id="5_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://berr8kutkdow4" path="res://scenes/objects/key_item.tscn" id="6_s8va5"]
 [ext_resource type="PackedScene" uid="uid://dk7ovbqn0vufj" path="res://scenes/objects/jump_node.tscn" id="7_dga24"]
-[ext_resource type="PackedScene" uid="uid://t62muxfho6v5" path="res://scenes/objects/tank_zombie.tscn" id="7_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://dbucj1jn3la5f" path="res://scenes/objects/drop_node.tscn" id="7_s8va5"]
-[ext_resource type="PackedScene" uid="uid://cbvxartqh3r2f" path="res://scenes/UI/pointer_arrow.tscn" id="8_excbq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6iamk"]
 texture = ExtResource("1_6iamk")
@@ -12595,9 +12593,3 @@ scale = Vector2(0.4093408, 0.4093408)
 
 [node name="KeyItem" parent="." unique_id=372765257 instance=ExtResource("6_s8va5")]
 position = Vector2(982, -82)
-
-[node name="TankZombie" parent="." unique_id=1844717594 instance=ExtResource("7_qxy0u")]
-position = Vector2(-97, -41)
-
-[node name="PointerArrow" parent="TankZombie" unique_id=737105976 instance=ExtResource("8_excbq")]
-position = Vector2(0, -19)

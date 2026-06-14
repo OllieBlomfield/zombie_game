@@ -85,5 +85,4 @@ position = Vector2(-2, 0)
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1163764167]
 zoom = Vector2(4, 4)
-position_smoothing_enabled = true
 script = ExtResource("8_0ay4w")

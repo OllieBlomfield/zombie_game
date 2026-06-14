@@ -30,4 +30,3 @@ func _set_weapon():
 	else:
 		ammo_background.visible = false
 		ammo_label.visible = false
-	
