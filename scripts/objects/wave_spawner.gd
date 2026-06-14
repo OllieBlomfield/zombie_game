@@ -6,7 +6,7 @@ signal escape_unlocked
 signal zombies_dead
 @export var enemy_list: Array[PackedScene]
 
-var enemy_cost: Dictionary = {"zombie": 1, "tank": 3}
+var enemy_cost: Array = [1,3]
 var spawn_queue: Array[PackedScene] = []
 
 var current_wave: int = 1
@@ -32,12 +32,13 @@ func generate_wave():
 	spawn_queue.clear()
 	points = current_wave * 10
 	while points > 0:
-		var enemy = enemy_list.pick_random()
-		var enemy_cost_value = 1
-		
+		var enemy_index = randi_range(0,len(enemy_list) - 1)
+		var enemy = enemy_list[enemy_index]
+		var enemy_cost_value = enemy_cost[enemy_index]
 		if points - enemy_cost_value >= 0:
 			spawn_queue.append(enemy)
 			points -= enemy_cost_value
+			print(points)
 	spawn_wave()
 
 func spawn_wave():
