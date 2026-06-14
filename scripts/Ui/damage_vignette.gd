@@ -12,7 +12,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	current_effect_time = max(current_effect_time - delta, 0)
 	if current_effect_time > 0:
-		print(alpha_curve.sample(current_effect_time/effect_time))
+		pass
+		#print(alpha_curve.sample(current_effect_time/effect_time))
 		
 	var alpha_value: float = alpha_curve.sample(current_effect_time/effect_time)
 	
