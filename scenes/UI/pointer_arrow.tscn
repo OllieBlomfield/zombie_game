@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cbvxartqh3r2f"]
+
+[ext_resource type="Script" uid="uid://chtm4878y3h0l" path="res://Scripts/UI/pointer_arrow.gd" id="1_3bif3"]
+[ext_resource type="Texture2D" uid="uid://c24vomvxs4b55" path="res://graphics/UI/PointerArrow.png" id="1_xbfga"]
+
+[node name="PointerArrow" type="Sprite2D" unique_id=705525748]
+texture = ExtResource("1_xbfga")
+script = ExtResource("1_3bif3")
+screen_margin = 60.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1936559204]
+visible = false
+rotation = 1.5707964
+texture = ExtResource("1_xbfga")
