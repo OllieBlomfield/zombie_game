@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://37k4b6n1to7r" path="res://graphics/weapons/Icons/ak-47.png" id="2_q3y81"]
 [ext_resource type="Texture2D" uid="uid://c02wu2ojyefkk" path="res://graphics/UI/WeaponUIAmmoBackground.png" id="3_hxbk0"]
 [ext_resource type="LabelSettings" uid="uid://dqvi3cjqr7qs7" path="res://UI/Label Settings/ammo_ui_label_settings.tres" id="4_8xbeg"]
+[ext_resource type="PackedScene" uid="uid://outw5iwvdc2y" path="res://scenes/UI/health_bar.tscn" id="6_rns76"]
 
 [node name="PlayerUI" type="Control" unique_id=752472071]
 layout_mode = 3
@@ -53,3 +54,10 @@ offset_right = 24.0
 offset_bottom = -15.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_q3y81")
+
+[node name="HealthBar" parent="." unique_id=2090822668 instance=ExtResource("6_rns76")]
+layout_mode = 1
+offset_left = 47.666668
+offset_top = -15.666667
+offset_right = 47.666668
+offset_bottom = -15.666667

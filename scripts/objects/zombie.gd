@@ -3,7 +3,6 @@ extends GameCharacter
 
 @export var player: CharacterBody2D
 
-@export var health: Health
 @export var hitbox: HitBox
 @export var hurtbox: HurtBox
 

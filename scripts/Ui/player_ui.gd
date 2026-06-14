@@ -4,6 +4,7 @@ class_name PlayerUI
 @onready var current_weapon_icon: TextureRect = $CurrentWeapon
 @onready var ammo_background: TextureRect = $AmmoBackground
 @onready var ammo_label: Label = $AmmoText
+@onready var health_bar: HealthBar = $HealthBar
 
 @export var player: Player
 
@@ -13,7 +14,12 @@ func _ready() -> void:
 	
 	player.update_weapon_ui.connect(_set_weapon)
 	_set_weapon()
-	
+
+func _process(delta: float) -> void:
+	var health_component: Health = player.health
+	#var percentage: float = 100 * health_component.current_health / health_component.max_health
+	health_bar.set_health_bar(health_component.current_health, health_component.max_health)
+
 func _set_weapon():
 	var current_weapon: Weapon = player.combat.get_current_weapon()
 	current_weapon_icon.texture = current_weapon.get_icon()

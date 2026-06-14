@@ -5,7 +5,7 @@ extends Weapon
 @export var knockback: float = 10
 @export var extra_knockback_y: float = 100
 @export var hit_box: HitBox
-@export var flip_h: bool = false
+@export var crit_chance: float = 0.3
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
 
@@ -25,7 +25,8 @@ func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_attack_finished)
 	
 func _process(delta: float) -> void:
-	animated_sprite_2d.flip_h = flip_h #ask about this approach
+	pass
+	#animated_sprite_2d.flip_h = flip_h #ask about this approach
 	#for area in hit_box.get_overlapping_areas():
 		#if area is HurtBox: #add something to check correct layers
 
@@ -50,13 +51,14 @@ func _attack_finished() -> void:
 	
 func _attack_hit(hurtbox: HurtBox):
 	print("ATTACK HIT")
-	camera_shake.emit(1,0.2)
+	camera_shake.emit(2,0.2)
 	var context: HitContext = HitContext.new()
 	context.damage = damage
 	context.direction = (hurtbox.global_position - global_position).normalized()
 	context.hit_point = global_position
 	context.knockback = knockback
 	context.extra_y_knockback = extra_knockback_y
+	context.criticial_hit = (randf() < crit_chance)
 	context.effect = BLOOD_DROP_BIG
 	hurtbox.handle_hit(context)
 	

@@ -102,6 +102,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"mele_attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x61g5")
 }, {
 "duration": 1.0,
@@ -120,7 +143,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_873nq")
 }],
 "loop": false,
-"name": &"mele_attack",
+"name": &"mele_attack_temp",
 "speed": 20.0
 }, {
 "frames": [{

@@ -6,7 +6,6 @@ extends Weapon
 @export var bullet_scene: PackedScene
 @export var fire_point: Marker2D
 @export var bullet_speed: float = 300
-@export var flip_h: bool = false
 @export var cooldown_time: float = 0.05
 @export var spray: float = 1
 
@@ -17,6 +16,8 @@ extends Weapon
 
 @export var max_ammo: int = 100
 @export var current_ammo: int = 50
+
+const BULLET_CASING: PackedScene = preload("uid://dlotmvlm7iylq")
 
 var deadzone: float = 0.2
 var roatation_speed: float = 5.0
@@ -63,6 +64,10 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	bullet.velocity = dir * bullet_speed
 	
 	_handle_ammo()
+	
+	var bullet_casing = BULLET_CASING.instantiate()
+	bullet_casing.position = position
+	get_parent().add_child(bullet_casing)
 	
 	muzzle_flash.flash()
 	#play_attack_anim.emit()

@@ -4,8 +4,6 @@ extends GameCharacter
 signal update_weapon_ui
 
 @export var camera: Camera2D
-
-@export var health: Health
 @export var hurtbox: HurtBox
 
 const DEFAULT_CAM_POSITION: Vector2 = Vector2(0,-17)
@@ -51,6 +49,8 @@ var attacking: bool = false #could have as a seperate state to moving
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
 
+@export var damage_vignette: DamageVignette
+
 func _ready() -> void:
 	#weapon.attack_finished.connect(_attack_finished)
 	hurtbox.received_hit.connect(_on_received_hit)
@@ -66,8 +66,6 @@ func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
 			
 	_handle_jump(delta)
-
-	#_handle_camera_change(delta)
 	
 	var direction := Input.get_axis("left", "right")
 	_handle_horizontal_velocity(delta,direction)
@@ -82,6 +80,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("next_weapon"):
 		combat.next_weapon()
 		update_weapon_ui.emit()
+
+	if float(health.current_health)/float(health.max_health) < 0.2:
+		damage_vignette.show_vignette(1.2)
 	
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
@@ -168,13 +169,23 @@ func set_gravity(type: GravityType):
 
 func _attack_finished():
 	attacking = false
+	#animated_sprite_2d.position = Vector2.ZERO
 
 func _play_attack_anim(): #change name
 	var attack_context: AttackContext = combat.get_attack_context()
 	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 	attacking = true
 	animated_sprite_2d.play(combat.get_current_weapon().player_anim)
+	#if combat.get_current_weapon().player_anim == "mele_attack":
+		#animated_sprite_2d.position = Vector2(4,-4)
 
 func _on_received_hit(context: HitContext):
+	if not health.immortality: damage_vignette.show_vignette()
 	apply_hit_effects(context)
 	ScoreManager.damage_taken += context.damage
+
+#func _on_immortal():
+	#pass
+	#
+
+	
