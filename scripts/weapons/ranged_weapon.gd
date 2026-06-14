@@ -77,7 +77,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	cooldown_timer.start(cooldown_time)
 	
 func get_attack_context() -> AttackContext:
-	if is_on_cooldown:
+	if is_on_cooldown or not has_ammunition():
 		return AttackContext.new()
 	else:
 		var attack_context: AttackContext = AttackContext.new()

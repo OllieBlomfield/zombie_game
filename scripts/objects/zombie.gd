@@ -20,7 +20,7 @@ extends GameCharacter
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
-@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
+#@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 
 const BLOOD_SPLAT: PackedScene = preload("uid://drqvuapd75i0e")
 

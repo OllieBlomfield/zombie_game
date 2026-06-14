@@ -12,3 +12,10 @@ TODO OLLIE:
 TODO JAKE:
 	
 	
+
+TODO MONDAY:
+	- Dedicated animation system
+	- Positive and negative effects
+	- particles for movement
+	- particles for mele weapon
+	- better level (draw it up together)
