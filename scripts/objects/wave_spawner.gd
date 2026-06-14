@@ -66,7 +66,6 @@ func reset_wave():
 
 func check_zombie_status():
 	var group_nodes = get_tree().get_nodes_in_group("enemy")
-	print(group_nodes)
 	if group_nodes.is_empty():
 		zombies_dead.emit()
 

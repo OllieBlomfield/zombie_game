@@ -12,7 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		shop.visible = true
 		escape_label.text = ""
 		wave_label.text = ""
-		GameManager.pause_game()
 		GameManager.player_active = false
+		GameManager.pause_game()
 	else:
 		print("Cant Leave Yet!")
