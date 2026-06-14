@@ -24,7 +24,7 @@ extends GameCharacter
 
 const BLOOD_SPLAT: PackedScene = preload("uid://drqvuapd75i0e")
 
-var _flashing: bool = false
+var _flash_time: float = 0.0
 
 const ZOMBIE_CORPSE: PackedScene = preload("uid://cu7c7xb3s47re")
 
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
 	
-	_handle_flash()
+	_handle_flash(delta)
 	
 	update_state()
 	_handle_animation()
@@ -125,7 +125,7 @@ func _handle_animation() -> void:
 			animated_sprite_2d.play("death")
 	
 func damaged_received(context: HitContext):
-	_flashing = true
+	_flash_time = 0.02
 	apply_hit_effects(context)
 	if health.current_health <= 0:
 		die()
@@ -134,12 +134,15 @@ func die() -> void:
 	if state != States.DEAD:
 		state = States.DEAD
 
-func _handle_flash():
-	if _flashing:
+func _handle_flash(delta: float):
+	if _flash_time > 0:
 		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",1.0)
-		_flashing = false
+		#await get_tree().create_timer(0.05).timeout
+		#_flashing = false
 	else:
 		animated_sprite_2d.set_instance_shader_parameter("flash_modifier",0.0)
+	
+	_flash_time -= delta
 
 func _attack_hit(hurtbox: HurtBox):
 	if can_attack:

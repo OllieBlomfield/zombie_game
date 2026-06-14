@@ -6846,11 +6846,10 @@ rendering_quadrant_size = 8
 [node name="PlayerSpawnPoint" parent="." unique_id=1309186216 instance=ExtResource("8_3nrxh")]
 position = Vector2(-73, 30)
 
-[node name="Player" parent="." unique_id=1359689479 node_paths=PackedStringArray("camera") instance=ExtResource("3_8q587")]
+[node name="Player" parent="." unique_id=1359689479 instance=ExtResource("3_8q587")]
 position = Vector2(130, 8)
-camera = NodePath("Camera2D")
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1602409032]
+[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=1602409032]
 position = Vector2(25, 23)
 zoom = Vector2(4, 4)
 limit_enabled = false
@@ -6858,36 +6857,24 @@ limit_enabled = false
 [node name="Zombie" parent="." unique_id=1721881803 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(95, 5)
 player = NodePath("../Player")
-speed = null
-jump_velocity = null
-gravity = null
 acceleration = 250.0
 friction = 10.0
 
 [node name="Zombie2" parent="." unique_id=958034914 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(96, 74)
 player = NodePath("../Player")
-speed = null
-jump_velocity = null
-gravity = null
 acceleration = 250.0
 friction = 10.0
 
 [node name="Zombie3" parent="." unique_id=1189026204 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(248, 16)
 player = NodePath("../Player")
-speed = null
-jump_velocity = null
-gravity = null
 acceleration = 250.0
 friction = 10.0
 
 [node name="Zombie4" parent="." unique_id=515619140 node_paths=PackedStringArray("player") instance=ExtResource("2_v2aq7")]
 position = Vector2(29, 3)
 player = NodePath("../Player")
-speed = null
-jump_velocity = null
-gravity = null
 acceleration = 250.0
 friction = 10.0
 

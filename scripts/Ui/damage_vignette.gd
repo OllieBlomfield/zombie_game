@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	
 	set_instance_shader_parameter("alpha",alpha_value)
 
-func show_vignette(new_effect_time: float = 0.4):
+func show_vignette(new_effect_time: float = 0.7):
 	effect_time = new_effect_time
 	if current_effect_time <= 0:
 		current_effect_time = effect_time
