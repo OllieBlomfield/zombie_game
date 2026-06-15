@@ -188,6 +188,7 @@ func _play_attack_anim(): #change name
 func _on_received_hit(context: HitContext):
 	if state == PlayerState.ALIVE:
 		if not health.immortality: damage_vignette.show_vignette()
+		Input.start_joy_vibration(0, .2, .4, .4)
 		apply_hit_effects(context)
 		ScoreManager.damage_taken += context.damage
 

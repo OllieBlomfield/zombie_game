@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmkq5jw7w02uv"]
 
-[ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://Scripts/objects/player.gd" id="1_a8lix"]
+[ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://scripts/objects/player.gd" id="1_a8lix"]
 [ext_resource type="SpriteFrames" uid="uid://lormeva0l4n8" path="res://graphics/player/player_sprite_frames.tres" id="2_2147m"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
 [ext_resource type="Script" uid="uid://benb4xqe15tbw" path="res://components/animation_component.gd" id="3_tuhu7"]

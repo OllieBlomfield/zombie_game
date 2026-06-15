@@ -29,7 +29,8 @@ func add_upgrade(upgrade, stats):
 		upgrades.PLAYER_HEALTH:
 			player.health.max_health += stats
 		upgrades.BULLETS:
-			player.ranged_weapon.current_ammo += stats
+			if !player.ranged_weapon.has_max_ammo():
+				player.ranged_weapon.current_ammo += stats
 		_:
 			pass
 			
