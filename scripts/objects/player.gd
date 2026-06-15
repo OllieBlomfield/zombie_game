@@ -46,6 +46,8 @@ var state: PlayerState = PlayerState.ALIVE
 @onready var ranged_weapon: RangedWeapon = $Weapons/RangedWeapon
 @onready var mele_weapon: MeleWeapon = $Weapons/MeleWeapon
 @onready var animation_component: AnimationComponent = $AnimationComponent
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
 
 #@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -129,13 +131,13 @@ func _handle_jump(delta: float):
 		jump_buffer = JUMP_BUFFER_TIME
 	
 	if jump_buffer > 0 and coyote_time > 0:
+		jump_sound.play()
 		jump_buffer = 0
 		velocity.y = JUMP_VELOCITY
 
 func _handle_horizontal_velocity(delta: float, direction):
 	if not turning and direction * velocity.x < -40: #can expand into checking until turning is done (should make game less slippery)
 		turning = true
-	
 	velocity.x *= FRICTION
 		
 	if turning:
@@ -189,6 +191,7 @@ func _play_attack_anim(): #change name
 func _on_received_hit(context: HitContext):
 	if state == PlayerState.ALIVE:
 		if not health.immortality: damage_vignette.show_vignette()
+		hit_sound.play()
 		Input.start_joy_vibration(0, .2, .4, .4)
 		apply_hit_effects(context)
 		ScoreManager.damage_taken += context.damage

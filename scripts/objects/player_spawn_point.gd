@@ -3,6 +3,7 @@ extends Area2D
 @onready var shop: Control = $"../../CanvasLayer/Shop"
 @onready var wave_label: Label = $"../../CanvasLayer/WaveLabel"
 @onready var escape_label: Label = $"../../CanvasLayer/EscapeLabel"
+@onready var select_sound: AudioStreamPlayer2D = $SelectSound
 
 var in_zone: bool = false
 var arrow_added: bool = false
@@ -20,6 +21,8 @@ func _process(delta: float) -> void:
 	if in_zone and GameManager.can_leave:
 		info_label.visible = true
 		if Input.is_action_just_pressed("interact"):
+			select_sound.play()
+			await get_tree().create_timer(.2).timeout
 			print("You Escaped!")
 			print(ScoreManager.get_score())
 			shop.visible = true

@@ -11,6 +11,8 @@ var down_pressed: bool = false
 const DUST_PARTICLE = preload("uid://br77vrl7a7wcv")
 @onready var dust_timer: Timer = $DustTimer
 @onready var dust_marker: Marker2D = $Dust_Marker
+@onready var run_sound: AudioStreamPlayer2D = $"../RunSound"
+@onready var player: Player = $".."
 
 var current_attack_anim: String = "mele_attack"
 
@@ -56,6 +58,11 @@ func _handle_default_anim():
 			animated_sprite_2d.play("turn")
 		elif abs(velocity.x) > 2:
 			animated_sprite_2d.play("run")
+			if player.is_on_floor():
+				if not run_sound.playing:
+					run_sound.play()
+			else:
+				run_sound.stop()
 			if dust_timer.is_stopped(): dust_timer.start(0.1 + 0.1*randf())
 			if animated_sprite_2d.frame == 1 or animated_sprite_2d.frame == 3:
 				#I know how scuffed this is but running out of time

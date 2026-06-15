@@ -11,6 +11,7 @@ extends Weapon
 
 @onready var muzzle_flash: PointLight2D = $MuzzleFlash
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var gun_sound: AudioStreamPlayer2D = $"../../GunSound"
 
 @export var user_knockback: float = 5
 @export var weapon_friction: float = 0.15
@@ -78,6 +79,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	muzzle_flash.flash()
 	play_attack_anim.emit() #more generic signal name (attack_started/successful)
 	camera_shake.emit(1,0.1)
+	gun_sound.play()
 	
 	is_on_cooldown = true
 	cooldown_timer.start(cooldown_time)

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="4_kpwv2"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="5_jkts3"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="6_b5fqp"]
+[ext_resource type="AudioStream" uid="uid://b2hmu50p12636" path="res://sounds/sounds/zombie.wav" id="8_aue2k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hky68"]
 radius = 9.24641
@@ -121,6 +122,11 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kpwv2"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("8_aue2k")
+
 [node name="TankZombie" type="CharacterBody2D" unique_id=1844717594 node_paths=PackedStringArray("hitbox", "hurtbox", "health") groups=["TankZombie", "enemy"]]
 collision_layer = 2
 collision_mask = 20
@@ -191,5 +197,10 @@ material = SubResource("ShaderMaterial_atslc")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_erqut")
 animation = &"move"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=90861869]
+stream = SubResource("AudioStreamRandomizer_kpwv2")
+volume_db = -5.0
+pitch_scale = 0.7
 
 [connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]

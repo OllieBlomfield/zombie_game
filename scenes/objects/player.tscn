@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmkq5jw7w02uv"]
 
-[ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://Scripts/objects/player.gd" id="1_a8lix"]
+[ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://scripts/objects/player.gd" id="1_a8lix"]
 [ext_resource type="SpriteFrames" uid="uid://lormeva0l4n8" path="res://graphics/player/player_sprite_frames.tres" id="2_2147m"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
 [ext_resource type="Script" uid="uid://benb4xqe15tbw" path="res://components/animation_component.gd" id="3_tuhu7"]
@@ -9,12 +9,36 @@
 [ext_resource type="PackedScene" uid="uid://l0r51cd21m7k" path="res://scenes/weapons/mele_weapon.tscn" id="7_0ay4w"]
 [ext_resource type="PackedScene" uid="uid://dlv05bwuk610j" path="res://scenes/weapons/ranged_weapon.tscn" id="7_2rlf8"]
 [ext_resource type="Script" uid="uid://dju8ggrlb3527" path="res://scenes/objects/player_camera.gd" id="8_0ay4w"]
+[ext_resource type="AudioStream" uid="uid://cpdk0x1c55wa6" path="res://sounds/sounds/Hit.wav" id="10_dunks"]
+[ext_resource type="AudioStream" uid="uid://dqdkrp5yvl453" path="res://sounds/sounds/Shoot.wav" id="11_2lybl"]
+[ext_resource type="AudioStream" uid="uid://d2f8412xlxmud" path="res://sounds/sounds/Bat.wav" id="12_2lybl"]
+[ext_resource type="AudioStream" uid="uid://4bdgkdf7fga5" path="res://sounds/sounds/walkingsound.wav" id="13_2lybl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
 size = Vector2(7.9, 7.9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54rde"]
 radius = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6uaar"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("10_dunks")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ae4o8"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("11_2lybl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2iaiu"]
+random_pitch = 1.2599211
+streams_count = 1
+stream_0/stream = ExtResource("12_2lybl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dunks"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("13_2lybl")
 
 [node name="Player" type="CharacterBody2D" unique_id=1359689479 node_paths=PackedStringArray("hurtbox", "health") groups=["player"]]
 z_index = 5
@@ -91,3 +115,22 @@ position = Vector2(-2, 0)
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1163764167]
 zoom = Vector2(4, 4)
 script = ExtResource("8_0ay4w")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=1340192937]
+stream = SubResource("AudioStreamRandomizer_6uaar")
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="." unique_id=860601892]
+stream = SubResource("AudioStreamRandomizer_ae4o8")
+volume_db = -5.0
+
+[node name="BatSound" type="AudioStreamPlayer2D" parent="." unique_id=405090164]
+stream = SubResource("AudioStreamRandomizer_2iaiu")
+volume_db = -10.0
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1871178022]
+stream = SubResource("AudioStreamRandomizer_dunks")
+volume_db = -5.0
+
+[node name="RunSound" type="AudioStreamPlayer2D" parent="." unique_id=588947556]
+stream = SubResource("AudioStreamRandomizer_dunks")
+volume_db = -5.0

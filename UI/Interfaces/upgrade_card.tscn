@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://dlcpko7esu2k3" path="res://scripts/Ui/upgrade_card.gd" id="1_m4k1d"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="2_fno1k"]
 [ext_resource type="StyleBox" uid="uid://da1ki24krbar7" path="res://UI/Styles/ButtonHovered.tres" id="3_7uhiw"]
+[ext_resource type="AudioStream" uid="uid://di5e4ojcued0b" path="res://sounds/sounds/select.wav" id="5_fno1k"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7uhiw"]
+random_pitch = 1.005793
+streams_count = 1
+stream_0/stream = ExtResource("5_fno1k")
 
 [node name="UpgradeCard" type="Button" unique_id=1616431121]
 process_mode = 3
@@ -56,5 +62,9 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 14
+
+[node name="SelectSound" type="AudioStreamPlayer2D" parent="." unique_id=151169821]
+stream = SubResource("AudioStreamRandomizer_7uhiw")
+volume_db = -5.0
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
