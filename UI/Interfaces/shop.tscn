@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://brfc8nam2jl1o"]
 
+[ext_resource type="Script" uid="uid://ohw7evp68eit" path="res://scripts/Ui/shop.gd" id="1_1ymua"]
 [ext_resource type="PackedScene" uid="uid://1w18kbjvihl6" path="res://UI/Interfaces/upgrade_card.tscn" id="1_hpwef"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="3_r8dvb"]
 [ext_resource type="Texture2D" uid="uid://dmjwdc30tvq6l" path="res://graphics/Props/Bird 1 [8x8].png" id="3_t3yd4"]
@@ -9,9 +10,9 @@
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
 [ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
-[ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="6_pbuxf"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
+[ext_resource type="Texture2D" uid="uid://dyv4oejxbvdo0" path="res://graphics/Props/Heart [8x8].png" id="11_1ymua"]
 [ext_resource type="Texture2D" uid="uid://b5u1odcv67iqu" path="res://graphics/Props/Life 2 [8x8].png" id="11_pbuxf"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1ymua")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=387489807]
 layout_mode = 0
@@ -39,6 +41,7 @@ offset_bottom = 639.0
 theme_override_styles/normal = ExtResource("5_euo2n")
 theme_override_styles/pressed = ExtResource("6_jjwfl")
 theme_override_styles/hover = ExtResource("4_jjwfl")
+theme_override_styles/focus = ExtResource("4_jjwfl")
 text = "Exit"
 script = ExtResource("5_qhxmu")
 
@@ -90,10 +93,10 @@ upgrade_cost = 40
 
 [node name="UpgradeCard5" parent="HBoxContainer" unique_id=743144707 instance=ExtResource("1_hpwef")]
 layout_mode = 2
-image = ExtResource("6_pbuxf")
-description = "+1 Player Health"
+image = ExtResource("11_1ymua")
+description = "+1 Health "
 upgrade = 4
-upgrade_amount = 1
+upgrade_amount = 6
 upgrade_cost = 30
 
 [node name="UpgradeCard6" parent="HBoxContainer" unique_id=1945566860 instance=ExtResource("1_hpwef")]
