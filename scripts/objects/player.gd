@@ -76,6 +76,7 @@ func _physics_process(delta: float) -> void:
 		PlayerState.DEAD:
 			_dead_state(delta)
 	
+	update_weapon_ui.emit()
 	
 
 func _alive_state(delta: float):
@@ -94,7 +95,7 @@ func _alive_state(delta: float):
 	move_and_slide()
 	
 	if Input.is_action_pressed("attack"):
-		update_weapon_ui.emit()
+		#update_weapon_ui.emit()
 		combat.attack(facing_direction)
 		
 		var attack_context: AttackContext = combat.get_attack_context() #very hacky approach needs to be moved later
@@ -104,7 +105,7 @@ func _alive_state(delta: float):
 	if Input.is_action_just_pressed("next_weapon"):
 		animation_component.weapon_switched()
 		combat.next_weapon()
-		update_weapon_ui.emit()
+		#update_weapon_ui.emit()
 
 	if float(health.current_health)/float(health.max_health) < 0.2:
 		damage_vignette.show_vignette(1.2)
