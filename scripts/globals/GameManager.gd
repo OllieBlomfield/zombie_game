@@ -12,7 +12,8 @@ enum upgrades{MELEE_DAMAGE, MELEE_KNOCKBACK, RANGED_DAMAGE, RANGED_PIERCE, PLAYE
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug"):
-		debug()
+		pass
+		#debug()
 
 func add_upgrade(upgrade, stats):
 	if player == null:

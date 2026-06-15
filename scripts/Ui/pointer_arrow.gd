@@ -1,4 +1,5 @@
 extends Node2D
+class_name PointerArrow
 
 @export var on_screen_offset: Vector2 = Vector2(0,-16)
 
