@@ -14,6 +14,8 @@ config/name="ZombiePestControl"
 run/main_scene="uid://ddogndvh637og"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
+boot_splash/use_filter=false
+boot_splash/image="uid://cnwj8hbd72gc0"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +26,7 @@ HitStopManager="*uid://d0f6j7sd87hbr"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [global_group]
