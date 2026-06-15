@@ -50,6 +50,7 @@ func spawn_wave():
 	var pointer_arrow = pointer_arrow.instantiate()
 	current_spawner.add_child(pointer_arrow)
 	
+	
 	for enemy_scene in spawn_queue:
 		var enemy = enemy_scene.instantiate()
 		add_child(enemy)

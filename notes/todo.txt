@@ -14,8 +14,8 @@ TODO JAKE:
 	
 
 TODO MONDAY:
-	- Dedicated animation system
-	- Positive and negative effects
+	- Dedicated animation system (weapon bobbing with the player)
+	- Positive and negative effects for money
 	- particles for movement
 	- particles for mele weapon
 	- better level (draw it up together)

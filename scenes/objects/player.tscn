@@ -3,11 +3,48 @@
 [ext_resource type="Script" uid="uid://bsb1ofl3xdxk" path="res://scripts/objects/player.gd" id="1_a8lix"]
 [ext_resource type="SpriteFrames" uid="uid://lormeva0l4n8" path="res://graphics/player/player_sprite_frames.tres" id="2_2147m"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_q8hb4"]
+[ext_resource type="Script" uid="uid://benb4xqe15tbw" path="res://components/animation_component.gd" id="3_tuhu7"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="4_ksjmp"]
 [ext_resource type="Script" uid="uid://1kgpo4ysg2r4" path="res://components/combat.gd" id="5_ksjmp"]
 [ext_resource type="PackedScene" uid="uid://l0r51cd21m7k" path="res://scenes/weapons/mele_weapon.tscn" id="7_0ay4w"]
 [ext_resource type="PackedScene" uid="uid://dlv05bwuk610j" path="res://scenes/weapons/ranged_weapon.tscn" id="7_2rlf8"]
 [ext_resource type="Script" uid="uid://dju8ggrlb3527" path="res://scenes/objects/player_camera.gd" id="8_0ay4w"]
+
+[sub_resource type="Animation" id="Animation_tuhu7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+
+[sub_resource type="Animation" id="Animation_4c2uj"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dunks"]
+_data = {
+&"RESET": SubResource("Animation_tuhu7"),
+&"run": SubResource("Animation_4c2uj")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5uus"]
 size = Vector2(7.9, 7.9)
@@ -25,7 +62,12 @@ health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1045542561]
 sprite_frames = ExtResource("2_2147m")
-animation = &"idle"
+animation = &"run"
+
+[node name="AnimationComponent" type="AnimationPlayer" parent="." unique_id=1602955519 node_paths=PackedStringArray("animated_sprite_2d")]
+libraries/ = SubResource("AnimationLibrary_dunks")
+script = ExtResource("3_tuhu7")
+animated_sprite_2d = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807991088]
 shape = SubResource("RectangleShape2D_h5uus")
