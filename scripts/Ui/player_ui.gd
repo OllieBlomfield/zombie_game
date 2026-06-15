@@ -8,6 +8,7 @@ class_name PlayerUI
 
 @export var player: Player
 @export var death_message: Label
+@export var fade: SimpleFade
 
 func _ready() -> void:
 	if not player:
@@ -26,6 +27,9 @@ func _process(delta: float) -> void:
 		death_message.visible = true
 		await get_tree().create_timer(0.2).timeout
 		if Input.is_action_just_pressed("jump"):
+			if fade:
+				fade.fade_out()
+			await get_tree().create_timer(2).timeout
 			get_tree().reload_current_scene()
 
 func _set_weapon():
