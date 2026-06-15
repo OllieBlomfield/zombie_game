@@ -57,9 +57,12 @@ func _check_proximity():
 		
 		
 
-func free_self():
-	await get_tree().create_timer(4).timeout
-	queue_free()
+func free_self(immediate: bool = false):
+	if not immediate: 
+		await get_tree().create_timer(4).timeout
+		queue_free()
+	else:
+		queue_free()
 
 func _handle_flash():
 	flashing = !flashing

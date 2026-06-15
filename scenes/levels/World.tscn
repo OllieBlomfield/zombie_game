@@ -144,9 +144,6 @@ color = Color(0, 0, 0, 0)
 script = ExtResource("9_puasx")
 
 [node name="Shop" parent="CanvasLayer" unique_id=1402826952 instance=ExtResource("1_w2p53")]
-visible = false
-z_index = 5
-script = null
 
 [node name="WaveSpawner" parent="." unique_id=1270486080 groups=["spawner"] instance=ExtResource("2_w2p53")]
 wave_length = 5

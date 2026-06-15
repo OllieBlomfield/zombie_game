@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var shop: Control = $"../../CanvasLayer/Shop"
+@onready var shop: Shop = $"../../CanvasLayer/Shop"
 @onready var wave_label: Label = $"../../CanvasLayer/WaveLabel"
 @onready var escape_label: Label = $"../../CanvasLayer/EscapeLabel"
 @onready var select_sound: AudioStreamPlayer2D = $SelectSound
@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 			print("You Escaped!")
 			print(ScoreManager.get_score())
 			shop.visible = true
+			#shop.grab_focus()
 			shop.upgrade_card.grab_focus()
 			escape_label.text = ""
 			wave_label.text = ""
