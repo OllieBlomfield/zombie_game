@@ -72,9 +72,9 @@ theme_override_constants/separation = 20
 [node name="UpgradeCard" parent="HBoxContainer" unique_id=1616431121 instance=ExtResource("1_hpwef")]
 layout_mode = 2
 image = ExtResource("3_r8dvb")
-description = "+3 Melee Attack"
-upgrade_amount = 3
-upgrade_cost = 40
+description = "+2 Melee Attack"
+upgrade_amount = 2
+upgrade_cost = 60
 
 [node name="UpgradeCard2" parent="HBoxContainer" unique_id=343475134 instance=ExtResource("1_hpwef")]
 layout_mode = 2
@@ -82,7 +82,7 @@ image = ExtResource("3_t3yd4")
 description = "+20 Melee Knockback"
 upgrade = 1
 upgrade_amount = 20
-upgrade_cost = 30
+upgrade_cost = 40
 
 [node name="UpgradeCard3" parent="HBoxContainer" unique_id=2069139678 instance=ExtResource("1_hpwef")]
 layout_mode = 2
@@ -98,14 +98,14 @@ image = ExtResource("5_b7lmq")
 description = "+1 Ranged Pierce"
 upgrade = 3
 upgrade_amount = 1
-upgrade_cost = 75
+upgrade_cost = 100
 
 [node name="UpgradeCard5" parent="HBoxContainer" unique_id=743144707 instance=ExtResource("1_hpwef")]
 layout_mode = 2
 image = ExtResource("11_1ymua")
-description = "+6 Health "
+description = "+4 Health "
 upgrade = 4
-upgrade_amount = 6
+upgrade_amount = 4
 upgrade_cost = 10
 
 [node name="UpgradeCard6" parent="HBoxContainer" unique_id=1945566860 instance=ExtResource("1_hpwef")]
