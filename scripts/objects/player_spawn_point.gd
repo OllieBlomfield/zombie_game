@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 			print("You Escaped!")
 			print(ScoreManager.get_score())
 			shop.visible = true
-			#shop.grab_focus()
 			shop.upgrade_card.grab_focus()
 			escape_label.text = ""
 			wave_label.text = ""

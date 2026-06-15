@@ -21,7 +21,7 @@ random_pitch = 1.005793
 streams_count = 1
 stream_0/stream = ExtResource("6_p2rb3")
 
-[node name="Shop" type="Control" unique_id=1402826952 node_paths=PackedStringArray("upgrade_card")]
+[node name="Shop" type="Control" unique_id=1402826952]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -30,7 +30,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ymua")
-upgrade_card = NodePath("HBoxContainer/UpgradeCard")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=387489807]
 layout_mode = 0
@@ -75,7 +74,7 @@ layout_mode = 2
 image = ExtResource("3_r8dvb")
 description = "+3 Melee Attack"
 upgrade_amount = 3
-upgrade_cost = 50
+upgrade_cost = 40
 
 [node name="UpgradeCard2" parent="HBoxContainer" unique_id=343475134 instance=ExtResource("1_hpwef")]
 layout_mode = 2
@@ -91,7 +90,7 @@ image = ExtResource("4_t3yd4")
 description = "+1 Ranged Damage"
 upgrade = 2
 upgrade_amount = 1
-upgrade_cost = 120
+upgrade_cost = 90
 
 [node name="UpgradeCard4" parent="HBoxContainer" unique_id=317777048 instance=ExtResource("1_hpwef")]
 layout_mode = 2
@@ -104,7 +103,7 @@ upgrade_cost = 75
 [node name="UpgradeCard5" parent="HBoxContainer" unique_id=743144707 instance=ExtResource("1_hpwef")]
 layout_mode = 2
 image = ExtResource("11_1ymua")
-description = "+1 Health "
+description = "+6 Health "
 upgrade = 4
 upgrade_amount = 6
 upgrade_cost = 10
@@ -115,7 +114,7 @@ image = ExtResource("11_pbuxf")
 description = "+50 Bullets"
 upgrade = 5
 upgrade_amount = 50
-upgrade_cost = 35
+upgrade_cost = 30
 
 [node name="MoneyLabel" type="Label" parent="." unique_id=1952923082]
 process_mode = 2
