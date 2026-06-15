@@ -1,2 +1,3 @@
 extends Control
-@export var upgrade_card: Button
+class_name Shop
+@onready var upgrade_card: Button = $HBoxContainer/UpgradeCard
