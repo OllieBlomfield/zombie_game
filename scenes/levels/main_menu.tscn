@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://ddogndvh637og"]
 
 [ext_resource type="Texture2D" uid="uid://cont5dvftkb2f" path="res://graphics/UI/logo/logo_main.png" id="1_leamy"]
-[ext_resource type="Script" uid="uid://b24kuq3up61sk" path="res://Scripts/UI/main_menu.gd" id="1_wko7x"]
+[ext_resource type="Script" uid="uid://b24kuq3up61sk" path="res://scripts/Ui/main_menu.gd" id="1_wko7x"]
 [ext_resource type="Texture2D" uid="uid://defl5esksgtkg" path="res://graphics/UI/logo/logo_second.png" id="2_721jg"]
 [ext_resource type="Texture2D" uid="uid://bkgp5d7f62og4" path="res://graphics/UI/logo/road_tile.png" id="3_keln3"]
 [ext_resource type="Texture2D" uid="uid://cst7d3jj1mkea" path="res://graphics/objects/van_sheet.png" id="3_sn5u3"]
-[ext_resource type="Script" uid="uid://3t4pq4gurupb" path="res://Scripts/main menu/van_menu.gd" id="4_geflf"]
+[ext_resource type="Script" uid="uid://3t4pq4gurupb" path="res://scripts/main menu/van_menu.gd" id="4_geflf"]
 [ext_resource type="LabelSettings" uid="uid://dymstalnyf7or" path="res://UI/Label Settings/Wave_count_label.tres" id="5_fkd6t"]
 [ext_resource type="Texture2D" uid="uid://ukrokk35j1rs" path="res://graphics/UI/logo/van_shadow.png" id="6_crctu"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="8_cn35j"]
 [ext_resource type="Script" uid="uid://lsj7gertajs6" path="res://scenes/levels/main_menu_cam.gd" id="8_sn5u3"]
+[ext_resource type="AudioStream" uid="uid://cilyyfj0flf40" path="res://sounds/sounds/startmusic.mp3" id="11_pwqr4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cn35j"]
 atlas = ExtResource("3_sn5u3")
@@ -209,3 +210,6 @@ speed = 400.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1924880976]
 libraries/ = SubResource("AnimationLibrary_ohdsy")
+
+[node name="StartMusic" type="AudioStreamPlayer2D" parent="." unique_id=403030211]
+stream = ExtResource("11_pwqr4")

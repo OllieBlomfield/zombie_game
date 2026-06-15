@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fthck4igf32o"]
 
-[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://Scripts/objects/zombie.gd" id="1_xcqe2"]
+[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="2_cutmx"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
@@ -158,7 +158,7 @@ one_shot = true
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=2008647973]
 stream = SubResource("AudioStreamRandomizer_vfled")
-volume_db = -15.0
+volume_db = -10.0
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]
