@@ -10,10 +10,16 @@
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
 [ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
+[ext_resource type="AudioStream" uid="uid://di5e4ojcued0b" path="res://sounds/sounds/select.wav" id="6_p2rb3"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
 [ext_resource type="Texture2D" uid="uid://dyv4oejxbvdo0" path="res://graphics/Props/Heart [8x8].png" id="11_1ymua"]
 [ext_resource type="Texture2D" uid="uid://b5u1odcv67iqu" path="res://graphics/Props/Life 2 [8x8].png" id="11_pbuxf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w4jki"]
+random_pitch = 1.005793
+streams_count = 1
+stream_0/stream = ExtResource("6_p2rb3")
 
 [node name="Shop" type="Control" unique_id=1402826952]
 process_mode = 2
@@ -44,6 +50,9 @@ theme_override_styles/hover = ExtResource("4_jjwfl")
 theme_override_styles/focus = ExtResource("4_jjwfl")
 text = "Exit"
 script = ExtResource("5_qhxmu")
+
+[node name="SelectSound" type="AudioStreamPlayer2D" parent="ExitButton" unique_id=1612376303]
+stream = SubResource("AudioStreamRandomizer_w4jki")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2138225643]
 layout_mode = 1

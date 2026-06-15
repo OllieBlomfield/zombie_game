@@ -21,6 +21,7 @@ extends GameCharacter
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_detector: RayCast2D = $WallDetector
 #@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 
 const BLOOD_SPLAT: PackedScene = preload("uid://drqvuapd75i0e")
 
@@ -127,6 +128,7 @@ func _handle_animation() -> void:
 func damaged_received(context: HitContext):
 	_flash_time = 0.02
 	apply_hit_effects(context)
+	hurt_sound.play()
 	if health.current_health <= 0:
 		die()
 

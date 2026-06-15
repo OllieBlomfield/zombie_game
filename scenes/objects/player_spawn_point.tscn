@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://6ibxjm03shfd"]
 
-[ext_resource type="Script" uid="uid://i3kfb8ps12rd" path="res://Scripts/objects/player_spawn_point.gd" id="1_s0jg2"]
+[ext_resource type="Script" uid="uid://i3kfb8ps12rd" path="res://scripts/objects/player_spawn_point.gd" id="1_s0jg2"]
 [ext_resource type="Texture2D" uid="uid://dw04w7opj65py" path="res://graphics/objects/van.png" id="2_aken8"]
 [ext_resource type="LabelSettings" uid="uid://dqvi3cjqr7qs7" path="res://UI/Label Settings/ammo_ui_label_settings.tres" id="3_sg5x4"]
+[ext_resource type="AudioStream" uid="uid://di5e4ojcued0b" path="res://sounds/sounds/select.wav" id="4_c3fc3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usswc"]
 size = Vector2(55, 29)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3sfqk"]
+random_pitch = 1.005793
+streams_count = 1
+stream_0/stream = ExtResource("4_c3fc3")
 
 [node name="PlayerSpawnPoint" type="Area2D" unique_id=1309186216]
 script = ExtResource("1_s0jg2")
@@ -33,6 +39,9 @@ offset_right = 37.0
 offset_bottom = 3.0
 text = "Press E to Enter"
 label_settings = ExtResource("3_sg5x4")
+
+[node name="SelectSound" type="AudioStreamPlayer2D" parent="." unique_id=916899320]
+stream = SubResource("AudioStreamRandomizer_3sfqk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

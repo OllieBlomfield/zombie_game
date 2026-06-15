@@ -11,6 +11,7 @@ extends Button
 @onready var description_label: Label = $VBoxContainer/MarginContainer2/DescriptionLabel
 @onready var cost_label: Label = $VBoxContainer/MarginContainer3/CostLabel
 @onready var money_label: Label = $"../../MoneyLabel"
+@onready var select_sound: AudioStreamPlayer2D = $SelectSound
 
 
 
@@ -23,7 +24,11 @@ func apply_upgrade():
 	GameManager.add_upgrade(upgrade,upgrade_amount)
 	
 func _on_pressed() -> void:
+	select_sound.pitch_scale = .1
+	select_sound.play()
+	select_sound.pitch_scale = 1
 	if ScoreManager.check_balance(upgrade_cost):
+		select_sound.play()
 		ScoreManager.spend_money(upgrade_cost)
 		apply_upgrade()
 		money_label.text = "Money: " + str(ScoreManager.current_money)

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://berr8kutkdow4"]
 
-[ext_resource type="Script" uid="uid://c5f2xhi8wxtae" path="res://Scripts/objects/key_item.gd" id="1_jg0gf"]
+[ext_resource type="Script" uid="uid://c5f2xhi8wxtae" path="res://scripts/objects/key_item.gd" id="1_jg0gf"]
 [ext_resource type="Texture2D" uid="uid://dk3cypsgr2tkc" path="res://graphics/Props/Coin 4 [8x8].png" id="2_jg0gf"]
+[ext_resource type="AudioStream" uid="uid://cjecgyh56u0wy" path="res://sounds/sounds/Pickup.wav" id="3_e2mpw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2mpw"]
 atlas = ExtResource("2_jg0gf")
@@ -42,6 +43,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jg0gf"]
 size = Vector2(5.410267, 5.410267)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2tig8"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("3_e2mpw")
+
 [node name="KeyItem" type="Area2D" unique_id=372765257]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jg0gf")
@@ -52,5 +58,9 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216159280]
 shape = SubResource("RectangleShape2D_jg0gf")
+
+[node name="CollectionSound" type="AudioStreamPlayer2D" parent="." unique_id=247497226]
+stream = SubResource("AudioStreamRandomizer_2tig8")
+volume_db = -5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

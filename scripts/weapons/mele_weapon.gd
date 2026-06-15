@@ -8,6 +8,7 @@ extends Weapon
 @export var crit_chance: float = 0.3
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var bat_sound: AudioStreamPlayer2D = $"../../BatSound"
 
 const BLOOD_DROP_BIG = preload("uid://ccty5qickix53")
 
@@ -39,6 +40,7 @@ func perform_attack(direction: int) -> void: #call pefrom_attack or execute_atta
 	if not _performing_attack and not _cooling_down:
 		hit_box.enable()
 		play_attack_anim.emit()
+		bat_sound.play()
 		animated_sprite_2d.play("attack")
 		_performing_attack = true
 
