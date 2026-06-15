@@ -42,6 +42,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	if is_on_cooldown or not has_ammunition():
 		return
 		
+	Input.start_joy_vibration(0, .8, 1, .3)
 	var bullet = bullet_scene.instantiate()
 	
 	get_tree().current_scene.add_child(bullet)
@@ -95,3 +96,6 @@ func has_ammunition() -> bool:
 
 func _handle_ammo():
 	current_ammo = max(0, current_ammo - 1)
+
+func has_max_ammo():
+	return current_ammo == max_ammo
