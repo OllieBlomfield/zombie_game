@@ -12588,8 +12588,7 @@ position = Vector2(864, -3.8146973e-06)
 position = Vector2(864, 24.999998)
 
 [node name="PlayerSpawnPoint" parent="." unique_id=1309186216 instance=ExtResource("5_oc4kc")]
-position = Vector2(584, -9)
-scale = Vector2(0.4093408, 0.4093408)
+position = Vector2(565, -16)
 
 [node name="KeyItem" parent="." unique_id=372765257 instance=ExtResource("6_s8va5")]
 position = Vector2(982, -82)

@@ -4,15 +4,28 @@ extends Area2D
 @onready var wave_label: Label = $"../../CanvasLayer/WaveLabel"
 @onready var escape_label: Label = $"../../CanvasLayer/EscapeLabel"
 
+var in_zone: bool = false
+@onready var info_label: Label = $Info_Label
+
+func _process(delta: float) -> void:
+	if in_zone and GameManager.can_leave:
+		pass
+		info_label.visible = true
+		if Input.is_action_just_pressed("interact"):
+			print("You Escaped!")
+			print(ScoreManager.get_score())
+			shop.visible = true
+			escape_label.text = ""
+			wave_label.text = ""
+			GameManager.player_active = false
+			GameManager.pause_game()
+	else:
+		info_label.visible = false
+			
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player and GameManager.can_leave and GameManager.player_active:
-		print("You Escaped!")
-		print(ScoreManager.get_score())
-		shop.visible = true
-		escape_label.text = ""
-		wave_label.text = ""
-		GameManager.player_active = false
-		GameManager.pause_game()
-	else:
-		print("Cant Leave Yet!")
+	if body is Player and GameManager.player_active:
+		in_zone = true
+
+func _on_body_exited(body: Node2D) -> void:
+	in_zone = false
