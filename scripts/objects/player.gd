@@ -152,6 +152,7 @@ func  _handle_animation(direction):
 	animation_component.velocity = velocity
 	animation_component.is_on_floor = is_on_floor()
 	animation_component.facing_direction = facing_direction
+	animation_component.down_pressed = Input.is_action_pressed("down")
 		
 func set_gravity(type: GravityType):
 	match type:

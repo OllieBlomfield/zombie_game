@@ -1,4 +1,4 @@
-extends AnimationPlayer
+extends Node2D
 class_name AnimationComponent
 
 var facing_direction: int = 1
@@ -6,6 +6,11 @@ var velocity: Vector2 = Vector2.ZERO
 var turning: bool = false
 var attacking: bool = false
 var is_on_floor: bool = false
+var down_pressed: bool = false
+
+const DUST_PARTICLE = preload("uid://br77vrl7a7wcv")
+@onready var dust_timer: Timer = $DustTimer
+@onready var dust_marker: Marker2D = $Dust_Marker
 
 var current_attack_anim: String = "mele_attack"
 
@@ -16,6 +21,8 @@ var anim_state: AnimationState = AnimationState.DEFAULT
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_animation_finished)
+	
+	dust_timer.timeout.connect(add_dust)
 
 func _process(delta: float) -> void:
 	animated_sprite_2d.flip_h = (facing_direction < 0)
@@ -41,13 +48,14 @@ func attack_finished():
 
 func _handle_default_anim():
 	if is_on_floor:
-		if Input.is_action_pressed("down"):
+		if down_pressed: #should be from outside
 			animated_sprite_2d.play("crouch")
 			animated_sprite_2d.scale.x = 1.05
 		elif turning:
 			animated_sprite_2d.play("turn")
 		elif abs(velocity.x) > 2:
 			animated_sprite_2d.play("run")
+			if dust_timer.is_stopped(): dust_timer.start(0.1 + 0.1*randf())
 		else:
 			animated_sprite_2d.play("idle")
 	elif velocity.y > 0:
@@ -64,3 +72,9 @@ func _animation_finished():
 
 func weapon_switched():
 	anim_state = AnimationState.DEFAULT
+
+func add_dust():
+	var dust_particle = DUST_PARTICLE.instantiate()
+	dust_particle.global_position = dust_marker.global_position
+	get_tree().current_scene.add_child(dust_particle)
+	dust_timer.stop()

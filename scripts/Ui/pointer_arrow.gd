@@ -38,3 +38,4 @@ func _process(delta: float) -> void:
 		
 	global_position = lerp(global_position, target_display_position, delta*smoothing_speed)
 	rotation = lerp(rotation, target_display_rotation, delta*smoothing_speed)
+	

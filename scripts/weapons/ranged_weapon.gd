@@ -73,7 +73,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	get_parent().add_child(bullet_casing)
 	
 	muzzle_flash.flash()
-	play_attack_anim.emit()
+	play_attack_anim.emit() #more generic signal name (attack_started/successful)
 	camera_shake.emit(1,0.1)
 	
 	is_on_cooldown = true
