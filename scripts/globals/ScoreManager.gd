@@ -9,7 +9,7 @@ var key_item_collected: bool = false
 var current_money: int = 0
 
 const ENEMY_POINT_VALUE = 8
-const POINT_MULT = 10
+const POINT_MULT = 15
 
 func _ready() -> void:
 	pass
@@ -24,19 +24,21 @@ func get_score():
 func calculate_score(time_elapsed: float, max_time: float, damage_taken: float, key_item_collected: bool):
 	var time_score = max(0, (max_time - time_elapsed) * POINT_MULT)
 	var enemy_score = wave_spawner.generate_points() * ENEMY_POINT_VALUE
-	var damage_score = (-damage_taken / 2) * 5
+	var damage_score = (-damage_taken / 3) * 5
 	var collection_score = 300 if key_item_collected else 0
 		
 	var final_score = time_score + enemy_score + damage_score + collection_score
 	
 	add_money(roundi(final_score * 0.1))
 	time_elapsed = 0
+	damage_taken = 0
+	key_item_collected = false
 	return round(final_score)
 		
 
 func add_money(amount: int):
 	if current_money < 30:
-		current_money = 20
+		current_money = 30
 	current_money += amount
 	print("current money: " + str(current_money))
 	
