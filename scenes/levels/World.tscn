@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://cs6nrkiugoya2" path="res://scenes/objects/player_camera.gdshader" id="7_nhw2q"]
 [ext_resource type="Script" uid="uid://w3cj1am3gywm" path="res://Scripts/UI/damage_vignette.gd" id="8_ombib"]
 [ext_resource type="PackedScene" uid="uid://cbvxartqh3r2f" path="res://scenes/UI/pointer_arrow.tscn" id="10_csbb7"]
+[ext_resource type="Texture2D" uid="uid://17i8v3ov2ski" path="res://graphics/backgrounds/city_background.jpg" id="12_0ekff"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ekff"]
 font = ExtResource("6_abf5c")
@@ -122,5 +123,15 @@ z_index = 5
 [node name="WaveSpawner" parent="." unique_id=1270486080 groups=["spawner"] instance=ExtResource("2_w2p53")]
 wave_length = 5
 pointer_arrow = ExtResource("10_csbb7")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=507093597]
+scroll_scale = Vector2(0.9, 0.9)
+repeat_size = Vector2(1480, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2129847561]
+z_index = -2
+position = Vector2(0, -195)
+texture = ExtResource("12_0ekff")
 
 [editable path="Level2"]
