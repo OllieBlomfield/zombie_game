@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8db1sdy0g0iq" path="res://graphics/player/player_sprite_sheet.png" id="6_pbuxf"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
 [ext_resource type="Script" uid="uid://dtxasp1j8hqo7" path="res://UI/Interfaces/MoneyLabel.gd" id="10_d367l"]
+[ext_resource type="Texture2D" uid="uid://b5u1odcv67iqu" path="res://graphics/Props/Life 2 [8x8].png" id="11_pbuxf"]
 
 [node name="Shop" type="Control" unique_id=1402826952]
 process_mode = 2
@@ -94,6 +95,14 @@ description = "+1 Player Health"
 upgrade = 4
 upgrade_amount = 1
 upgrade_cost = 30
+
+[node name="UpgradeCard6" parent="HBoxContainer" unique_id=1945566860 instance=ExtResource("1_hpwef")]
+layout_mode = 2
+image = ExtResource("11_pbuxf")
+description = "+50 Bullets"
+upgrade = 5
+upgrade_amount = 50
+upgrade_cost = 20
 
 [node name="MoneyLabel" type="Label" parent="." unique_id=1952923082]
 process_mode = 2

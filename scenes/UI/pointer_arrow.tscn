@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cbvxartqh3r2f"]
 
-[ext_resource type="Script" uid="uid://chtm4878y3h0l" path="res://Scripts/UI/pointer_arrow.gd" id="1_3bif3"]
+[ext_resource type="Script" uid="uid://chtm4878y3h0l" path="res://scripts/Ui/pointer_arrow.gd" id="1_3bif3"]
 [ext_resource type="Texture2D" uid="uid://c24vomvxs4b55" path="res://graphics/UI/PointerArrow.png" id="1_xbfga"]
 
-[node name="PointerArrow" type="Sprite2D" unique_id=705525748]
+[node name="PointerArrow" type="Sprite2D" unique_id=705525748 groups=["pointer"]]
+z_index = 5
 texture = ExtResource("1_xbfga")
 script = ExtResource("1_3bif3")
 screen_margin = 60.0
