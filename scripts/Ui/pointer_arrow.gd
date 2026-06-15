@@ -6,11 +6,16 @@ extends Node2D
 @export var smoothing_speed: float = 8.0
 
 var camera_node: Camera2D
+@onready var flash_timer: Timer = $FlashTimer
+var flashing: bool = false
 
 func _ready() -> void:
 	camera_node = get_viewport().get_camera_2d()
+	
+	flash_timer.timeout.connect(_handle_flash)
 
 func _process(delta: float) -> void:
+	
 	if not camera_node:
 		camera_node = get_viewport().get_camera_2d()
 		return
@@ -42,3 +47,7 @@ func _process(delta: float) -> void:
 func free_self():
 	await get_tree().create_timer(3).timeout
 	queue_free()
+
+func _handle_flash():
+	flashing = !flashing
+	set_instance_shader_parameter("is_flash",flashing)

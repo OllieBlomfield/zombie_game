@@ -7,11 +7,13 @@ class_name PlayerUI
 @onready var health_bar: HealthBar = $HealthBar
 
 @export var player: Player
+@export var death_message: Label
 
 func _ready() -> void:
 	if not player:
 		player = GameManager.player
 	
+	death_message.visible = false
 	player.update_weapon_ui.connect(_set_weapon)
 	_set_weapon()
 
@@ -19,6 +21,11 @@ func _process(delta: float) -> void:
 	var health_component: Health = player.health
 	#var percentage: float = 100 * health_component.current_health / health_component.max_health
 	health_bar.set_health_bar(health_component.current_health, health_component.max_health)
+
+	if player.state == player.PlayerState.DEAD:
+		death_message.visible = true
+		if Input.is_action_just_pressed("jump"):
+			get_tree().reload_current_scene()
 
 func _set_weapon():
 	var current_weapon: Weapon = player.combat.get_current_weapon()

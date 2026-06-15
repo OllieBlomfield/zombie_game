@@ -203,5 +203,6 @@ func die():
 	blood_splat.global_position = global_position
 	get_parent().add_child(blood_splat)
 	visible = false
+	damage_vignette.set_vignette_fixed(true)
 	state = PlayerState.DEAD
 	

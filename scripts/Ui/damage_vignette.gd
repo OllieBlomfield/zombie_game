@@ -6,23 +6,37 @@ class_name DamageVignette
 
 var current_effect_time: float = 0
 
+enum VignetteState {CURVED, FIXED}
+var state: VignetteState = VignetteState.CURVED
+
 func _ready() -> void:
 	visible = true
 
 func _process(delta: float) -> void:
-	current_effect_time = max(current_effect_time - delta, 0)
-	if current_effect_time > 0:
-		pass
-		#print(alpha_curve.sample(current_effect_time/effect_time))
-		
-	var alpha_value: float = alpha_curve.sample(current_effect_time/effect_time)
+	var alpha_value: float = 0.0
 	
-	set_instance_shader_parameter("alpha",alpha_value)
+	match state:
+		VignetteState.CURVED:
+			alpha_value = curved_vignette(delta)
+		VignetteState.FIXED:
+			alpha_value =fixed_vignette(delta)
 
+	set_instance_shader_parameter("alpha",alpha_value)
+	
+func fixed_vignette(delta: float) -> float:
+	return 0.3
+
+func curved_vignette(delta: float) -> float:
+	current_effect_time = max(current_effect_time - delta, 0)
+	return alpha_curve.sample(current_effect_time/effect_time)
+	
 func show_vignette(new_effect_time: float = 0.7):
 	effect_time = new_effect_time
 	if current_effect_time <= 0:
 		current_effect_time = effect_time
-	#visible = true
-	#await get_tree().create_timer(0.2).timeout
-	#visible = false
+
+func set_vignette_fixed(is_fixed: bool):
+	if is_fixed:
+		state = VignetteState.FIXED
+	else:
+		state = VignetteState.CURVED

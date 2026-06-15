@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://cbvxartqh3r2f"]
 
-[ext_resource type="Script" uid="uid://chtm4878y3h0l" path="res://scripts/Ui/pointer_arrow.gd" id="1_3bif3"]
+[ext_resource type="Script" uid="uid://chtm4878y3h0l" path="res://Scripts/UI/pointer_arrow.gd" id="1_3bif3"]
+[ext_resource type="Shader" uid="uid://oi5bam3f42vc" path="res://shaders/pointer_arrow_shader.gdshader" id="1_q8u61"]
 [ext_resource type="Texture2D" uid="uid://c24vomvxs4b55" path="res://graphics/UI/PointerArrow.png" id="1_xbfga"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtx5k"]
+shader = ExtResource("1_q8u61")
+
 [node name="PointerArrow" type="Sprite2D" unique_id=705525748 groups=["pointer"]]
-z_index = 8
+z_index = 200
+material = SubResource("ShaderMaterial_mtx5k")
 texture = ExtResource("1_xbfga")
 script = ExtResource("1_3bif3")
 screen_margin = 60.0
@@ -13,3 +18,7 @@ screen_margin = 60.0
 visible = false
 rotation = 1.5707964
 texture = ExtResource("1_xbfga")
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=1456255653]
+wait_time = 0.4
+autostart = true
