@@ -42,4 +42,5 @@ func _on_body_exited(body: Node2D) -> void:
 
 func add_arrow() -> void:
 	current_pointer_arrow = POINTER_ARROW.instantiate()
+	current_pointer_arrow.on_screen_offset = Vector2(0,-24)
 	add_child(current_pointer_arrow)

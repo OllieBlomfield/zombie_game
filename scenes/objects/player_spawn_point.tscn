@@ -5,13 +5,13 @@
 [ext_resource type="LabelSettings" uid="uid://dqvi3cjqr7qs7" path="res://UI/Label Settings/ammo_ui_label_settings.tres" id="3_sg5x4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usswc"]
-size = Vector2(55, 27.5)
+size = Vector2(55, 29)
 
 [node name="PlayerSpawnPoint" type="Area2D" unique_id=1309186216]
 script = ExtResource("1_s0jg2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1992448660]
-position = Vector2(2.5, -0.75)
+position = Vector2(2.5, 1.5)
 shape = SubResource("RectangleShape2D_usswc")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2003498333]
@@ -23,7 +23,7 @@ offset_bottom = 23.0
 color = Color(0.42745098, 1, 0.40392157, 0.21568628)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1373420335]
-position = Vector2(3, 0)
+position = Vector2(3, 4)
 texture = ExtResource("2_aken8")
 
 [node name="Info_Label" type="Label" parent="." unique_id=612774577]
