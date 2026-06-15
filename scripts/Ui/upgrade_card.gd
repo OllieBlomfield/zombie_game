@@ -17,7 +17,7 @@ extends Button
 func _ready() -> void:
 	texture_rect.texture = image
 	description_label.text = description
-	cost_label.text = str(upgrade_cost)
+	cost_label.text = "$" + str(upgrade_cost)
 	
 func apply_upgrade():
 	GameManager.add_upgrade(upgrade,upgrade_amount)

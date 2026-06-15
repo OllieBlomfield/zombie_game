@@ -7,7 +7,7 @@ signal zombies_dead
 
 @export var enemy_list: Array[PackedScene]
 
-var enemy_cost: Array = [1,3]
+var enemy_cost: Array = [1,4]
 var spawn_queue: Array[PackedScene] = []
 
 var current_wave: int = 1
