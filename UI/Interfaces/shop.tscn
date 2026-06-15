@@ -106,7 +106,7 @@ image = ExtResource("11_1ymua")
 description = "+1 Health "
 upgrade = 4
 upgrade_amount = 6
-upgrade_cost = 30
+upgrade_cost = 10
 
 [node name="UpgradeCard6" parent="HBoxContainer" unique_id=1945566860 instance=ExtResource("1_hpwef")]
 layout_mode = 2
