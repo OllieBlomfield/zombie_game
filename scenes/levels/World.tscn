@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnocukpr5f4uf"]
 
-[ext_resource type="Script" uid="uid://xomigwrl5nnj" path="res://Scripts/UI/canvas_layer.gd" id="1_7xgas"]
+[ext_resource type="Script" uid="uid://xomigwrl5nnj" path="res://scripts/Ui/canvas_layer.gd" id="1_7xgas"]
 [ext_resource type="PackedScene" uid="uid://brfc8nam2jl1o" path="res://UI/Interfaces/shop.tscn" id="1_w2p53"]
 [ext_resource type="PackedScene" uid="uid://bskwqmmwtsupu" path="res://scenes/objects/wave_spawner.tscn" id="2_w2p53"]
 [ext_resource type="PackedScene" uid="uid://bhlw1cirpjury" path="res://scenes/levels/level_2.tscn" id="3_0ekff"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://2kjm14phkjtq" path="res://scenes/UI/player_ui.tscn" id="4_1mg1y"]
 [ext_resource type="FontFile" uid="uid://c508ya7op44uq" path="res://graphics/fonts/TinyPixy.ttf" id="6_abf5c"]
 [ext_resource type="Shader" uid="uid://cs6nrkiugoya2" path="res://scenes/objects/player_camera.gdshader" id="7_nhw2q"]
-[ext_resource type="Script" uid="uid://w3cj1am3gywm" path="res://Scripts/UI/damage_vignette.gd" id="8_ombib"]
+[ext_resource type="Script" uid="uid://w3cj1am3gywm" path="res://scripts/Ui/damage_vignette.gd" id="8_ombib"]
 [ext_resource type="PackedScene" uid="uid://cbvxartqh3r2f" path="res://scenes/UI/pointer_arrow.tscn" id="10_csbb7"]
 [ext_resource type="Texture2D" uid="uid://17i8v3ov2ski" path="res://graphics/backgrounds/city_background.jpg" id="12_0ekff"]
 
@@ -35,6 +35,18 @@ point_count = 6
 position = Vector2(567, -4)
 player_spawn_point = NodePath("../Level2/PlayerSpawnPoint")
 damage_vignette = NodePath("../CanvasLayer/DamageVignette")
+
+[node name="PlayerCamera" parent="Player" index="7" unique_id=1163764167]
+limit_left = -1750
+limit_top = -270
+limit_right = 1210
+limit_bottom = 280
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 
 [node name="Level2" parent="." unique_id=902580203 instance=ExtResource("3_0ekff")]
 
@@ -134,4 +146,5 @@ z_index = -2
 position = Vector2(0, -195)
 texture = ExtResource("12_0ekff")
 
+[editable path="Player"]
 [editable path="Level2"]
