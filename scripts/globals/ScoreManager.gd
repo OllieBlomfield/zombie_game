@@ -30,7 +30,7 @@ func calculate_score(time_elapsed: float, max_time: float, damage_taken: float, 
 	print(collection_score)
 	
 	add_money(roundi(final_score * 0.1))
-	
+	time_elapsed = 0
 	return round(final_score)
 		
 
