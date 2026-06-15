@@ -8,6 +8,18 @@
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="5_jkts3"]
 [ext_resource type="Script" uid="uid://bwjbhslyjufr3" path="res://components/hurtbox.gd" id="6_b5fqp"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hky68"]
+radius = 9.24641
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmuqh"]
+radius = 10.688664
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvy5v"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aue2k"]
+size = Vector2(9.843594, 20)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_atslc"]
 shader = ExtResource("2_rvy5v")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -109,18 +121,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hky68"]
-radius = 9.24641
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jmuqh"]
-radius = 10.688664
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rvy5v"]
-radius = 8.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aue2k"]
-size = Vector2(9.843594, 20)
-
 [node name="TankZombie" type="CharacterBody2D" unique_id=1844717594 node_paths=PackedStringArray("hitbox", "hurtbox", "health") groups=["TankZombie", "enemy"]]
 collision_layer = 2
 collision_mask = 20
@@ -133,12 +133,6 @@ acceleration = 1.2
 corpse_texture = ExtResource("2_aue2k")
 health = NodePath("Health")
 metadata/_custom_type_script = "uid://c3vd3j8w8ginx"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=451278756]
-material = SubResource("ShaderMaterial_atslc")
-position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_erqut")
-animation = &"move"
 
 [node name="Health" type="Node" parent="." unique_id=1928973991]
 script = ExtResource("4_kpwv2")
@@ -187,3 +181,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDetector" unique_id=2089434431]
 shape = SubResource("RectangleShape2D_aue2k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=451278756]
+material = SubResource("ShaderMaterial_atslc")
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_erqut")
+animation = &"move"
+
+[connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]

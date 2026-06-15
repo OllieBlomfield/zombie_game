@@ -183,7 +183,7 @@ func _on_zone_detector_area_entered(area: Area2D) -> void:
 		jump(player.global_position.y)
 	elif area is DropNode and player.global_position.y > global_position.y + 3:
 		set_collision_mask_value(5, false)
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.5).timeout
 		set_collision_mask_value(5, true)
 
 func get_zombie_type():
@@ -196,4 +196,4 @@ func set_speed(zombie_type: String):
 	if zombie_type == "RegularZombie":
 		speed = randi_range(25,40)
 	elif zombie_type == "TankZombie":
-		speed = randi_range(20,30)
+		speed = randi_range(20,25)

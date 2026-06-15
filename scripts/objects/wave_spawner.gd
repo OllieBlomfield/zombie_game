@@ -20,6 +20,7 @@ var current_spawner: Node2D
 var zombies_alive: bool = false
 
 func _ready() -> void:
+	ScoreManager.wave_spawner = self
 	zombies_dead.connect(end_wave)
 	generate_wave()
 	
@@ -32,7 +33,7 @@ func get_spawn_points() -> Array:
 
 func generate_wave():
 	spawn_queue.clear()
-	points = current_wave * 10
+	points = generate_points()
 	while points > 0:
 		var enemy_index = randi_range(0,len(enemy_list) - 1)
 		var enemy = enemy_list[enemy_index]
@@ -50,15 +51,14 @@ func spawn_wave():
 	var pointer_arrow = pointer_arrow.instantiate()
 	current_spawner.add_child(pointer_arrow)
 	
-	
 	for enemy_scene in spawn_queue:
 		var enemy = enemy_scene.instantiate()
 		add_child(enemy)
 		enemy.global_position = current_spawner.global_position
 		await get_tree().create_timer(.5).timeout
-	for pointer in current_spawner.get_children():
-		pointer.queue_free()
 	await get_tree().create_timer(wave_length).timeout
+	for pointer in current_spawner.get_children():
+		pointer.free_self()
 	current_wave += 1
 	if current_wave > max_waves:
 		return
@@ -80,3 +80,6 @@ func check_zombie_status():
 func end_wave():
 	escape_unlocked.emit()
 	GameManager.can_leave = true
+	
+func generate_points():
+	return max_waves * 10
