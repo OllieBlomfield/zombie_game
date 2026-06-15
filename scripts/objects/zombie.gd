@@ -194,6 +194,6 @@ func get_zombie_type():
 
 func set_speed(zombie_type: String):
 	if zombie_type == "RegularZombie":
-		speed = randi_range(15,30)
+		speed = randi_range(25,40)
 	elif zombie_type == "TankZombie":
-		speed = randi_range(10,20)
+		speed = randi_range(20,30)
