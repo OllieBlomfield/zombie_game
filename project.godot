@@ -17,6 +17,7 @@ run/max_fps=60
 boot_splash/use_filter=false
 boot_splash/image="uid://cnwj8hbd72gc0"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=10
 
 [autoload]
 

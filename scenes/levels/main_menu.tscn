@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://ddogndvh637og"]
 
 [ext_resource type="Texture2D" uid="uid://cont5dvftkb2f" path="res://graphics/UI/logo/logo_main.png" id="1_leamy"]
-[ext_resource type="Script" uid="uid://b24kuq3up61sk" path="res://scripts/Ui/main_menu.gd" id="1_wko7x"]
+[ext_resource type="Script" uid="uid://b24kuq3up61sk" path="res://Scripts/UI/main_menu.gd" id="1_wko7x"]
 [ext_resource type="Texture2D" uid="uid://defl5esksgtkg" path="res://graphics/UI/logo/logo_second.png" id="2_721jg"]
 [ext_resource type="Texture2D" uid="uid://bkgp5d7f62og4" path="res://graphics/UI/logo/road_tile.png" id="3_keln3"]
 [ext_resource type="Texture2D" uid="uid://cst7d3jj1mkea" path="res://graphics/objects/van_sheet.png" id="3_sn5u3"]
-[ext_resource type="Script" uid="uid://3t4pq4gurupb" path="res://scripts/main menu/van_menu.gd" id="4_geflf"]
+[ext_resource type="Script" uid="uid://3t4pq4gurupb" path="res://Scripts/main menu/van_menu.gd" id="4_geflf"]
 [ext_resource type="LabelSettings" uid="uid://dymstalnyf7or" path="res://UI/Label Settings/Wave_count_label.tres" id="5_fkd6t"]
 [ext_resource type="Texture2D" uid="uid://ukrokk35j1rs" path="res://graphics/UI/logo/van_shadow.png" id="6_crctu"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="8_cn35j"]
+[ext_resource type="Texture2D" uid="uid://cnwj8hbd72gc0" path="res://graphics/boot_screen.png" id="8_ohdsy"]
 [ext_resource type="Script" uid="uid://lsj7gertajs6" path="res://scenes/levels/main_menu_cam.gd" id="8_sn5u3"]
 [ext_resource type="AudioStream" uid="uid://cilyyfj0flf40" path="res://sounds/sounds/startmusic.mp3" id="11_pwqr4"]
 
@@ -60,6 +61,33 @@ tracks/1/keys = {
 "update": 1,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/TextureRect2:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_fwnpy"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TextureRect2:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_pwqr4"]
 resource_name = "transition_to_level"
@@ -92,6 +120,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohdsy"]
 _data = {
 &"RESET": SubResource("Animation_wko7x"),
+&"fade_in": SubResource("Animation_fwnpy"),
 &"transition_to_level": SubResource("Animation_pwqr4")
 }
 
@@ -178,6 +207,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=2094547008]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_ohdsy")
+
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=457940794]
 z_index = -2
 scroll_offset = Vector2(0, -325)
@@ -210,6 +247,7 @@ speed = 400.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1924880976]
 libraries/ = SubResource("AnimationLibrary_ohdsy")
+autoplay = &"fade_in"
 
 [node name="StartMusic" type="AudioStreamPlayer2D" parent="." unique_id=403030211]
 stream = ExtResource("11_pwqr4")
