@@ -10,8 +10,9 @@
 [ext_resource type="FontFile" uid="uid://c508ya7op44uq" path="res://graphics/fonts/TinyPixy.ttf" id="6_abf5c"]
 [ext_resource type="Shader" uid="uid://cs6nrkiugoya2" path="res://scenes/objects/player_camera.gdshader" id="7_nhw2q"]
 [ext_resource type="Script" uid="uid://w3cj1am3gywm" path="res://Scripts/UI/damage_vignette.gd" id="8_ombib"]
+[ext_resource type="Script" uid="uid://dkug083jbi8i4" path="res://Scripts/misc/simple_fade.gd" id="9_puasx"]
 [ext_resource type="PackedScene" uid="uid://cbvxartqh3r2f" path="res://scenes/UI/pointer_arrow.tscn" id="10_csbb7"]
-[ext_resource type="Texture2D" uid="uid://17i8v3ov2ski" path="res://graphics/backgrounds/city_background.jpg" id="12_0ekff"]
+[ext_resource type="Texture2D" uid="uid://cynnooc0fqikm" path="res://graphics/backgrounds/city_background_2.jpg" id="12_0ekff"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ekff"]
 font = ExtResource("6_abf5c")
@@ -116,6 +117,16 @@ script = ExtResource("8_ombib")
 alpha_curve = SubResource("Curve_ombib")
 effect_time = 0.6
 
+[node name="Fade" type="ColorRect" parent="CanvasLayer" unique_id=1761743377]
+z_index = 400
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("9_puasx")
+
 [node name="Shop" parent="CanvasLayer" unique_id=1402826952 instance=ExtResource("1_w2p53")]
 visible = false
 z_index = 5
@@ -125,13 +136,13 @@ wave_length = 5
 pointer_arrow = ExtResource("10_csbb7")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=507093597]
-scroll_scale = Vector2(0.9, 0.9)
-repeat_size = Vector2(1480, 0)
+scroll_scale = Vector2(0.7, 0.7)
+repeat_size = Vector2(889, 0)
 repeat_times = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2129847561]
 z_index = -2
-position = Vector2(0, -195)
+position = Vector2(0, -61)
 texture = ExtResource("12_0ekff")
 
 [editable path="Level2"]
