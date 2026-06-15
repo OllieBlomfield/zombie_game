@@ -15,5 +15,5 @@ func _on_wave_started(wave_number):
 	wave_label.text = "Wave: " + str(wave_number)
 
 func _on_escape_unlocked():
-	escape_label.text = "Find the exit!"
+	escape_label.text = "Get to van!"
 	escape_label.visible = true
