@@ -107,7 +107,6 @@ metadata/_custom_type_script = "uid://1kgpo4ysg2r4"
 visible = false
 position = Vector2(6, 0)
 damage = 1
-current_ammo = 100
 has_ammo = true
 
 [node name="MeleWeapon" parent="Weapons" unique_id=1078517139 instance=ExtResource("7_0ay4w")]

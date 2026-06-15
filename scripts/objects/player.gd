@@ -38,6 +38,9 @@ var coyote_time: float = 0
 var look_up_time: float = 0
 var crouch_time: float = 0
 
+enum PlayerState {ALIVE, DEAD}
+var state: PlayerState = PlayerState.ALIVE
+
 #@export var dust_particle: PackedScene
 @onready var combat: Combat = $Combat
 @onready var ranged_weapon: RangedWeapon = $Weapons/RangedWeapon
@@ -47,6 +50,7 @@ var crouch_time: float = 0
 
 #@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
+const BLOOD_SPLAT: PackedScene = preload("uid://drqvuapd75i0e")
 
 @export var damage_vignette: DamageVignette
 
@@ -57,11 +61,24 @@ func _ready() -> void:
 	combat.play_attack_anim.connect(_play_attack_anim)
 	combat.finished_attack.connect(_attack_finished)
 	
+	health.health_depleted.connect(die)
+	
 	if player_spawn_point:
 		global_position = player_spawn_point.global_position
 	GameManager.player = self
 
 func _physics_process(delta: float) -> void:
+	match state:
+		PlayerState.ALIVE:
+			_alive_state(delta)
+		PlayerState.DEAD:
+			_dead_state(delta)
+	
+	
+
+func _alive_state(delta: float):
+	if Input.is_action_pressed("down"): position.y += 1
+	
 	if Input.is_action_just_pressed("right"): facing_direction = 1
 	if Input.is_action_just_pressed("left"): facing_direction = -1 
 	_handle_gravity(delta)
@@ -83,12 +100,16 @@ func _physics_process(delta: float) -> void:
 		add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 	
 	if Input.is_action_just_pressed("next_weapon"):
+		animation_component.weapon_switched()
 		combat.next_weapon()
 		update_weapon_ui.emit()
 
 	if float(health.current_health)/float(health.max_health) < 0.2:
 		damage_vignette.show_vignette(1.2)
-	
+
+func _dead_state(delta: float):
+	pass
+
 func _handle_gravity(delta: float):
 	if Input.is_action_pressed("jump"):
 		set_gravity(GravityType.SLOW)
@@ -165,14 +186,20 @@ func _play_attack_anim(): #change name
 	_apply_attack_context(combat.get_attack_context())
 
 func _on_received_hit(context: HitContext):
-	if not health.immortality: damage_vignette.show_vignette()
-	apply_hit_effects(context)
-	ScoreManager.damage_taken += context.damage
+	if state == PlayerState.ALIVE:
+		if not health.immortality: damage_vignette.show_vignette()
+		apply_hit_effects(context)
+		ScoreManager.damage_taken += context.damage
 
 func _apply_attack_context(attack_context: AttackContext):
 	#var attack_context: AttackContext = combat.get_attack_context() #very hacky approach needs to be moved later
 	#print(attack_context.knockback)
 	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
 
-
+func die():
+	var blood_splat: Node2D = BLOOD_SPLAT.instantiate()
+	blood_splat.global_position = global_position
+	get_parent().add_child(blood_splat)
+	visible = false
+	state = PlayerState.DEAD
 	
