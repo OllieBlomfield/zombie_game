@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bhdoht23pu8wv"]
+
+[ext_resource type="Texture2D" uid="uid://b8nrdhdctlunq" path="res://graphics/Effects/512x512 textures (22).png" id="1_yvhfm"]
+
+[node name="Light" type="PointLight2D" unique_id=946157563]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_yvhfm")
