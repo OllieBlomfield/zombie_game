@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fthck4igf32o"]
 
-[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://Scripts/objects/zombie.gd" id="1_xcqe2"]
+[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="2_cutmx"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
@@ -88,7 +88,7 @@ animations = [{
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1721881803 node_paths=PackedStringArray("hitbox", "hurtbox", "health") groups=["RegularZombie", "enemy"]]
 collision_layer = 2
-collision_mask = 22
+collision_mask = 20
 script = ExtResource("1_xcqe2")
 hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
