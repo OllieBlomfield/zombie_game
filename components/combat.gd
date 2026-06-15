@@ -9,6 +9,7 @@ extends Node
 
 var _current_weapon: Weapon
 var _current_weapon_index: int = 0
+var _weapon_offset: Vector2 = Vector2.ZERO
 
 signal finished_attack
 signal play_attack_anim
@@ -19,10 +20,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player.facing_direction == 1:
 		_current_weapon.scale.x = 1
-		_current_weapon.global_position = right_weapon_position.global_position
+		_current_weapon.global_position = right_weapon_position.global_position + _weapon_offset
 	else:
 		_current_weapon.scale.x = -1
-		_current_weapon.global_position = left_weapon_position.global_position
+		_current_weapon.global_position = left_weapon_position.global_position + _weapon_offset
 
 func attack(direction: float):
 	_current_weapon.flip_h = direction < 0
@@ -61,3 +62,7 @@ func _play_attack_anim() -> void:
 func _camera_shake(intensity: int, time: float) -> void:
 	print("shake camera")
 	camera.screen_shake(intensity, time)
+
+func set_weapon_offset(offset: Vector2):
+	_weapon_offset = offset
+	

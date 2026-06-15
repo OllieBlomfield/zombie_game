@@ -28,9 +28,10 @@ health = NodePath("Health")
 sprite_frames = ExtResource("2_2147m")
 animation = &"run"
 
-[node name="AnimationComponent" type="Node2D" parent="." unique_id=1071040170 node_paths=PackedStringArray("animated_sprite_2d")]
+[node name="AnimationComponent" type="Node2D" parent="." unique_id=1071040170 node_paths=PackedStringArray("animated_sprite_2d", "combat")]
 script = ExtResource("3_tuhu7")
 animated_sprite_2d = NodePath("../AnimatedSprite2D")
+combat = NodePath("../Combat")
 
 [node name="DustTimer" type="Timer" parent="AnimationComponent" unique_id=72841429]
 

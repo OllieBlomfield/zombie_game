@@ -18,6 +18,7 @@ enum AnimationState {DEFAULT, ATTACK_BEGIN, CURRENTLY_ATTACKING}
 var anim_state: AnimationState = AnimationState.DEFAULT
 
 @export var animated_sprite_2d: AnimatedSprite2D
+@export var combat: Combat
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_animation_finished)
@@ -48,7 +49,7 @@ func attack_finished():
 
 func _handle_default_anim():
 	if is_on_floor:
-		if down_pressed: #should be from outside
+		if down_pressed:
 			animated_sprite_2d.play("crouch")
 			animated_sprite_2d.scale.x = 1.05
 		elif turning:
@@ -56,6 +57,13 @@ func _handle_default_anim():
 		elif abs(velocity.x) > 2:
 			animated_sprite_2d.play("run")
 			if dust_timer.is_stopped(): dust_timer.start(0.1 + 0.1*randf())
+			if animated_sprite_2d.frame == 1 or animated_sprite_2d.frame == 3:
+				#I know how scuffed this is but running out of time
+				combat.set_weapon_offset(Vector2(0,1))
+			else:
+				combat.set_weapon_offset(Vector2.ZERO)
+				
+		
 		else:
 			animated_sprite_2d.play("idle")
 	elif velocity.y > 0:
