@@ -158,7 +158,7 @@ one_shot = true
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=2008647973]
 stream = SubResource("AudioStreamRandomizer_vfled")
-volume_db = -5.0
+volume_db = -15.0
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="area_entered" from="ZoneDetector" to="." method="_on_zone_detector_area_entered"]

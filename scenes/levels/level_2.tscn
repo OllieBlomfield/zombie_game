@@ -12719,6 +12719,24 @@ position = Vector2(1035, 84)
 [node name="Light" parent="Lights" unique_id=946157563 instance=ExtResource("7_ibugp")]
 position = Vector2(-820, -10)
 
+[node name="Light73" parent="Lights" unique_id=1944897567 instance=ExtResource("7_ibugp")]
+position = Vector2(483, 36)
+
+[node name="Light74" parent="Lights" unique_id=52639522 instance=ExtResource("7_ibugp")]
+position = Vector2(483, 73)
+
+[node name="Light75" parent="Lights" unique_id=422392077 instance=ExtResource("7_ibugp")]
+position = Vector2(469, 109)
+
+[node name="Light76" parent="Lights" unique_id=237167978 instance=ExtResource("7_ibugp")]
+position = Vector2(-1002, -5.000001)
+
+[node name="Light77" parent="Lights" unique_id=1551826241 instance=ExtResource("7_ibugp")]
+position = Vector2(-989, 27.999996)
+
+[node name="Light78" parent="Lights" unique_id=1469503754 instance=ExtResource("7_ibugp")]
+position = Vector2(-1002, -23)
+
 [node name="Light72" parent="Lights" unique_id=1659775372 instance=ExtResource("7_ibugp")]
 position = Vector2(1138, 73)
 energy = 0.5
