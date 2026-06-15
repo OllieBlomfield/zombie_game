@@ -37,7 +37,6 @@ func get_attack_context() -> AttackContext:
 
 func perform_attack(direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	if not _performing_attack and not _cooling_down:
-		Input.start_joy_vibration(0, .5, .7, .3)
 		hit_box.enable()
 		play_attack_anim.emit()
 		animated_sprite_2d.play("attack")
@@ -52,6 +51,7 @@ func _attack_finished() -> void:
 	
 func _attack_hit(hurtbox: HurtBox):
 	print("ATTACK HIT")
+	Input.start_joy_vibration(0, .1, .2, .3)
 	camera_shake.emit(2,0.2)
 	var context: HitContext = HitContext.new()
 	context.damage = damage

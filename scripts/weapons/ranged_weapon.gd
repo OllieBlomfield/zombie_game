@@ -41,8 +41,7 @@ func _process(delta: float) -> void:
 func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening
 	if is_on_cooldown or not has_ammunition():
 		return
-		
-	Input.start_joy_vibration(0, .8, 1, .3)
+	
 	var bullet = bullet_scene.instantiate()
 	
 	get_tree().current_scene.add_child(bullet)
@@ -72,6 +71,7 @@ func perform_attack(facing_direction: int) -> void: #call pefrom_attack or execu
 	bullet_casing.position = position
 	get_parent().add_child(bullet_casing)
 	
+	Input.start_joy_vibration(0, .3, .4, .2)
 	muzzle_flash.flash()
 	play_attack_anim.emit() #more generic signal name (attack_started/successful)
 	camera_shake.emit(1,0.1)
