@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnocukpr5f4uf"]
 
-[ext_resource type="Script" uid="uid://xomigwrl5nnj" path="res://scripts/Ui/canvas_layer.gd" id="1_7xgas"]
+[ext_resource type="Script" uid="uid://xomigwrl5nnj" path="res://Scripts/UI/canvas_layer.gd" id="1_7xgas"]
 [ext_resource type="PackedScene" uid="uid://brfc8nam2jl1o" path="res://UI/Interfaces/shop.tscn" id="1_w2p53"]
 [ext_resource type="PackedScene" uid="uid://bskwqmmwtsupu" path="res://scenes/objects/wave_spawner.tscn" id="2_w2p53"]
 [ext_resource type="PackedScene" uid="uid://bhlw1cirpjury" path="res://scenes/levels/level_2.tscn" id="3_0ekff"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://w3cj1am3gywm" path="res://Scripts/UI/damage_vignette.gd" id="8_ombib"]
 [ext_resource type="Script" uid="uid://dkug083jbi8i4" path="res://Scripts/misc/simple_fade.gd" id="9_puasx"]
 [ext_resource type="PackedScene" uid="uid://cbvxartqh3r2f" path="res://scenes/UI/pointer_arrow.tscn" id="10_csbb7"]
-[ext_resource type="Texture2D" uid="uid://cynnooc0fqikm" path="res://graphics/backgrounds/city_background_2.jpg" id="12_0ekff"]
+[ext_resource type="Texture2D" uid="uid://wgbutpp533k6" path="res://graphics/backgrounds/finishedbackground.jpg" id="13_puasx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ekff"]
 font = ExtResource("6_abf5c")
@@ -154,8 +154,8 @@ repeat_times = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2129847561]
 z_index = -2
-position = Vector2(0, -61)
-texture = ExtResource("12_0ekff")
+position = Vector2(0, 66)
+texture = ExtResource("13_puasx")
 
 [editable path="Player"]
 [editable path="Level2"]
