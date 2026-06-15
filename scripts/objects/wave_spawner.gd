@@ -58,7 +58,8 @@ func spawn_wave():
 		await get_tree().create_timer(.5).timeout
 	await get_tree().create_timer(wave_length).timeout
 	for pointer in current_spawner.get_children():
-		pointer.free_self()
+		#pointer.free_self()
+		pass
 	current_wave += 1
 	if current_wave > max_waves:
 		return

@@ -5,6 +5,7 @@ extends Node2D
 @export var screen_margin: float = 4.0
 @export var smoothing_speed: float = 8.0
 
+
 var camera_node: Camera2D
 @onready var flash_timer: Timer = $FlashTimer
 var flashing: bool = false
@@ -44,8 +45,20 @@ func _process(delta: float) -> void:
 	global_position = lerp(global_position, target_display_position, delta*smoothing_speed)
 	rotation = lerp(rotation, target_display_rotation, delta*smoothing_speed)
 
+	_check_proximity()
+
+func _check_proximity():
+	var parent_position: Vector2 = get_parent().position
+	var player: Player = GameManager.player
+	
+	if player and parent_position:
+		if player.position.distance_to(parent_position) < 200:
+			free_self()
+		
+		
+
 func free_self():
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(4).timeout
 	queue_free()
 
 func _handle_flash():
