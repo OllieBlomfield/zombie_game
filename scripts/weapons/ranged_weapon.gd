@@ -15,7 +15,9 @@ extends Weapon
 @export var user_knockback: float = 5
 
 @export var max_ammo: int = 100
-@export var current_ammo: int = 50
+var current_ammo: int = max_ammo:
+	set(value):
+		current_ammo = clamp(value,0,max_ammo)
 
 const BULLET_CASING: PackedScene = preload("uid://dlotmvlm7iylq")
 

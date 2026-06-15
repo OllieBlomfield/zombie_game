@@ -4,6 +4,7 @@ extends Node2D
 signal wave_started(wave_number)
 signal escape_unlocked
 signal zombies_dead
+
 @export var enemy_list: Array[PackedScene]
 
 var enemy_cost: Array = [1,3]
@@ -15,6 +16,7 @@ var current_wave: int = 1
 var points: int = 0
 
 var current_spawner: Node2D
+@export var pointer_arrow: PackedScene
 var zombies_alive: bool = false
 
 func _ready() -> void:
@@ -45,12 +47,16 @@ func spawn_wave():
 	wave_started.emit(current_wave)
 	var spawn_points = get_spawn_points()
 	current_spawner = spawn_points.pick_random()
+	var pointer_arrow = pointer_arrow.instantiate()
+	current_spawner.add_child(pointer_arrow)
 	
 	for enemy_scene in spawn_queue:
 		var enemy = enemy_scene.instantiate()
 		add_child(enemy)
 		enemy.global_position = current_spawner.global_position
 		await get_tree().create_timer(.5).timeout
+	for pointer in current_spawner.get_children():
+		pointer.queue_free()
 	await get_tree().create_timer(wave_length).timeout
 	current_wave += 1
 	if current_wave > max_waves:
