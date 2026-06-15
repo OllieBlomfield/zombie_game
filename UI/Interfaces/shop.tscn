@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brfc8nam2jl1o"]
 
-[ext_resource type="Script" uid="uid://ohw7evp68eit" path="res://scripts/Ui/shop.gd" id="1_1ymua"]
+[ext_resource type="Script" uid="uid://ohw7evp68eit" path="res://Scripts/UI/shop.gd" id="1_1ymua"]
 [ext_resource type="PackedScene" uid="uid://1w18kbjvihl6" path="res://UI/Interfaces/upgrade_card.tscn" id="1_hpwef"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="3_r8dvb"]
 [ext_resource type="Texture2D" uid="uid://dmjwdc30tvq6l" path="res://graphics/Props/Bird 1 [8x8].png" id="3_t3yd4"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://beqcl8127s5ru" path="res://graphics/Props/Car 6 [16x8].png" id="4_t3yd4"]
 [ext_resource type="Texture2D" uid="uid://y1nmapalf78g" path="res://graphics/Props/UFO flying 1 [24x24].png" id="5_b7lmq"]
 [ext_resource type="StyleBox" uid="uid://nppfwxf1amby" path="res://UI/Styles/ButtonStyle.tres" id="5_euo2n"]
-[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://scripts/Ui/exit_button.gd" id="5_qhxmu"]
+[ext_resource type="Script" uid="uid://bjvg8116l37gm" path="res://Scripts/UI/exit_button.gd" id="5_qhxmu"]
 [ext_resource type="StyleBox" uid="uid://e6em2q4mjq7d" path="res://UI/Styles/ButtonPressed.tres" id="6_jjwfl"]
 [ext_resource type="AudioStream" uid="uid://di5e4ojcued0b" path="res://sounds/sounds/select.wav" id="6_p2rb3"]
 [ext_resource type="LabelSettings" uid="uid://8u62s73a5h4i" path="res://UI/Label Settings/Money_Count_label.tres" id="9_d367l"]
