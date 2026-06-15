@@ -62,7 +62,6 @@ func _handle_default_anim():
 				combat.set_weapon_offset(Vector2(0,1))
 			else:
 				combat.set_weapon_offset(Vector2.ZERO)
-				
 		
 		else:
 			animated_sprite_2d.play("idle")

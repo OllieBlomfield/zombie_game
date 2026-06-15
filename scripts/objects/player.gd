@@ -49,7 +49,7 @@ var state: PlayerState = PlayerState.ALIVE
 
 
 #@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
+@export var player_spawn_point: Area2D
 const BLOOD_SPLAT: PackedScene = preload("uid://drqvuapd75i0e")
 
 @export var damage_vignette: DamageVignette

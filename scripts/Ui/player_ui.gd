@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 
 	if player.state == player.PlayerState.DEAD:
 		death_message.visible = true
+		await get_tree().create_timer(0.2).timeout
 		if Input.is_action_just_pressed("jump"):
 			get_tree().reload_current_scene()
 
