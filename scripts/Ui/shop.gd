@@ -1,2 +1,2 @@
 extends Control
-@onready var upgrade_card: Button = $HBoxContainer/UpgradeCard
+@export var upgrade_card: Button

@@ -1,5 +1,4 @@
 extends Area2D
-
 @onready var shop: Control = $"../../CanvasLayer/Shop"
 @onready var wave_label: Label = $"../../CanvasLayer/WaveLabel"
 @onready var escape_label: Label = $"../../CanvasLayer/EscapeLabel"
