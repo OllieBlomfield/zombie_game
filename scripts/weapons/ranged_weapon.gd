@@ -14,8 +14,11 @@ extends Weapon
 @onready var gun_sound: AudioStreamPlayer2D = $"../../GunSound"
 
 @export var user_knockback: float = 5
+@export var weapon_friction: float = 0.15
 
 @export var max_ammo: int = 100
+
+
 var current_ammo: int = max_ammo:
 	set(value):
 		current_ammo = clamp(value,0,max_ammo)
@@ -87,6 +90,7 @@ func get_attack_context() -> AttackContext:
 	else:
 		var attack_context: AttackContext = AttackContext.new()
 		attack_context.knockback = user_knockback
+		attack_context.movement_friction = weapon_friction
 		return attack_context			
 
 func _on_timeout():

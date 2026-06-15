@@ -13,6 +13,7 @@ extends Weapon
 const BLOOD_DROP_BIG = preload("uid://ccty5qickix53")
 
 @export var user_knockback: float = 0
+@export var weapon_friction: float = 0.5
 
 var _performing_attack: bool = false
 var _cooling_down: bool = false
@@ -34,6 +35,7 @@ func _process(delta: float) -> void:
 func get_attack_context() -> AttackContext:
 	var attack_context: AttackContext = AttackContext.new()
 	attack_context.knockback = user_knockback
+	attack_context.movement_friction = weapon_friction
 	return attack_context			
 
 func perform_attack(direction: int) -> void: #call pefrom_attack or execute_attack to imply something active is happening

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://t62muxfho6v5"]
 
-[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_q43cu"]
+[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://Scripts/objects/zombie.gd" id="1_q43cu"]
 [ext_resource type="Texture2D" uid="uid://b8d6r5acjitm7" path="res://graphics/enemies/tank_corpse.png" id="2_aue2k"]
 [ext_resource type="Shader" uid="uid://hyty3ti1voqp" path="res://shaders/flash.gdshader" id="2_rvy5v"]
 [ext_resource type="Texture2D" uid="uid://c3uimqytrq8r0" path="res://graphics/enemies/tank_zombie.png" id="3_aue2k"]
@@ -133,16 +133,20 @@ collision_mask = 20
 script = ExtResource("1_q43cu")
 hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
-speed = 12.0
+speed = 10.0
 jump_velocity = -200.0
 acceleration = 1.2
+damage = 4.0
+knockback = 200.0
+extra_knockback_y = 100.0
 corpse_texture = ExtResource("2_aue2k")
 health = NodePath("Health")
 metadata/_custom_type_script = "uid://c3vd3j8w8ginx"
 
 [node name="Health" type="Node" parent="." unique_id=1928973991]
 script = ExtResource("4_kpwv2")
-max_health = 15
+max_health = 14
+current_health = 14
 immortality_time = 0.01
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 

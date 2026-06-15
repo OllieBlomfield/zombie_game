@@ -9,6 +9,7 @@ signal camera_shake(intensity: int, time: float)
 @export var has_ammo: bool = false
 @export var player_anim: String = "mele_attack"
 
+
 var flip_h: bool = false
 
 func perform_attack(direction: int) -> void:

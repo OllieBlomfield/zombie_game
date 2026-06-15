@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fthck4igf32o"]
 
-[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://scripts/objects/zombie.gd" id="1_xcqe2"]
+[ext_resource type="Script" uid="uid://c3vd3j8w8ginx" path="res://Scripts/objects/zombie.gd" id="1_xcqe2"]
 [ext_resource type="Texture2D" uid="uid://xy6gyiymvc71" path="res://graphics/enemies/base_corpse.png" id="2_cutmx"]
 [ext_resource type="Script" uid="uid://bcrt8c45areik" path="res://components/health.gd" id="3_rln44"]
 [ext_resource type="Script" uid="uid://clpibth8iopnl" path="res://components/hitbox.gd" id="4_cutmx"]
@@ -98,12 +98,12 @@ collision_mask = 20
 script = ExtResource("1_xcqe2")
 hitbox = NodePath("HitBox")
 hurtbox = NodePath("HurtBox")
+damage = 1.0
 corpse_texture = ExtResource("2_cutmx")
 health = NodePath("Health")
 
 [node name="Health" type="Node" parent="." unique_id=374794825]
 script = ExtResource("3_rln44")
-max_health = 5
 immortality_time = 0.01
 metadata/_custom_type_script = "uid://bcrt8c45areik"
 

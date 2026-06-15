@@ -200,6 +200,7 @@ func _apply_attack_context(attack_context: AttackContext):
 	#var attack_context: AttackContext = combat.get_attack_context() #very hacky approach needs to be moved later
 	#print(attack_context.knockback)
 	add_knockback(Vector2(-facing_direction,0),attack_context.knockback,0)
+	velocity.x *= attack_context.movement_friction
 
 func die():
 	var blood_splat: Node2D = BLOOD_SPLAT.instantiate()
