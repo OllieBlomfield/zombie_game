@@ -46,6 +46,7 @@ func spawn_wave():
 	var spawn_points = get_spawn_points()
 	current_spawner = spawn_points.pick_random()
 	
+	
 	for enemy_scene in spawn_queue:
 		var enemy = enemy_scene.instantiate()
 		add_child(enemy)

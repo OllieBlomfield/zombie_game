@@ -38,15 +38,14 @@ var coyote_time: float = 0
 var look_up_time: float = 0
 var crouch_time: float = 0
 
-var attacking: bool = false #could have as a seperate state to moving
-
 #@export var dust_particle: PackedScene
 @onready var combat: Combat = $Combat
 @onready var ranged_weapon: RangedWeapon = $Weapons/RangedWeapon
 @onready var mele_weapon: MeleWeapon = $Weapons/MeleWeapon
+@onready var animation_component: AnimationComponent = $AnimationComponent
 
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+#@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_spawn_point: Area2D = $"../Level1/PlayerSpawnPoint"
 
 @export var damage_vignette: DamageVignette
@@ -128,27 +127,10 @@ func _handle_horizontal_velocity(delta: float, direction):
 	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
 
 func  _handle_animation(direction):
-	animated_sprite_2d.flip_h = (facing_direction < 0)
-	animated_sprite_2d.scale.y = 1 + abs(velocity.y)/700
-	animated_sprite_2d.scale.x = 1
-	
-	if attacking:
-		return
-	elif is_on_floor():
-		if Input.is_action_pressed("down"):
-			animated_sprite_2d.play("crouch")
-			position.y += 1
-			animated_sprite_2d.scale.x = 1.05
-		elif turning:
-			animated_sprite_2d.play("turn")
-		elif direction:
-			animated_sprite_2d.play("run")
-		else:
-			animated_sprite_2d.play("idle")
-	elif velocity.y > 0:
-		animated_sprite_2d.play("fall")
-	else:
-		animated_sprite_2d.play("jump")
+	animation_component.turning = turning
+	animation_component.velocity = velocity
+	animation_component.is_on_floor = is_on_floor()
+	animation_component.facing_direction = facing_direction
 		
 func set_gravity(type: GravityType):
 	match type:
@@ -174,15 +156,13 @@ func set_gravity(type: GravityType):
 #			camera.position = DEFAULT_CAM_POSITION
 
 func _attack_finished():
-	attacking = false
+	pass
+	#animation_component.attack_finished()
 	#animated_sprite_2d.position = Vector2.ZERO
 
 func _play_attack_anim(): #change name
-	attacking = true
-	animated_sprite_2d.play(combat.get_current_weapon().player_anim)
+	animation_component.attack_start(combat.get_current_weapon().player_anim)
 	_apply_attack_context(combat.get_attack_context())
-	#if combat.get_current_weapon().player_anim == "mele_attack":
-		#animated_sprite_2d.position = Vector2(4,-4)
 
 func _on_received_hit(context: HitContext):
 	if not health.immortality: damage_vignette.show_vignette()
